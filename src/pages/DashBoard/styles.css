@@ -91,6 +91,32 @@
   cursor: pointer;
 }
 
+.GitButton-inactive {
+  border-style: solid;
+  border-width: 1px;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+  font-size: calc(3 * (0.3vw + 0.3vh));
+  font-family: 'Montserrat, sans-serif';
+  color: #ffffff;
+  margin-top: 15px;
+  padding-bottom: 25px;
+  margin-right: 2.5vw;
+  background-color: rgba(34, 34, 34, 0.904);
+  border-color: rgba(2, 255, 183, 0.897);
+  border-radius: 10px;
+  padding-left: 7%;
+  padding-right: 7%;
+  width: fit-content;
+  height: 4vh;
+  max-height: 4vh;
+  transition: 1s;
+}
+.GitButton-inactive:hover {
+  transform: scale(1.1);
+  transition: 1s;
+  cursor: pointer;
+}
+
 .QuoteButton {
   border-style: solid;
   border-width: 1px;
@@ -650,7 +676,37 @@ transition: 1s;
     text-align: center;
     justify-content: left;
   }
+ }
 
+ input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button[type=submit] {
+  width: 100%;
+  background-color: #0042ac;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button[type=submit]:hover {
+  width: 100%;
+  background-color: #0042acba;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 550px) {

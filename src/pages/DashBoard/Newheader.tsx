@@ -3,6 +3,7 @@ import 'animate.css'
 
 //const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />
 import useScrollPosition from '@react-hook/window-scroll'
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import React, { useEffect, useState } from 'react'
 import { animated } from 'react-spring'
 import { useSpring } from 'react-spring/web'
@@ -29,7 +30,11 @@ const StyledHeaderText2 = styled.text`
 `
 
 const Headernew = () => {
+  const { account, chainId } = useActiveWeb3React()
+  const showConnectAWallet = Boolean(!account)
+  const [userinfo, setuserinfo] = useState([])
   const [hidden, sethidden] = useState(false)
+  const [externalaccount, setexternalaccount] = useState(Boolean)
   const ScrollY = useScrollPosition()
 
   const props = useSpring({
@@ -37,6 +42,55 @@ const Headernew = () => {
     to: { opacity: 1 },
     from: { opacity: 0 },
   })
+
+  async function PostBalance() {
+    if (showConnectAWallet) {
+      console.log({ message: 'Hold On there Partner, there seems to be an Account err!' })
+      return
+    }
+
+    try {
+      //setLoading(true)
+      const update = {
+        name: 'johhnnyyy',
+        address: '0x000000000000000000000000111',
+      }
+      const response = fetch('https://goc0xambi2.execute-api.us-east-2.amazonaws.com/postuserinfo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: 'johhnnyyyboiiii',
+          address: '0x000000000000000000000000111',
+        }),
+      })
+      const data = (await response).json()
+      //const data = rawdata
+      return data
+    } catch (error) {
+      console.log(error)
+    } finally {
+      console.log('success')
+    }
+  }
+
+  async function FetchBalance() {
+    try {
+      //setLoading(true)
+      const response = fetch('https://rwuejgug9a.execute-api.us-east-2.amazonaws.com/fetchuserinfohello', {
+        method: 'GET',
+      })
+      const data = (await response).json().then((data) => {
+        return data
+      })
+      return data
+    } catch (error) {
+      console.log(error)
+    } finally {
+      console.log('success')
+    }
+  }
 
   useEffect(() => {
     async function Ishidden() {
@@ -53,6 +107,7 @@ const Headernew = () => {
     }
     Ishidden()
   }, [ScrollY])
+
   return (
     <>
       <div className={'mobileheader'}>
@@ -88,8 +143,21 @@ const Headernew = () => {
                   Contact us for a quote we would love to help.
                 </p>
                 <div className="flexbox-container" style={{ justifyContent: 'center' }}>
-                  <button onClick={() => window.open('https://github.com/CascadiaTech')} className={'GitButton'}>
-                    See our Github
+                  <button
+                    className={'GitButton'}
+                    onClick={() => {
+                      Test()
+                      async function Test() {
+                        const printinfo = await FetchBalance()
+                        console.log(printinfo)
+                        console.log(
+                          printinfo.some((printinfo: { [x: string]: string }) => printinfo['address'] === account)
+                        )
+                      }
+                    }}
+                  >
+                    {' '}
+                    Mint
                   </button>
                   <button onClick={() => window.open('https://t.me/+8ZaQrFjaWWgzMTMx')} className={'QuoteButton'}>
                     Contact us for a Quote
