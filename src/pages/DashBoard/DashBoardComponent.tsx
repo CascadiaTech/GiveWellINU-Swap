@@ -1,6 +1,7 @@
 import './styles.css'
 import 'animate.css'
 
+import { getNftMetadata, getNftsForOwner, initializeAlchemy, Network } from '@alch/alchemy-sdk'
 import { Contract } from '@ethersproject/contracts'
 import { Web3Provider } from '@ethersproject/providers'
 import { parseEther } from '@ethersproject/units'
@@ -9,12 +10,14 @@ import { abiObject } from 'abis/abi'
 import { PurpleCard } from 'components/Card'
 import CountdownTimer from 'components/TimerCountdown'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
+//import fetch from 'node-fetch'
 import React, { useCallback, useEffect, useState } from 'react'
 import { animated, useSpring } from 'react-spring'
 import styled from 'styled-components/macro'
 
-import CascadiaTechFrontPic from '../../assets/images/CascadiaTechFrontPic.png'
+//import CascadiaTechFrontPic from '../../assets/images/CascadiaTechFrontPic.png'
 import JpegBackground2 from '../../assets/videos/JpegBackground2.mp4'
+//import { metadataurl } from './alchemy-sdk-script'
 
 //padding: 8px 35px;
 
@@ -44,9 +47,10 @@ export default function DashBoardComponent() {
   const { account } = useActiveWeb3React()
   const showConnectAWallet = Boolean(!account)
   //const propernetwork = Boolean(!chainId)
-  const [loading, setLoading] = useState(false)
   const [hidden] = useState(false)
+  const [img, setImg] = useState(String)
   const [Externalacc, setExternalacc] = useState(Boolean)
+  const [loading, setLoading] = useState(Boolean)
   const [isWhitelisted, setisWhitelisted] = useState(Boolean)
   const [isHidden, setishidden] = useState(true)
   const [names, setname] = useState(String)
@@ -55,6 +59,8 @@ export default function DashBoardComponent() {
   const { library } = context
   const provider = new Web3Provider(library.provider)
   const signer = provider.getSigner()
+  const [metadata, setmetadata] = useState(Object)
+  const [loaded, setloaded] = useState(Boolean)
 
   function CountdownTimers() {
     const calculateTimeLeft = () => {
@@ -220,177 +226,198 @@ export default function DashBoardComponent() {
         console.log('success')
       }
     }
+    async function FetchNFT() {
+      try {
+        const settings = {
+          apiKey: '3JTCnITteGZR7Uu4QbBFzraeVCVlVokg', // Replace with your Alchemy API Key.
+          network: Network.ETH_RINKEBY, // Replace with your network.
+          maxRetries: 10,
+        }
 
+        const alchemy = initializeAlchemy(settings)
+
+        // Print owner's wallet address:
+        const ownerAddr = account
+        console.log('fetching NFTs for address:', ownerAddr)
+        console.log('...')
+
+        // Print total NFT count returned in the response:
+        const nftsForOwner = await getNftsForOwner(alchemy, account || 'string')
+        console.log('number of NFTs found:', nftsForOwner.totalCount)
+        console.log('...')
+        for (const nft of nftsForOwner.ownedNfts) {
+          console.log('===')
+          console.log('contract address:', nft.contract.address)
+          console.log('token ID:', nft.tokenId)
+        }
+
+        //const Getfunapes = nftsForOwner.ownedNfts(alchemy, '0xa2607d28f7a899e38abe99c67ccb37127875be7e')
+        //console.log(Getfunapes)
+
+        // Fetch metadata for a particular NFT:
+        console.log('fetching metadata for a Fun ape NFT...')
+        const response = await getNftMetadata(alchemy, '0xa2607d28f7a899e38abe99c67ccb37127875be7e', '1')
+        const metadatas = await JSON.stringify(response)
+        const test1 = JSON.parse(metadatas)
+        const test2 = test1.rawMetadata.image
+        const test3 = JSON.stringify(test2)
+        return test3
+      } catch (error) {
+        console.log(error)
+      } finally {
+        console.log('success')
+      }
+    }
     FetchExternalacc()
+      .then((result) => JSON.stringify(result))
+      .then((result) => JSON.parse(result))
       .then((result) => result.some((result: { [x: string]: string }) => result['address'] === account))
       .then((result) => setExternalacc(result))
 
+    FetchNFT().then((result) => setmetadata(result))
     FetchisWhitelisted().then((result) => setisWhitelisted(result))
-  })
+  }, [account])
 
-  if (!Externalacc) {
-    return (
-      <>
-        <div className={'mobileheader'}>
-          <animated.div hidden={hidden} style={props} className={'animate__animated animate__bounce'}>
-            <div className={'flexbox-container'}>
-              <div style={{ justifyContent: 'right' }}>
-                <img
-                  className={'header-image'}
-                  src={CascadiaTechFrontPic}
-                  alt="header"
-                  style={{ maxWidth: '40vw' }}
-                ></img>
-              </div>
-              <div style={{ marginTop: '80px' }} className="flexbox-vertical-container-left">
-                <div className={'header-text'}>
-                  <div>
-                    <StyledHeaderText1> We are here to</StyledHeaderText1> <StyledHeaderText2>Build</StyledHeaderText2>
-                  </div>
-                  <div>
-                    <StyledHeaderText1> We are here to</StyledHeaderText1> <StyledHeaderText2>Grow</StyledHeaderText2>
-                  </div>
-                  <p
-                    style={{
-                      color: '#ffffff',
-                      fontFamily: 'Montserrat, sans-serif',
-                      fontSize: 'calc(3 * (0.35vw + 0.35vh))',
-                      textShadow: '0px 1px 0px rgba(0, 0, 0, 0.2)',
-                    }}
-                  >
-                    {' '}
-                    We build Blockchain projects. Big or small we have you covered. Our team has expertise in NFT
-                    Collections, ERC20 tokens, custom contracts and the beautiful web applications that accompany them.
-                    Contact us for a quote we would love to help.
-                  </p>
-                  <div style={{ color: 'white' }}>
-                    (<span>Presale is Active! Only Whitelisted wallets can purchase an NFT</span>) Left till Presale
-                    Left till Presale is Open
-                  </div>
-                  <div className="flexbox-container" style={{ justifyContent: 'center' }}>
-                    <div>
-                      <button onClick={toggleHidden} className={'GitButton-inactive'}>
-                        Create an account
-                      </button>
-                      {!isHidden && (
-                        <PurpleCard>
-                          <label htmlFor="fname">First Name</label>
-                          <input
-                            onChange={(e) => setname(e.target.value)}
-                            type="text"
-                            id="fname"
-                            name="firstname"
-                            placeholder="Your name.."
-                          ></input>
-
-                          <label htmlFor="fname">Email Address</label>
-                          <input
-                            onChange={(e) => setemail(e.target.value)}
-                            type="text"
-                            id="fname"
-                            name="Email"
-                            placeholder="someone@somewhere.com"
-                          ></input>
-                          {!names && !emails && <button> no submit</button>}
-                          {names && emails && account && (
-                            <input onClick={() => Postacc()} type="submit" value="Submit" />
-                          )}
-                        </PurpleCard>
-                      )}
-                    </div>
-                    <button onClick={toggleHidden} className={'QuoteButton'}>
-                      Contact us for a Quote
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </animated.div>
-        </div>
-        <p className={'header-space'} style={{ paddingTop: '1px', marginTop: '1px', marginBottom: '1px' }}></p>
-        <p style={{ paddingTop: '10px', marginTop: '10px', marginBottom: '10px' }}></p>
-        <video autoPlay loop muted playsInline className="video">
-          <source src={JpegBackground2} type="video/mp4" />
-        </video>{' '}
-      </>
-    )
-  } else {
-    if (Externalacc) {
+  useEffect(() => {
+    async function Renderimagefrommetadata() {
+      if (!metadata) {
+        setloaded(false)
+        await metadata
+        return console.log('no metadata')
+      } else {
+        const imageurl = JSON.stringify(metadata).replaceAll('"', '')
+        const imagefinal = imageurl.replace('\\', '')
+        setImg(imagefinal)
+        setloaded(true)
+        return console.log('image has been set')
+      }
     }
-    return (
-      <>
-        <div className={'mobileheader'}>
-          <animated.div hidden={hidden} style={props} className={'animate__animated animate__bounce'}>
-            <div className={'flexbox-container'}>
-              <div style={{ justifyContent: 'right' }}>
-                <img
-                  className={'header-image'}
-                  src={CascadiaTechFrontPic}
-                  alt="header"
-                  style={{ maxWidth: '40vw' }}
-                ></img>
-              </div>
-              <div style={{ marginTop: '80px' }} className="flexbox-vertical-container-left">
-                <div className={'header-text'}>
-                  <div>
-                    <StyledHeaderText1> We are here to</StyledHeaderText1> <StyledHeaderText2>Build</StyledHeaderText2>
-                  </div>
-                  <div>
-                    <StyledHeaderText1> We are here to</StyledHeaderText1> <StyledHeaderText2>Grow</StyledHeaderText2>
-                  </div>
-                  <p
-                    style={{
-                      color: '#ffffff',
-                      fontFamily: 'Montserrat, sans-serif',
-                      fontSize: 'calc(3 * (0.35vw + 0.35vh))',
-                      textShadow: '0px 1px 0px rgba(0, 0, 0, 0.2)',
-                    }}
-                  >
-                    {' '}
-                    We build Blockchain projects. Big or small we have you covered. Our team has expertise in NFT
-                    Collections, ERC20 tokens, custom contracts and the beautiful web applications that accompany them.
-                    Contact us for a quote we would love to help.
-                  </p>
-                  <div className="flexbox-container" style={{ justifyContent: 'center' }}>
-                    {isWhitelisted ? (
-                      <button
-                        className={'GitButton'}
-                        onClick={() => {
-                          handleMint()
-                        }}
-                      >
-                        {' '}
-                        Mint
-                      </button>
-                    ) : (
-                      <button className="GitButton"> You are not Whitelisted </button>
-                    )}
-                    <button onClick={() => window.open('https://t.me/+8ZaQrFjaWWgzMTMx')} className={'QuoteButton'}>
-                      Contact us for a Quote
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </animated.div>
-        </div>
-        <p className={'header-space'} style={{ paddingTop: '1px', marginTop: '1px', marginBottom: '1px' }}></p>
-        <p style={{ paddingTop: '10px', marginTop: '10px', marginBottom: '10px' }}></p>
-        <CountdownTimer></CountdownTimer>
-        <video autoPlay loop muted playsInline className="video">
-          <source src={JpegBackground2} type="video/mp4" />
-        </video>{' '}
-      </>
-    )
-  }
-}
+    Renderimagefrommetadata()
+  }, [metadata])
 
-//<div style={{ justifyContent: 'center' }}>
-//<StratSection></StratSection>
-//</div>
-//<p style={{ paddingTop: '30px', marginTop: '30px', marginBottom: '30px' }}></p>
-//<TransparentCard></TransparentCard>
-//<div>
-//<PortfolioSection></PortfolioSection>
-//<Footer></Footer>
-//</div>
+  //console.log(metadataurl)
+
+  //const { getNftMetadata, getNftsForOwner, initializeAlchemy, Network } = require('@alch/alchemy-sdk')
+  // Optional Config object, but defaults to demo api-key and eth-mainnet.
+  //console.log(metadata.tokenUri)
+  //const NFTimage = metadata.rawMetadata.image
+  //console.log(NFTimage)
+  //<img className={'header-image'} src={test} alt="header" style={{ maxWidth: '40vw' }}></img>
+  //const test6 = img.replace('https://gateway.pinata.cloud/ipfs/', 'https://gateway.pinata.cloud/ipfs/')
+  //console.log(test6)
+  return (
+    <animated.div hidden={hidden} style={props} className={'animate__animated animate__bounce'}>
+      <div style={{ justifyContent: 'right' }}></div>
+      <div className={'header-text'}>
+        <div>
+          {loaded ? (
+            <>
+              <img
+                className={'header-image'}
+                src={img}
+                alt="header"
+                style={{ maxWidth: '40vw', maxHeight: '20vh' }}
+              ></img>
+              <div style={{ color: 'white' }}> {img} </div>
+            </>
+          ) : (
+            <></>
+          )}
+          <button
+            onClick={() => {
+              window.open(img)
+            }}
+          >
+            {' '}
+            Click here to go to your NFT
+          </button>
+          <StyledHeaderText1> We are here to</StyledHeaderText1> <StyledHeaderText2>Build</StyledHeaderText2>
+        </div>
+        <div>
+          <StyledHeaderText1></StyledHeaderText1> <StyledHeaderText2>Grow</StyledHeaderText2>
+        </div>
+        <p
+          style={{
+            color: '#ffffff',
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: 'calc(3 * (0.35vw + 0.35vh))',
+            textShadow: '0px 1px 0px rgba(0, 0, 0, 0.2)',
+          }}
+        >
+          {' '}
+          We build Blockchain projects. Big or small we have you covered. Our team has expertise in NFT Collections,
+          ERC20 tokens, custom contracts and the beautiful web applications that accompany them. Contact us for a quote
+          we would love to help.
+        </p>
+      </div>
+
+      {Externalacc ? (
+        <div>
+          <div className="flexbox-container" style={{ justifyContent: 'center' }}>
+            {isWhitelisted ? (
+              <button
+                className={'GitButton'}
+                onClick={() => {
+                  handleMint()
+                }}
+              >
+                {' '}
+                Mint
+              </button>
+            ) : (
+              <button className="GitButton"> You are not Whitelisted </button>
+            )}
+          </div>
+          <p className={'header-space'} style={{ paddingTop: '1px', marginTop: '1px', marginBottom: '1px' }}></p>
+          <p style={{ paddingTop: '10px', marginTop: '10px', marginBottom: '10px' }}></p>
+          <CountdownTimer></CountdownTimer>
+          <video autoPlay loop muted playsInline className="video">
+            <source src={JpegBackground2} type="video/mp4" />
+          </video>
+        </div>
+      ) : (
+        <div>
+          <div className="flexbox-container" style={{ justifyContent: 'center' }}>
+            <div>
+              <button onClick={toggleHidden} className={'GitButton-inactive'}>
+                Create an account
+              </button>
+              {!isHidden && (
+                <PurpleCard>
+                  <label htmlFor="fname">First Name</label>
+                  <input
+                    onChange={(e) => setname(e.target.value)}
+                    type="text"
+                    id="fname"
+                    name="firstname"
+                    placeholder="Your name.."
+                  ></input>
+
+                  <label htmlFor="fname">Email Address</label>
+                  <input
+                    onChange={(e) => setemail(e.target.value)}
+                    type="text"
+                    id="fname"
+                    name="Email"
+                    placeholder="someone@somewhere.com"
+                  ></input>
+                  {!names && !emails && <button> no submit</button>}
+                  {names && emails && account && <input onClick={() => Postacc()} type="submit" value="Submit" />}
+                </PurpleCard>
+              )}
+            </div>
+            <button onClick={toggleHidden} className={'QuoteButton'}>
+              Contact us for a Quote
+            </button>
+
+            <p className={'header-space'} style={{ paddingTop: '1px', marginTop: '1px', marginBottom: '1px' }}></p>
+            <p style={{ paddingTop: '10px', marginTop: '10px', marginBottom: '10px' }}></p>
+            <video autoPlay loop muted playsInline className="video">
+              <source src={JpegBackground2} type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      )}
+    </animated.div>
+  )
+}
