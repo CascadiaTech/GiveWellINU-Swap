@@ -8,7 +8,6 @@ import { getDefaultProvider, Web3Provider } from '@ethersproject/providers'
 // { formatEther } from '@ethersproject/units'
 //import useScrollPosition from '@react-hook/window-scroll'
 import { useWeb3React } from '@web3-react/core'
-import ANime from 'assets/ANime.png'
 import ApeMotorcycleLogo from 'assets/images/ApeMotorcycleLogo.png'
 import { PurpleCard } from 'components/Card'
 //import useActiveWeb3React from 'hooks/useActiveWeb3React'
@@ -16,6 +15,8 @@ import { PurpleCard } from 'components/Card'
 import React, { useCallback, useEffect, useState } from 'react'
 
 import { abiObject } from './abi'
+import FAQPage from './FAQ'
+import FooterMenu from './Footer'
 import { NFTAbiObject } from './NFTAbi'
 import NFTMintSection from './NFTMint'
 
@@ -108,14 +109,14 @@ const ClaimTransaction = () => {
       }
     }
 
-    FetchDexGuruPrice()
-      .then((result) => Number(result).toFixed(12))
-      .then((result) => setprice(result))
-    FetchDexGuruLiq()
-      .then((result) => Number(result).toFixed(2))
-      .then((result) => setliq(result))
-    Marketcap()
-    FetchHolders().then((result) => setholders(result))
+    //FetchDexGuruPrice()
+    //.then((result) => Number(result).toFixed(12))
+    // .then((result) => setprice(result))
+    //FetchDexGuruLiq()
+    // .then((result) => Number(result).toFixed(2))
+    // .then((result) => setliq(result))
+    //Marketcap()
+    //FetchHolders().then((result) => setholders(result))
   }, [price, holders])
 
   useEffect(() => {
@@ -275,125 +276,53 @@ const ClaimTransaction = () => {
   }, [showConnectAWallet])
 
   return (
-    <div style={{ justifyContent: 'center' }} className={'flexbox-vertical-container'}>
-      <img className={'dapp-header-image'} src={ApeMotorcycleLogo} alt="header"></img>
-      <p style={{ paddingTop: '3vh', marginTop: '3vh', marginBottom: '3' }}></p>
-      <div style={{ justifyContent: 'center' }} className={'flexbox-container'}>
-        <p style={{ paddingTop: '2vh', marginTop: '2vh', marginBottom: '2vh' }}></p>
-        <button onClick={toggleHidden} className={'GitButton-inactive'}>
-          Contact us for a Quote
-        </button>
-        <button onClick={toggleHidden} className={'GitButton-inactive'}>
-          Contact us for a Quote
-        </button>
-      </div>
-      <div id="DashBoard">
-        <div>
+    <>
+      <div style={{ justifyContent: 'center', alignItems: 'center' }} className={'flexbox-vertical-container'}>
+        <img className={'dapp-header-image'} src={ApeMotorcycleLogo} alt="header"></img>
+        <div className={'flexbox-container'}>
+          <p style={{ paddingTop: '5vh', marginTop: '5vh', marginBottom: '5vh' }}></p>
           <button onClick={toggleHidden} className={'GitButton-inactive'}>
-            Create an account
+            Contact us for a Quote
           </button>
-          <p style={{ paddingTop: '2vh', marginTop: '2vh', marginBottom: '2vh' }}></p>
-          {!ishidden && (
-            <PurpleCard>
-              <label htmlFor="fname">First Name</label>
-              <input
-                onChange={(e) => setname(e.target.value)}
-                type="text"
-                id="fname"
-                name="firstname"
-                placeholder="Your name.."
-              ></input>
-
-              <label htmlFor="fname">Email Address</label>
-              <input
-                onChange={(e) => setemail(e.target.value)}
-                type="text"
-                id="fname"
-                name="Email"
-                placeholder="someone@somewhere.com"
-              ></input>
-              {!names && !emails && <button> no submit</button>}
-              {names && emails && account && <input onClick={() => Postacc()} type="submit" value="Submit" />}
-            </PurpleCard>
-          )}
+          <button onClick={toggleHidden} className={'GitButton-inactive'}>
+            Contact us for a Quote
+          </button>
         </div>
-        <p style={{ paddingTop: '3vh', marginTop: '3vh', marginBottom: '3vh' }}></p>
-        <NFTMintSection></NFTMintSection>
-        <img className={'animedapp'} src={ANime} alt="headerss"></img>
-        <div
-          style={{ fontFamily: 'montserrat, sans-serif', color: '#000000', fontWeight: 700 }}
-          className={'Dapp-card'}
-        >
+        <div id="DashBoard">
           <div>
-            {' '}
-            <p style={{ textAlign: 'center', fontFamily: 'montserrat, sans-serif' }}>Company Statistics</p>{' '}
-          </div>{' '}
-          <div className={'flexbox-vertical-container'}>
-            <div className={'flexbox-container'} style={{ justifyContent: 'space-between' }}>
-              <p style={{ paddingLeft: '4px', fontFamily: 'montserrat, sans-serif' }}>Current Price</p>
-              <p style={{ marginRight: '4px', fontFamily: 'montserrat, sans-serif' }}> {price} </p>
-            </div>
-            <div className={'flexbox-container'} style={{ justifyContent: 'space-between' }}>
-              <p style={{ paddingLeft: '4px', fontFamily: 'montserrat, sans-serif' }}>Market Capitalization</p>
-              <p style={{ marginRight: '4px', fontFamily: 'montserrat, sans-serif' }}>
-                {formatMoney(Number(marketcap))}
-              </p>
-            </div>
-            <div className={'flexbox-container'} style={{ justifyContent: 'space-between' }}>
-              <p style={{ paddingLeft: '4px', fontFamily: 'montserrat, sans-serif' }}>Holders</p>
-              <p
-                style={{
-                  fontFamily: 'montserrat, sans-serif',
-                  alignSelf: 'right',
-                  textAlign: 'right',
-                  marginRight: '4px',
-                }}
-              >
-                {holders}
-              </p>
-            </div>
-            <div className={'flexbox-container'} style={{ justifyContent: 'space-between' }}>
-              <p style={{ paddingLeft: '4px', fontFamily: 'montserrat, sans-serif' }}>Total Liquidity</p>
-              <p style={{ marginRight: '4px', fontFamily: 'montserrat, sans-serif' }}> {formatMoney(Number(liq))}</p>
-            </div>
-          </div>
-        </div>
-        <p style={{ marginTop: '2vh', marginBottom: '2vh' }}></p>
-        <div style={{ fontWeight: 700 }} className={'Dapp-card'}>
-          <div className={'flexbox-vertical-container'}>
-            <p style={{ textAlign: 'center', fontFamily: 'montserrat, sans-serif' }}> User Statistics</p>{' '}
-            <div className={'flexbox-container'} style={{ justifyContent: 'space-between' }}>
-              <p style={{ paddingLeft: '4px', fontFamily: 'montserrat, sans-serif' }}>User Anime Token Balance</p>
-              <p style={{ marginRight: '4px', fontFamily: 'montserrat, sans-serif' }}>
-                {showConnectAWallet ? <> Connect Your Wallet to view your balance.</> : <>{test3}</>}
-              </p>
-            </div>
-            <div className={'flexbox-container'} style={{ justifyContent: 'space-between', fontWeight: 700 }}>
-              <p style={{ paddingLeft: '4px', fontFamily: 'montserrat, sans-serif' }}>Your NFT Balance</p>
-              <p style={{ justifySelf: 'right', marginRight: '4px', fontFamily: 'montserrat, sans-serif' }}>{nft}</p>
-            </div>
-            <div className={'flexbox-container'} style={{ justifyContent: 'space-between' }}>
-              <p style={{ paddingLeft: '4px', fontFamily: 'montserrat, sans-serif' }}>Your Pending Reflections</p>
-              <p style={{ justifySelf: 'right', marginRight: '4px', fontFamily: 'montserrat, sans-serif' }}>
-                {showConnectAWallet ? <></> : <>{test2}</>}
-              </p>
-            </div>
-            <button
-              className={'ClaimButton'}
-              onClick={() => handleClaim()}
-              style={{
-                color: '#ffffff',
-                justifyContent: 'center',
-                fontFamily: 'montserrat, sans-serif',
-              }}
-            >
-              {' '}
-              Claim Reflections{' '}
+            <button onClick={toggleHidden} className={'GitButton-inactive'}>
+              Create an account
             </button>
+            <p style={{ paddingTop: '2vh', marginTop: '2vh', marginBottom: '2vh' }}></p>
+            {!ishidden && (
+              <PurpleCard>
+                <label htmlFor="fname">First Name</label>
+                <input
+                  onChange={(e) => setname(e.target.value)}
+                  type="text"
+                  id="fname"
+                  name="firstname"
+                  placeholder="Your name.."
+                ></input>
+                <label htmlFor="fname">Email Address</label>
+                <input
+                  onChange={(e) => setemail(e.target.value)}
+                  type="text"
+                  id="fname"
+                  name="Email"
+                  placeholder="someone@somewhere.com"
+                ></input>
+                {!names && !emails && <button> no submit</button>}
+                {names && emails && account && <input onClick={() => Postacc()} type="submit" value="Submit" />}
+              </PurpleCard>
+            )}
           </div>
         </div>
       </div>
-    </div>
+      <NFTMintSection></NFTMintSection>
+      <FAQPage></FAQPage>
+      <FooterMenu></FooterMenu>
+    </>
   )
 }
 
