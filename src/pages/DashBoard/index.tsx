@@ -9,7 +9,7 @@ export default function DashBoard() {
   const showConnectAWallet = Boolean(!account)
 
   if (showConnectAWallet) {
-    return <div> connect a wallet fucker</div>
+    return <div> connect a wallet</div>
   } else {
     return <DashBoardComponent></DashBoardComponent>
   }

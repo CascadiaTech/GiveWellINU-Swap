@@ -155,6 +155,8 @@
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
+    "@alch/alchemy-sdk": "^1.0.8",
+    "@alch/alchemy-web3": "^1.4.6",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
     "@ethersproject/abi": "^5.4.1",
