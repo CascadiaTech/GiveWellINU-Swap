@@ -43,6 +43,7 @@ export const PurpleCard = styled(Card)`
   background-color: rgba(34, 34, 34, 0.904);
   border-color: rgba(2, 255, 183, 0.897);
   border-radius: 10px;
+  transition: 1s;
 `
 export const BuyBackCard = styled(Card)`
   background-color: #371065;

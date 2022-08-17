@@ -36,8 +36,8 @@
   .dapp-header-image{
     width: 30vw;
     min-width: 30vw;
-    height: 50vh;
-    min-height: 50vh;
+    height: auto;
+    min-height: 20vh;
   }
 
   .Dapp-card{
@@ -46,6 +46,20 @@
     height: fit-content;
     min-height: 200px;
     background-color: rgba(233, 233, 233, 0.768);
+    border: 1px solid;
+    border-color:rgb(216, 216, 216);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.38);
+  }
+  .NFT-card{
+    width: fit-content;
+    min-width: 300px;
+    height: fit-content;
+    min-height: 200px;
+    background-color: rgba(202, 202, 202, 0.81);
+    border: 1px solid;
+    border-color:rgb(216, 216, 216);
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.38);
   }
 
   .vertical-align-middle{
@@ -267,35 +281,7 @@ transition: 1s;
   height: 35px;
   width: 100px;
 }
-.treasury-card{
-  display: flex;
-  width: 22.5vw;
-  background-color: rgba(0, 179, 255, 0.482);
-  max-height: 35px;
-  font-family: 'montserrat sans-serif';
-  align-items: center;
-  border-radius: 5px;
-  border: 1px solid;
-  border-color: #000000;
-}
-.treasury-card > div {
-  background-color: #ffe3f8;
-  display: flex;
-  justify-content: center;
-  height: 35px;
-  width: 100px;
-  box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
-  border: 1px solid;
-  border-color: #000000;
-  border-radius: 5px;
-  font-family: 'montserrat sans-serif';
-  margin: 10px;
-  align-items: center;
-  text-align: center;
-  font-weight: bold;
-  line-height: 35px;
-  font-size: 15px;
-}
+
 .flex-container-mobile > div {
   background-color: #f3cce9;
   height: 35px;
@@ -434,22 +420,6 @@ transition: 1s;
   height: 100px;
   transition: width 0.5s, height 0.5s, opacity 2s 2s, duration 5s;
 }
-  
-  .timeline {
-    height: 300px;
-    width: 5px;
-    background-color: #e5e5e5;
-  }
-  
-  .stub1 {
-    line-height: 300px;
-    font-size: 24px;
-    background-color: #eae4e4;
-  }
-  
-  .stub2 {
-    height: 1000px;
-  }
   
   .circle {
     width: 30px;
