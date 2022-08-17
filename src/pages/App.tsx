@@ -14,7 +14,7 @@ import Web3ReactManager from '../components/Web3ReactManager'
 import { useModalOpen, useToggleModal } from '../state/application/hooks'
 import { ApplicationModal } from '../state/application/reducer'
 import DarkModeQueryParamReader from '../theme/DarkModeQueryParamReader'
-import DashBoard from './DashBoard'
+import Dapp from './Dapp'
 import Swap from './Swap'
 import Treasury from './Treasury'
 //import Landing from './Landing'
@@ -81,11 +81,11 @@ export default function App() {
             <Suspense fallback={<Loader />}>
               <Switch>
                 <Route exact strict path="/">
-                  <Redirect to="/DashBoard" />
+                  <Redirect to="/Dapp" />
                 </Route>
-                <Route strict path="/DashBoard" component={DashBoard} />
-                <Route exact strict path="/Dashboard">
-                  <Redirect to="/DashBoard" />
+                <Route strict path="/Dapp" component={Dapp} />
+                <Route exact strict path="/Dapp">
+                  <Redirect to="/Dapp" />
                 </Route>
                 <Route strict path="/Treasury" component={Treasury} />
                 <Route strict path="/Swap" component={Swap} />

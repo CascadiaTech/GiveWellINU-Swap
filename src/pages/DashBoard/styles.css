@@ -17,42 +17,29 @@
     color:grey;
     font-weight: 700;
   }
-  .center-icon {
-    position: relative;
-    top: -50%;
-    right: 150%;
-    transform: translate(-20%, 50%)
+ 
+  .animedapp{
+    width: 20vw;
+    min-width: 20vw;
+    height: 20vh;
+    min-height: 20vh;
   }
-  .MarketCap {
-    position: relative;
-    top: -50%;
-    right: -150%;
-    transform: translate( -200%, 50%)
+
+  .ApeBackground{
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  z-index: -10;
+
   }
-  .Wallet {
-    position: relative;
-    top: -50%;
-    right: 150%;
-    transform: translate(200%, 50%)
+
+  .dapp-header-image{
+    width: 30vw;
+    min-width: 30vw;
+    height: 50vh;
+    min-height: 50vh;
   }
-  .center-icon-mobile {
-    position: relative;
-    top: 100%;
-    right: 100%;
-    transform: translate(-50%, 800%)
-  }
-  .MarketCap-mobile {
-    position: relative;
-    top: 100%;
-    right: 100%;
-    transform: translate( -100%, 750%)
-  }
-  .Wallet-mobile {
-    position: relative;
-    top: 100%;
-    right: 100%;
-    transform: translate(50%, 50%)
-  }
+
   .vertical-align-middle{
     display: table-cell;
     vertical-align: bottom;

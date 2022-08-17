@@ -1,0 +1,84 @@
+
+#header {
+    position: fixed;
+    width: 15vw;
+    min-width: 15vw;
+    max-width: 15vw;
+    height: 80vh;
+    min-height: 70vh;
+    transform:translate(-280%, -4.2%)
+  }
+  #header .pro-sidebar {
+    height: 100vh;
+  }
+  #header .closemenu {
+    color: #000;
+    position: absolute;
+    right: 0;
+    z-index: 10;
+    line-height: 2px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 22px;
+    top: 30px;
+    cursor: pointer;
+  }
+  #header .pro-sidebar {
+    width: 100%;
+    min-width: 100%;
+  }
+  #header .pro-sidebar.collapsed {
+    width: 80px;
+    min-width: 80px;
+  }
+  #header .pro-sidebar-inner {
+    background-image: linear-gradient(135deg, rgb(5, 0, 176) 0%, rgb(40, 199, 250) 0%, rgb(3, 0, 107) 100%);
+    box-shadow: 0.5px 0.866px 2px 0px rgba(0, 0, 0, 0.15);
+  }
+  #header .pro-sidebar-inner .pro-sidebar-layout {
+    overflow-y: hidden;
+  }
+  #header .pro-sidebar-inner .pro-sidebar-layout .logotext p {
+    font-size: 20px;
+    padding: 0 20px;
+    color: #000;
+    font-weight: bold;
+  }
+  #header .pro-sidebar-inner .pro-sidebar-layout ul {
+    padding: 0 5px;
+  }
+  #header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item {
+    color: #000;
+    margin: 10px 0px;
+    font-weight: bold;
+  }
+  #header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item .pro-icon-wrapper {
+    background-color: #fbf4cd;
+    color: #000;
+    border-radius: 3px;
+  }
+  #header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item .pro-icon-wrapper .pro-item-content {
+    color: #000;
+  }
+  #header .logo {
+    padding: 20px;
+  }
+
+.footer {
+padding-bottom: 2vh;
+}
+.flexbox-vertical-container {
+  display: flex;
+  flex-direction: column;
+  align-items: 'center';
+  justify-content: center;
+}
+
+  a.five:link {color:#ffffff;}
+  a.five:visited {color:#ffffff;}
+  a.five:hover {color: rgba(255, 255, 255, 0.742)}
+
+  a.header-link:link {color:#ffffff;}
+  a.header-link:visited {color:#fcfcfc;}
+  a.header-link:hover {color: #ffcc00; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.7); cursor: pointer }
+

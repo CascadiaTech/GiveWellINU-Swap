@@ -9,7 +9,7 @@ export default function CountdownTimer() {
 
     if (difference > 0) {
       timeLeft = {
-        days: Math.floor(difference / (1000 * 480 * 60 * 24)),
+        days: Math.floor(difference / (1000 * 800 * 240 * 24)),
         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
         minutes: Math.floor((difference / 1000 / 60) % 60),
         seconds: Math.floor((difference / 1000) % 60),

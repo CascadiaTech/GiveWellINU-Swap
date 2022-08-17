@@ -13,8 +13,8 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { animated, useSpring } from 'react-spring'
 import styled from 'styled-components/macro'
 
+import ApeMotorcycleClubBackground from '../../assets/images/ApeMotorcycleClubBackground.png'
 import CascadiaTechFrontPic from '../../assets/images/CascadiaTechFrontPic.png'
-import JpegBackground2 from '../../assets/videos/JpegBackground2.mp4'
 
 //padding: 8px 35px;
 
@@ -56,50 +56,49 @@ export default function DashBoardComponent() {
   const provider = new Web3Provider(library.provider)
   const signer = provider.getSigner()
 
-  function CountdownTimers() {
-    const calculateTimeLeft = () => {
-      const year = new Date().getFullYear()
-      const difference = +new Date(`10/01/${year}`) - +new Date()
-      let timeLeft: any = {}
+  const calculateTimeLeft = () => {
+    const year = new Date().getFullYear()
+    const difference = +new Date(`10/01/${year}`) - +new Date()
+    let timeLeft: any = {}
 
-      if (difference > 0) {
-        timeLeft = {
-          days: Math.floor(difference / (1000 * 480 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60),
-        }
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 480 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
       }
-
-      return timeLeft
     }
 
-    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
-    const [year] = useState(new Date().getFullYear())
-
-    useEffect(() => {
-      const timer = setTimeout(() => {
-        setTimeLeft(calculateTimeLeft())
-      }, 1000)
-
-      return () => clearTimeout(timer)
-    })
-
-    const timerComponents: any = []
-
-    Object.keys(timeLeft).forEach((interval) => {
-      if (!timeLeft[interval]) {
-        return
-      }
-
-      timerComponents.push(
-        <span>
-          {timeLeft[interval]} {interval}{' '}
-        </span>
-      )
-    })
-    return timerComponents.length
+    return timeLeft
   }
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
+  const [year] = useState(new Date().getFullYear())
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTimeLeft(calculateTimeLeft())
+    }, 1000)
+
+    return () => clearTimeout(timer)
+  })
+
+  const timerComponents: any = []
+
+  Object.keys(timeLeft).forEach((interval) => {
+    if (!timeLeft[interval]) {
+      return
+    }
+
+    timerComponents.push(
+      <span>
+        {timeLeft[interval]} {interval}{' '}
+      </span>
+    )
+  })
+
+  console.log(timerComponents.len)
 
   const handleMint = useCallback(async () => {
     if (showConnectAWallet) {
@@ -309,9 +308,6 @@ export default function DashBoardComponent() {
         </div>
         <p className={'header-space'} style={{ paddingTop: '1px', marginTop: '1px', marginBottom: '1px' }}></p>
         <p style={{ paddingTop: '10px', marginTop: '10px', marginBottom: '10px' }}></p>
-        <video autoPlay loop muted playsInline className="video">
-          <source src={JpegBackground2} type="video/mp4" />
-        </video>{' '}
       </>
     )
   } else {
@@ -377,9 +373,7 @@ export default function DashBoardComponent() {
         <p className={'header-space'} style={{ paddingTop: '1px', marginTop: '1px', marginBottom: '1px' }}></p>
         <p style={{ paddingTop: '10px', marginTop: '10px', marginBottom: '10px' }}></p>
         <CountdownTimer></CountdownTimer>
-        <video autoPlay loop muted playsInline className="video">
-          <source src={JpegBackground2} type="video/mp4" />
-        </video>{' '}
+        <img className={'ApeBackground'} src={ApeMotorcycleClubBackground} alt="background"></img>
       </>
     )
   }
