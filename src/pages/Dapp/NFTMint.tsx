@@ -62,7 +62,7 @@ const NFTMintSection = () => {
   return (
     <>
       <div className={'NFT-card'}>
-        <div className={'flexbox-container-nft'} style={{ justifyContent: 'center' }}>
+        <div className={'flexbox-vertical-container'} style={{ justifyContent: 'center' }}>
           <div className={'flexbox-vertical-container'}>
             <h1 style={{ fontFamily: 'montserrat, sans-serif' }} className={'Animeverseblackheadertext'}>
               {' '}

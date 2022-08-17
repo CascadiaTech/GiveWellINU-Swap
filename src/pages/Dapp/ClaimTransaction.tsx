@@ -10,13 +10,13 @@ import { getDefaultProvider, Web3Provider } from '@ethersproject/providers'
 import { useWeb3React } from '@web3-react/core'
 import ApeMotorcycleLogo from 'assets/images/ApeMotorcycleLogo.png'
 import { PurpleCard } from 'components/Card'
-import FooterMenu from 'pages/DashBoard/Footer'
 //import useActiveWeb3React from 'hooks/useActiveWeb3React'
 //import useAddTokenToMetamask from 'hooks/useAddTokenToMetamask' - /////from transaction cofrimation modal index line 127
 import React, { useCallback, useEffect, useState } from 'react'
 
 import { abiObject } from './abi'
 import FAQPage from './FAQ'
+import FooterMenu from './Footer'
 import { NFTAbiObject } from './NFTAbi'
 import NFTMintSection from './NFTMint'
 
@@ -276,11 +276,19 @@ const ClaimTransaction = () => {
   }, [showConnectAWallet])
 
   return (
-    <div className={'flexbox-vertical-container'}>
+    <div style={{ justifyContent: 'center', alignItems: 'center' }} className={'flexbox-vertical-container'}>
       <img className={'dapp-header-image'} src={ApeMotorcycleLogo} alt="header"></img>
       <div className={'flexbox-container'}>
         <p style={{ paddingTop: '5vh', marginTop: '5vh', marginBottom: '5vh' }}></p>
-        <div className="flexbox-container" style={{ justifyContent: 'center' }}>
+        <button onClick={toggleHidden} className={'GitButton-inactive'}>
+          Contact us for a Quote
+        </button>
+        <button onClick={toggleHidden} className={'GitButton-inactive'}>
+          Contact us for a Quote
+        </button>
+      </div>
+      <div style={{ justifyContent: 'center' }} className={'flexbox-container'}>
+        <div id="DashBoard">
           <div>
             <button onClick={toggleHidden} className={'GitButton-inactive'}>
               Create an account
@@ -310,19 +318,10 @@ const ClaimTransaction = () => {
             )}
           </div>
         </div>
-        <button onClick={toggleHidden} className={'QuoteButton'}>
-          Contact us for a Quote
-        </button>
       </div>
-      <div className={'centeronmobile'}>
-        <div style={{ justifyContent: 'center' }} className={'flexbox-container'}>
-          <div id="DashBoard">
-            <NFTMintSection></NFTMintSection>
-            <FAQPage></FAQPage>
-            <FooterMenu></FooterMenu>
-          </div>
-        </div>
-      </div>
+      <NFTMintSection></NFTMintSection>
+      <FAQPage></FAQPage>
+      <FooterMenu></FooterMenu>
     </div>
   )
 }
