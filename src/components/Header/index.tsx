@@ -25,10 +25,8 @@ const HeaderFrame = styled.div<{ showBackground: boolean }>`
   align-items: center;
   flex-direction: row;
   width: 100%;
-  height: 20%;
   bottom: 8px;
   position: relative;
-  background-size: 200% 200%;
   z-index: 21;
   position: relative;
   /* Background slide effect on scroll. */

@@ -107,21 +107,17 @@
   font-size: calc(3 * (0.3vw + 0.3vh));
   font-family: 'Montserrat, sans-serif';
   color: #ffffff;
-  margin-top: 15px;
-  padding-bottom: 25px;
-  margin-right: 2.5vw;
   background-color: rgba(34, 34, 34, 0.904);
   border-color: rgba(2, 255, 183, 0.897);
-  border-radius: 10px;
-  padding-left: 7%;
-  padding-right: 7%;
+  border-radius: 15px;
   width: fit-content;
-  height: 4vh;
+  height: fit-content;
   max-height: 4vh;
   transition: 1s;
 }
 .GitButton-inactive:hover {
-  transform: scale(1.1);
+  color: rgba(1, 1, 1, 0.904);
+  background-color: #f0f0f0ee;
   transition: 1s;
   cursor: pointer;
 }
