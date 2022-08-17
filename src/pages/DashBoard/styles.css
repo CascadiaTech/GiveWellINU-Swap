@@ -108,13 +108,11 @@
   font-family: 'Montserrat, sans-serif';
   color: #ffffff;
   background-color: rgba(34, 34, 34, 0.904);
-  border-color: rgba(122, 124, 124, 0.897);
-  border-radius: 10px;
-  margin: 10%;
-  width: 15vw;
-  min-height: 5vh;
+  border-color: rgba(2, 255, 183, 0.897);
+  border-radius: 15px;
+  width: fit-content;
   height: fit-content;
-  max-height: 10vh;
+  max-height: 4vh;
   transition: 1s;
 }
 .createaccount {
@@ -139,7 +137,8 @@
   cursor: pointer;
 }
 .GitButton-inactive:hover {
-  transform: scale(1.1);
+  color: rgba(1, 1, 1, 0.904);
+  background-color: #f0f0f0ee;
   transition: 1s;
   cursor: pointer;
 }

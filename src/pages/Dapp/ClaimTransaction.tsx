@@ -293,6 +293,7 @@ const ClaimTransaction = () => {
             <button onClick={toggleHidden} className={'createaccount'}>
               Create an account
             </button>
+            <p style={{ paddingTop: '2vh', marginTop: '2vh', marginBottom: '2vh' }}></p>
             {!ishidden && (
               <PurpleCard>
                 <label htmlFor="fname">First Name</label>
@@ -303,7 +304,6 @@ const ClaimTransaction = () => {
                   name="firstname"
                   placeholder="Your name.."
                 ></input>
-
                 <label htmlFor="fname">Email Address</label>
                 <input
                   onChange={(e) => setemail(e.target.value)}
