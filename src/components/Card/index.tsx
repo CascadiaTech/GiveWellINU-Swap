@@ -92,3 +92,35 @@ export const BlueCard = styled(Card)`
   color: ${({ theme }) => theme.blue2};
   border-radius: 12px;
 `
+export const FAQCard = styled(Card)`
+  background-color: 'transparent';
+  border: 2px;
+  border-style: solid;
+  border-color: rgba(255, 153, 0, 0.979); 
+  max-width: 60vw;
+  width: 60vw;
+  margin-bottom: 2vh;
+  margin-left: 20vw;
+  min-height: 8vh;
+  margin-right: 20vw;
+  border-radius: 10px;
+  text-align: center;
+  transition: 1s;
+  &:hover {
+    cursor: pointer
+`
+export const FormCard = styled(Card)`
+  background-color: rgba(34, 34, 34, 0.904);
+  border: 2px;
+  border-style: solid;
+  border-color: rgba(255, 153, 0, 0.979);
+  transform: translate(0%, 2%);
+  margin-left: 2vw;
+  max-width: 96vw;
+  width: 96vw;
+  min-height: 8vh;
+  max-height: fit-content;
+  border-radius: 10px;
+  text-align: center;
+  transition: 1s;
+`
