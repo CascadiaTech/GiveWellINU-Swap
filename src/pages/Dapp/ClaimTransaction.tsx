@@ -276,21 +276,21 @@ const ClaimTransaction = () => {
   }, [showConnectAWallet])
 
   return (
-    <div style={{ justifyContent: 'center', alignItems: 'center' }} className={'flexbox-vertical-container'}>
+    <div style={{ justifyContent: 'space-between', alignItems: 'center' }} className={'flexbox-vertical-container'}>
       <img className={'dapp-header-image'} src={ApeMotorcycleLogo} alt="header"></img>
-      <div className={'flexbox-container'}>
+      <div className={'flexbox-container'} style={{ justifyContent: 'space-between' }}>
         <p style={{ paddingTop: '5vh', marginTop: '5vh', marginBottom: '5vh' }}></p>
         <button onClick={toggleHidden} className={'GitButton-inactive'}>
-          Contact us for a Quote
+          Website
         </button>
         <button onClick={toggleHidden} className={'GitButton-inactive'}>
-          Contact us for a Quote
+          Chart
         </button>
       </div>
       <div style={{ justifyContent: 'center' }} className={'flexbox-container'}>
         <div id="DashBoard">
           <div>
-            <button onClick={toggleHidden} className={'GitButton-inactive'}>
+            <button onClick={toggleHidden} className={'createaccount'}>
               Create an account
             </button>
             {!ishidden && (
@@ -319,6 +319,7 @@ const ClaimTransaction = () => {
           </div>
         </div>
       </div>
+      <p style={{ marginTop: '10%' }}></p>
       <NFTMintSection></NFTMintSection>
       <FAQPage></FAQPage>
       <FooterMenu></FooterMenu>

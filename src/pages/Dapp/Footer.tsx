@@ -1,4 +1,4 @@
-import './styles.css'
+import '../DashBoard/styles.css'
 import 'animate.css'
 
 //import Swal from 'sweetalert2'
@@ -91,7 +91,7 @@ export default function FooterMenu() {
   useEffect(() => {
     async function Ishidden() {
       if (ScrollY < 2000) {
-        return sethidden(true)
+        return sethidden(false)
       } else {
         try {
           return sethidden(false)

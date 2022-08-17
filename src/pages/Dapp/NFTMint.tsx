@@ -7,11 +7,13 @@ import { ExternalProvider, JsonRpcFetchFunc, Web3Provider } from '@ethersproject
 //import { getDefaultProvider, Web3Provider } from '@ethersproject/providers'
 import { parseEther } from '@ethersproject/units'
 import useScrollPosition from '@react-hook/window-scroll'
+import { abiObject } from 'abis/abi'
 //import WalletConnectProvider from "@web3-react/walletconnect-connector";
 //import LinePic from 'assets/LinePic.png'
 import mintinggif from 'assets/mintinggif.mp4'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import React, { useState } from 'react'
+import React, { useEffect,useState } from 'react'
+import Swal from 'sweetalert2'
 
 import { NFTAbiObject } from './NFTAbi'
 
@@ -21,12 +23,55 @@ const NFTMintSection = () => {
   const scrollY = useScrollPosition()
   const [loading, setLoading] = useState(false)
   const [NftAmount, SetNftAmount] = useState(1)
+  const [Externalacc, setExternalacc] = useState(Boolean)
+  const [isWhitelisted, setisWhitelisted] = useState(Boolean)
   //const { account } = useActiveWeb3React()
   const { account } = useActiveWeb3React()
   const showConnectAWallet = Boolean(!account)
   const context = useActiveWeb3React()
   const { library } = context
+  useEffect(() => {
+    async function FetchExternalacc() {
+      try {
+        //setLoading(true)
+        const response = fetch('https://rwuejgug9a.execute-api.us-east-2.amazonaws.com/fetchuserinfohello', {
+          method: 'GET',
+        })
+        const data = (await response).json()
+        return data
+      } catch (error) {
+        console.log(error)
+      } finally {
+        console.log('success')
+      }
+    }
 
+    async function FetchisWhitelisted() {
+      try {
+        //setLoading(true)
+        const data = abiObject
+        const abi = data
+        console.log(data)
+        const provider = new Web3Provider(library?.provider as ExternalProvider | JsonRpcFetchFunc)
+        const contractaddress = '0xa2607d28F7a899E38Abe99C67ccb37127875Be7E' // "clienttokenaddress"
+        const contract = new Contract(contractaddress, abi, provider)
+        const whitelistMint = await contract.isWhitelisted(account) //.claim()
+        const Claimtxid = await whitelistMint
+        return Claimtxid
+      } catch (error) {
+        console.log(error)
+      } finally {
+        console.log('success')
+      }
+    }
+
+    FetchExternalacc()
+      .then((result) => JSON.stringify(result))
+      .then((result) => JSON.parse(result))
+      .then((result) => result.some((result: { [x: string]: string }) => result['address'] === account))
+      .then((result) => setExternalacc(result))
+    FetchisWhitelisted().then((result) => setisWhitelisted(result))
+  }, [account])
 
  async function handleMint() {
 
@@ -82,7 +127,9 @@ const NFTMintSection = () => {
                 <PlusCircleOutlined style={{ fontSize: '20px' }} />
               </button>
             </div>
-            {NftAmount > 0 && NftAmount <= 3 ? (
+            {Externalacc ? (    
+              <>  
+              {NftAmount > 0 && NftAmount <= 3 ? (
               <div style={{ alignSelf: 'center' }} className={'flexbox-container'}>
                 <button
                   style={{ width: '10vw', marginTop: 10, marginBottom: '2vh' }}
@@ -106,8 +153,21 @@ const NFTMintSection = () => {
                   {' '}
                   You are only alowed to mint in between 1-3 Animeverse NFTs at a time.{' '}
                 </p>
+              </div>      
+            )}
+            </>) : (
+                            <div style={{ alignSelf: 'center' }} className={'flexbox-container'}>
+                <button
+                  style={{ width: '10vw', marginTop: 10, marginBottom: '2vh' }}
+                  className={'MintButton'}
+                  onClick={() => Swal.fire('You do not have an account yet', ' go make an account to mint an NFT')}
+                >
+                  {' '}
+                  Mint
+                </button>
               </div>
             )}
+
           </div>
           <div className={'flexbox-vertical-container'}>
             <video
