@@ -275,11 +275,9 @@ const ClaimTransaction = () => {
   }, [showConnectAWallet])
 
   return (
-    <div>
+    <div className={'flexbox-vertical-container'}>
       <img className={'dapp-header-image'} src={ApeMotorcycleLogo} alt="header"></img>
       <div className={'flexbox-container'}>
-        <p style={{ paddingTop: '5vh', marginTop: '5vh', marginBottom: '5vh' }}></p>
-        <NFTMintSection></NFTMintSection>
         <p style={{ paddingTop: '5vh', marginTop: '5vh', marginBottom: '5vh' }}></p>
         <div className="flexbox-container" style={{ justifyContent: 'center' }}>
           <div>
@@ -310,14 +308,15 @@ const ClaimTransaction = () => {
               </PurpleCard>
             )}
           </div>
-          <button onClick={toggleHidden} className={'QuoteButton'}>
-            Contact us for a Quote
-          </button>
         </div>
+        <button onClick={toggleHidden} className={'QuoteButton'}>
+          Contact us for a Quote
+        </button>
       </div>
       <div className={'centeronmobile'}>
         <div style={{ justifyContent: 'center' }} className={'flexbox-container'}>
           <div id="DashBoard">
+            <NFTMintSection></NFTMintSection>
             <img className={'animedapp'} src={ANime} alt="headerss"></img>
             <div
               style={{ fontFamily: 'montserrat, sans-serif', color: '#000000', fontWeight: 700 }}

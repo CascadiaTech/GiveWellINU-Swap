@@ -40,6 +40,14 @@
     min-height: 50vh;
   }
 
+  .Dapp-card{
+    width: fit-content;
+    min-width: 300px;
+    height: fit-content;
+    min-height: 200px;
+    background-color: rgba(233, 233, 233, 0.768);
+  }
+
   .vertical-align-middle{
     display: table-cell;
     vertical-align: bottom;
@@ -192,14 +200,6 @@ transition: 1s;
     text-align: center;
     min-width: 100%;
     max-width: 100%;
-  
-  }
-    .flexbox-container-left-longer {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    min-width: 120%;
-    max-width: 120%;
   
   }
   .wrapper {

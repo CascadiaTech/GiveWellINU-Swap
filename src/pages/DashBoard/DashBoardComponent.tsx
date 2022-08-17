@@ -15,14 +15,11 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { animated, useSpring } from 'react-spring'
 import styled from 'styled-components/macro'
 
-<<<<<<< HEAD
 import ApeMotorcycleClubBackground from '../../assets/images/ApeMotorcycleClubBackground.png'
 import CascadiaTechFrontPic from '../../assets/images/CascadiaTechFrontPic.png'
-=======
 //import CascadiaTechFrontPic from '../../assets/images/CascadiaTechFrontPic.png'
 import JpegBackground2 from '../../assets/videos/JpegBackground2.mp4'
 //import { metadataurl } from './alchemy-sdk-script'
->>>>>>> af03fbb362c13799b97dc0b384929db1c06d4019
 
 //padding: 8px 35px;
 
@@ -281,8 +278,6 @@ export default function DashBoardComponent() {
     FetchNFT().then((result) => setmetadata(result))
     FetchisWhitelisted().then((result) => setisWhitelisted(result))
   }, [account])
-
-<<<<<<< HEAD
   if (!Externalacc) {
     return (
       <>
@@ -368,158 +363,155 @@ export default function DashBoardComponent() {
     )
   } else {
     if (Externalacc) {
-=======
-  useEffect(() => {
-    async function Renderimagefrommetadata() {
-      if (!metadata) {
-        setloaded(false)
-        await metadata
-        return console.log('no metadata')
-      } else {
-        const imageurl = JSON.stringify(metadata).replaceAll('"', '')
-        const imagefinal = imageurl.replace('\\', '')
-        setImg(imagefinal)
-        setloaded(true)
-        return console.log('image has been set')
-      }
->>>>>>> af03fbb362c13799b97dc0b384929db1c06d4019
     }
-    Renderimagefrommetadata()
-  }, [metadata])
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() => {
+      async function Renderimagefrommetadata() {
+        if (!metadata) {
+          setloaded(false)
+          await metadata
+          return console.log('no metadata')
+        } else {
+          const imageurl = JSON.stringify(metadata).replaceAll('"', '')
+          const imagefinal = imageurl.replace('\\', '')
+          setImg(imagefinal)
+          setloaded(true)
+          return console.log('image has been set')
+        }
+      }
+      Renderimagefrommetadata()
+    }, [metadata])
 
-  //console.log(metadataurl)
+    //console.log(metadataurl)
 
-  //const { getNftMetadata, getNftsForOwner, initializeAlchemy, Network } = require('@alch/alchemy-sdk')
-  // Optional Config object, but defaults to demo api-key and eth-mainnet.
-  //console.log(metadata.tokenUri)
-  //const NFTimage = metadata.rawMetadata.image
-  //console.log(NFTimage)
-  //<img className={'header-image'} src={test} alt="header" style={{ maxWidth: '40vw' }}></img>
-  //const test6 = img.replace('https://gateway.pinata.cloud/ipfs/', 'https://gateway.pinata.cloud/ipfs/')
-  //console.log(test6)
-  return (
-    <animated.div hidden={hidden} style={props} className={'animate__animated animate__bounce'}>
-      <div style={{ justifyContent: 'right' }}></div>
-      <div className={'header-text'}>
-        <div>
-          {loaded ? (
-            <>
-              <img
-                className={'header-image'}
-                src={img}
-                alt="header"
-                style={{ maxWidth: '40vw', maxHeight: '20vh' }}
-              ></img>
-              <div style={{ color: 'white' }}> {img} </div>
-            </>
-          ) : (
-            <></>
-          )}
-          <button
-            onClick={() => {
-              window.open(img)
+    //const { getNftMetadata, getNftsForOwner, initializeAlchemy, Network } = require('@alch/alchemy-sdk')
+    // Optional Config object, but defaults to demo api-key and eth-mainnet.
+    //console.log(metadata.tokenUri)
+    //const NFTimage = metadata.rawMetadata.image
+    //console.log(NFTimage)
+    //<img className={'header-image'} src={test} alt="header" style={{ maxWidth: '40vw' }}></img>
+    //const test6 = img.replace('https://gateway.pinata.cloud/ipfs/', 'https://gateway.pinata.cloud/ipfs/')
+    //console.log(test6)
+    return (
+      <animated.div hidden={hidden} style={props} className={'animate__animated animate__bounce'}>
+        <div style={{ justifyContent: 'right' }}></div>
+        <div className={'header-text'}>
+          <div>
+            {loaded ? (
+              <>
+                <img
+                  className={'header-image'}
+                  src={img}
+                  alt="header"
+                  style={{ maxWidth: '40vw', maxHeight: '20vh' }}
+                ></img>
+                <div style={{ color: 'white' }}> {img} </div>
+              </>
+            ) : (
+              <></>
+            )}
+            <button
+              onClick={() => {
+                window.open(img)
+              }}
+            >
+              {' '}
+              Click here to go to your NFT
+            </button>
+            <StyledHeaderText1> We are here to</StyledHeaderText1> <StyledHeaderText2>Build</StyledHeaderText2>
+          </div>
+          <div>
+            <StyledHeaderText1></StyledHeaderText1> <StyledHeaderText2>Grow</StyledHeaderText2>
+          </div>
+          <p
+            style={{
+              color: '#ffffff',
+              fontFamily: 'Montserrat, sans-serif',
+              fontSize: 'calc(3 * (0.35vw + 0.35vh))',
+              textShadow: '0px 1px 0px rgba(0, 0, 0, 0.2)',
             }}
           >
             {' '}
-            Click here to go to your NFT
-          </button>
-          <StyledHeaderText1> We are here to</StyledHeaderText1> <StyledHeaderText2>Build</StyledHeaderText2>
+            We build Blockchain projects. Big or small we have you covered. Our team has expertise in NFT Collections,
+            ERC20 tokens, custom contracts and the beautiful web applications that accompany them. Contact us for a
+            quote we would love to help.
+          </p>
         </div>
-        <div>
-          <StyledHeaderText1></StyledHeaderText1> <StyledHeaderText2>Grow</StyledHeaderText2>
-        </div>
-        <p
-          style={{
-            color: '#ffffff',
-            fontFamily: 'Montserrat, sans-serif',
-            fontSize: 'calc(3 * (0.35vw + 0.35vh))',
-            textShadow: '0px 1px 0px rgba(0, 0, 0, 0.2)',
-          }}
-        >
-          {' '}
-          We build Blockchain projects. Big or small we have you covered. Our team has expertise in NFT Collections,
-          ERC20 tokens, custom contracts and the beautiful web applications that accompany them. Contact us for a quote
-          we would love to help.
-        </p>
-      </div>
 
-      {Externalacc ? (
-        <div>
-          <div className="flexbox-container" style={{ justifyContent: 'center' }}>
-            {isWhitelisted ? (
-              <button
-                className={'GitButton'}
-                onClick={() => {
-                  handleMint()
-                }}
-              >
-                {' '}
-                Mint
-              </button>
-            ) : (
-              <button className="GitButton"> You are not Whitelisted </button>
-            )}
-          </div>
-          <p className={'header-space'} style={{ paddingTop: '1px', marginTop: '1px', marginBottom: '1px' }}></p>
-          <p style={{ paddingTop: '10px', marginTop: '10px', marginBottom: '10px' }}></p>
-          <CountdownTimer></CountdownTimer>
-          <video autoPlay loop muted playsInline className="video">
-            <source src={JpegBackground2} type="video/mp4" />
-          </video>
-        </div>
-      ) : (
-        <div>
-          <div className="flexbox-container" style={{ justifyContent: 'center' }}>
-            <div>
-              <button onClick={toggleHidden} className={'GitButton-inactive'}>
-                Create an account
-              </button>
-              {!isHidden && (
-                <PurpleCard>
-                  <label htmlFor="fname">First Name</label>
-                  <input
-                    onChange={(e) => setname(e.target.value)}
-                    type="text"
-                    id="fname"
-                    name="firstname"
-                    placeholder="Your name.."
-                  ></input>
-
-                  <label htmlFor="fname">Email Address</label>
-                  <input
-                    onChange={(e) => setemail(e.target.value)}
-                    type="text"
-                    id="fname"
-                    name="Email"
-                    placeholder="someone@somewhere.com"
-                  ></input>
-                  {!names && !emails && <button> no submit</button>}
-                  {names && emails && account && <input onClick={() => Postacc()} type="submit" value="Submit" />}
-                </PurpleCard>
+        {Externalacc ? (
+          <div>
+            <div className="flexbox-container" style={{ justifyContent: 'center' }}>
+              {isWhitelisted ? (
+                <button
+                  className={'GitButton'}
+                  onClick={() => {
+                    handleMint()
+                  }}
+                >
+                  {' '}
+                  Mint
+                </button>
+              ) : (
+                <button className="GitButton"> You are not Whitelisted </button>
               )}
             </div>
-            <button onClick={toggleHidden} className={'QuoteButton'}>
-              Contact us for a Quote
-            </button>
-
             <p className={'header-space'} style={{ paddingTop: '1px', marginTop: '1px', marginBottom: '1px' }}></p>
             <p style={{ paddingTop: '10px', marginTop: '10px', marginBottom: '10px' }}></p>
+            <CountdownTimer></CountdownTimer>
             <video autoPlay loop muted playsInline className="video">
               <source src={JpegBackground2} type="video/mp4" />
             </video>
           </div>
-        </div>
-<<<<<<< HEAD
-        <p className={'header-space'} style={{ paddingTop: '1px', marginTop: '1px', marginBottom: '1px' }}></p>
-        <p style={{ paddingTop: '10px', marginTop: '10px', marginBottom: '10px' }}></p>
-        <CountdownTimer></CountdownTimer>
-        <img className={'ApeBackground'} src={ApeMotorcycleClubBackground} alt="background"></img>
-      </>
+        ) : (
+          <>
+            <div>
+              <div className="flexbox-container" style={{ justifyContent: 'center' }}>
+                <div>
+                  <button onClick={toggleHidden} className={'GitButton-inactive'}>
+                    Create an account
+                  </button>
+                  {!isHidden && (
+                    <PurpleCard>
+                      <label htmlFor="fname">First Name</label>
+                      <input
+                        onChange={(e) => setname(e.target.value)}
+                        type="text"
+                        id="fname"
+                        name="firstname"
+                        placeholder="Your name.."
+                      ></input>
+
+                      <label htmlFor="fname">Email Address</label>
+                      <input
+                        onChange={(e) => setemail(e.target.value)}
+                        type="text"
+                        id="fname"
+                        name="Email"
+                        placeholder="someone@somewhere.com"
+                      ></input>
+                      {!names && !emails && <button> no submit</button>}
+                      {names && emails && account && <input onClick={() => Postacc()} type="submit" value="Submit" />}
+                    </PurpleCard>
+                  )}
+                </div>
+                <button onClick={toggleHidden} className={'QuoteButton'}>
+                  Contact us for a Quote
+                </button>
+
+                <p className={'header-space'} style={{ paddingTop: '1px', marginTop: '1px', marginBottom: '1px' }}></p>
+                <p style={{ paddingTop: '10px', marginTop: '10px', marginBottom: '10px' }}></p>
+                <video autoPlay loop muted playsInline className="video">
+                  <source src={JpegBackground2} type="video/mp4" />
+                </video>
+              </div>
+            </div>
+            <p className={'header-space'} style={{ paddingTop: '1px', marginTop: '1px', marginBottom: '1px' }}></p>
+            <p style={{ paddingTop: '10px', marginTop: '10px', marginBottom: '10px' }}></p>
+            <CountdownTimer></CountdownTimer>
+            <img className={'ApeBackground'} src={ApeMotorcycleClubBackground} alt="background"></img>
+          </>
+        )}
+      </animated.div>
     )
   }
-=======
-      )}
-    </animated.div>
-  )
->>>>>>> af03fbb362c13799b97dc0b384929db1c06d4019
 }
