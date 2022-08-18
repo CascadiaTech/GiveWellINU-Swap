@@ -269,7 +269,7 @@ export default function FooterMenu() {
                               marginRight: '2vw',
                               fontSize: 'calc(3 * (0.7vw + 0.7vh))',
                               fontWeight: 600,
-                              color: 'rgba(255, 153, 0, 0.979)',
+                              color: 'rgba(34, 34, 34, 0.904)',
                             }}
                           >
                             {' '}

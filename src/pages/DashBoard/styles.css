@@ -10,9 +10,6 @@
   
   }
 
-
-
-
 .Dapp-card{
     width: fit-content;
     min-width: 300px;
@@ -63,10 +60,11 @@
     width: 25vw;
     min-width: 100px;
     max-width: 25vw;
-    color: rgba(255, 153, 0, 0.979); 
+    color: rgba(240, 240, 240, 0.977); 
     background-color: transparent;
-    border-color: rgba(255, 153, 0, 0.979); 
-    border-radius: 8px;
+    border-color: rgba(0, 0, 0, 0.979); 
+    border-radius: 10px;
+    font-weight: 600;
     margin-left: 10vw;
     border: 2px solid;
     max-height: 6vh;
@@ -81,10 +79,11 @@
     min-width: 100px;
     max-width: 25vw;
     margin-left: 10vw;
-    color: rgba(255, 153, 0, 0.979);
+    color: rgba(240, 240, 240, 0.977); 
     background-color: transparent;
-    border-color: rgba(255, 153, 0, 0.979); 
-    border-radius: 8px;
+    border-color: rgba(0, 0, 0, 0.979);  
+    border-radius: 10px;
+    font-weight: 600;
     border: 2px solid;
     max-height: 6vh;
     height: 6vh;
@@ -100,10 +99,11 @@
     min-width: 100px;
     max-width: 25vw;
     margin-left: 10vw;
-    color: rgba(34, 34, 34, 0.904);
-    background-color: rgba(255, 153, 0, 0.979);
-    border-color: rgba(255, 153, 0, 0.979); 
-    border-radius: 8px;
+    color: rgba(0, 0, 0, 0.979); 
+    background-color: rgba(240, 240, 240, 0.977); 
+    border-color: rgba(0, 0, 0, 0.979); 
+    border-radius: 10px;
+    font-weight: 600;
     border: 2px solid;
     max-height: 6vh;
     height: 6vh;

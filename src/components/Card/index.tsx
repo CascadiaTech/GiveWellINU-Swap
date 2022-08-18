@@ -97,7 +97,7 @@ export const FAQCard = styled(Card)`
   background-color: rgba(34, 34, 34, 0.904);
   border: 2px;
   border-style: solid;
-  border-color: #ffffff 
+  border-color: #ffffff; 
   max-width: 60vw;
   width: 60vw;
   margin-bottom: 2vh;
@@ -114,7 +114,7 @@ export const FormCard = styled(Card)`
   background-color: rgba(34, 34, 34, 0.904);
   border: 2px;
   border-style: solid;
-  border-color: rgba(255, 153, 0, 0.979);
+  border-color: #000000;
   transform: translate(0%, 10%);
   margin-left: 2vw;
   max-width: 96vw;
