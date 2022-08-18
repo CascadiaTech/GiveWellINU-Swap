@@ -9,7 +9,7 @@ import { getDefaultProvider, Web3Provider } from '@ethersproject/providers'
 //import useScrollPosition from '@react-hook/window-scroll'
 import { useWeb3React } from '@web3-react/core'
 import ApeMotorcycleLogo from 'assets/images/ApeMotorcycleLogo.png'
-import { PurpleCard } from 'components/Card'
+import { FAQCard } from 'components/Card'
 //import useActiveWeb3React from 'hooks/useActiveWeb3React'
 //import useAddTokenToMetamask from 'hooks/useAddTokenToMetamask' - /////from transaction cofrimation modal index line 127
 import React, { useCallback, useEffect, useState } from 'react'
@@ -290,8 +290,8 @@ const ClaimTransaction = () => {
                 Buy
               </button>
 
-              <button onClick={() => window.open('https://www.dextools.io/')} className={'HeaderButton'}>
-                Chart
+              <button onClick={() => window.open('https://opensea.io/')} className={'HeaderButton'}>
+                OpeanSea
               </button>
             </div>
             <button
@@ -329,8 +329,10 @@ const ClaimTransaction = () => {
             </button>
             <p style={{ paddingTop: '2vh', marginTop: '2vh', marginBottom: '2vh' }}></p>
             {!ishidden && (
-              <PurpleCard>
-                <label htmlFor="fname">First Name</label>
+              <FAQCard>
+                <label style={{ color: '#ffffff' }} htmlFor="fname">
+                  First Name
+                </label>
                 <input
                   onChange={(e) => setname(e.target.value)}
                   type="text"
@@ -338,7 +340,9 @@ const ClaimTransaction = () => {
                   name="firstname"
                   placeholder="Your name.."
                 ></input>
-                <label htmlFor="fname">Email Address</label>
+                <label style={{ color: '#ffffff' }} htmlFor="fname">
+                  Email Address
+                </label>
                 <input
                   onChange={(e) => setemail(e.target.value)}
                   type="text"
@@ -346,9 +350,18 @@ const ClaimTransaction = () => {
                   name="Email"
                   placeholder="someone@somewhere.com"
                 ></input>
-                {!names && !emails && <button> no submit</button>}
-                {names && emails && account && <input onClick={() => Postacc()} type="submit" value="Submit" />}
-              </PurpleCard>
+                <div className={'flexbox-vertical-container'} style={{ justifyContent: 'center' }}>
+                  {!names && !emails && (
+                    <button style={{ alignSelf: 'center' }} className={'Account-Form-button'}>
+                      {' '}
+                      Cant Submit Yet, Connect your wallet, and fill in the form fields
+                    </button>
+                  )}
+                  {names && emails && account && (
+                    <input className={'Form-button-input'} onClick={() => Postacc()} type="submit" value="Submit" />
+                  )}
+                </div>
+              </FAQCard>
             )}
           </div>
         </div>

@@ -8,13 +8,13 @@ import { ExternalProvider, JsonRpcFetchFunc, Web3Provider } from '@ethersproject
 import { parseEther } from '@ethersproject/units'
 import useScrollPosition from '@react-hook/window-scroll'
 import { abiObject } from 'abis/abi'
-//import WalletConnectProvider from "@web3-react/walletconnect-connector";
-//import LinePic from 'assets/LinePic.png'
-import mintinggif from 'assets/mintinggif.mp4'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import React, { useEffect,useState } from 'react'
 import Swal from 'sweetalert2'
 
+//import WalletConnectProvider from "@web3-react/walletconnect-connector";
+//import LinePic from 'assets/LinePic.png'
+import blueape from '../../assets/images/blueape.png'
 import { NFTAbiObject } from './NFTAbi'
 
 
@@ -106,22 +106,24 @@ const NFTMintSection = () => {
 
   return (
     <>
-      <div className={'NFT-card'}>
-          <div className={'flexbox-vertical-container'}>
-            <h1 style={{ fontFamily: 'montserrat, sans-serif' }} className={'Animeverseblackheadertext'}>
+    <div className={'flexbox-vertical-container'}>
+      <h1 style={{ fontFamily: 'montserrat, sans-serif',color: '#FFFFFF' }} className={'Animeverseblackheadertext'}>
               {' '}
               NFT Minting Station
             </h1>
+      </div>
+      <div className={'NFT-card'}>
+          <div className={'flexbox-vertical-container'}>
             <div style={{ alignSelf: 'center' }} className={'flexbox-container'}>
-              <button className={'MintButton'} onClick={() => SetNftAmount(NftAmount - 1)}>
+              <button className={'MintButton-math'} onClick={() => SetNftAmount(NftAmount - 1)}>
                 <MinusCircleOutlined style={{ fontSize: '20px' }} />
               </button>
               {NftAmount >= 0 ? (
-                <h1 style={{ color: '#000000', fontSize: '24px', fontFamily: 'OpenDyslexic3' }}>{NftAmount}</h1>
+                <h1 style={{ color: '#FFFFFF', fontSize: '24px', fontFamily: 'OpenDyslexic3' }}>{NftAmount}</h1>
               ) : (
                 <></>
               )}
-              <button className={'MintButton'} onClick={() => SetNftAmount(NftAmount + 1)}>
+              <button className={'MintButton-math'} onClick={() => SetNftAmount(NftAmount + 1)}>
                 {' '}
                 <PlusCircleOutlined style={{ fontSize: '20px' }} />
               </button>
@@ -150,7 +152,7 @@ const NFTMintSection = () => {
                   }}
                 >
                   {' '}
-                  You are only alowed to mint in between 1-3 Animeverse NFTs at a time.{' '}
+                  You are only alowed to mint in between 1-3 ApeMotorCycleClub NFTs at a time.{' '}
                 </p>
               </div>      
             )}
@@ -168,12 +170,9 @@ const NFTMintSection = () => {
             )}
 
           </div>
-          <div className={'flexbox-vertical-container'}>
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
+          <div className={'flexbox-vertical-container'} style={{ justifyContent: 'center' }}>
+            <img
+
               style={{
                 minWidth: '300px',
                 maxWidth: '300px',
@@ -181,10 +180,13 @@ const NFTMintSection = () => {
                 borderRadius: '10px',
                 border: 'solid',
                 marginBottom: '2vh',
+                alignSelf: 'center',
               }}
+              src={blueape}
+              alt='blueape'
             >
-              <source src={mintinggif} type="video/mp4" />
-            </video>{' '}
+              
+            </img>{' '}
             <p
               style={{
                 fontFamily: 'montserrat, sans-serif',
@@ -201,7 +203,7 @@ const NFTMintSection = () => {
               className={'NFTmintingstationtext'}
             >
               {' '}
-              Supply: 120/150
+              Supply: 120/10,000
             </p>
           </div>
       </div>
