@@ -113,7 +113,7 @@ const SelectorLabel = styled(NetworkLabel)`
 const SelectorControls = styled.div<{ interactive: boolean }>`
   align-items: center;
   border: 2px solid;
-  border-color: rgba(2, 255, 183, 0.897);
+  border-color: #ffffff;
   border-radius: 16px;
   color: #ffffff;
   cursor: ${({ interactive }) => (interactive ? 'pointer' : 'auto')};
