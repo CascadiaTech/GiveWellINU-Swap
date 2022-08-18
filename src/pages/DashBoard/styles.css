@@ -1,3 +1,4 @@
+
 .flexbox-container {
     display: flex;
     flex-direction: row;
@@ -54,6 +55,62 @@
     border-color:rgb(216, 216, 216);
     border-radius: 15px;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.38);
+  }
+
+  .Form-button{
+    text-align: center;
+    width: 25vw;
+    min-width: 100px;
+    max-width: 25vw;
+    color: rgba(255, 153, 0, 0.979); 
+    background-color: transparent;
+    border-color: rgba(255, 153, 0, 0.979); 
+    border-radius: 8px;
+    margin-left: 10vw;
+    border: 2px solid;
+    max-height: 6vh;
+    height: 6vh;
+    font-family: 'montserrat sans-serif';
+    align-items: center;
+    justify-content: center;
+  }
+  .Form-button-input{
+    text-align: center;
+    width: 25vw;
+    min-width: 100px;
+    max-width: 25vw;
+    margin-left: 10vw;
+    color: rgba(255, 153, 0, 0.979);
+    background-color: transparent;
+    border-color: rgba(255, 153, 0, 0.979); 
+    border-radius: 8px;
+    border: 2px solid;
+    max-height: 6vh;
+    height: 6vh;
+    font-family: 'montserrat sans-serif';
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+  .Form-button-input:hover{
+    text-align: center;
+    width: 25vw;
+    min-width: 100px;
+    max-width: 25vw;
+    margin-left: 10vw;
+    color: rgba(34, 34, 34, 0.904);
+    background-color: rgba(255, 153, 0, 0.979);
+    border-color: rgba(255, 153, 0, 0.979); 
+    border-radius: 8px;
+    border: 2px solid;
+    max-height: 6vh;
+    height: 6vh;
+    font-family: 'montserrat sans-serif';
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+    cursor: pointer;
   }
 
   .HeaderButton {
@@ -344,4 +401,3 @@
           a.six:link {color:#000000;}
           a.six:visited {color:#000000;}
           a.six:hover {color: rgba(255, 255, 255, 0.949)}
-      

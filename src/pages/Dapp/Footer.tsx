@@ -4,7 +4,7 @@ import 'animate.css'
 //import Swal from 'sweetalert2'
 import emailjs from '@emailjs/browser'
 import useScrollPosition from '@react-hook/window-scroll'
-import newLogo from 'assets/newLogo.png'
+import ApeMotorcycleLogo from 'assets/images/ApeMotorcycleLogo.png'
 import { FormCard } from 'components/Card'
 import Row from 'components/Row'
 import React, { useEffect, useState } from 'react'
@@ -20,7 +20,7 @@ import twitter from '../../assets/images/twitter.png'
 import uniswap from '../../assets/images/uniswap.png'
 const FooterBackground = styled(Row)`
   justify-self: center;
-  background-color: rgba(0, 0, 145, 0.76);
+  background-color: rgba(194, 194, 194, 0.912);
   height: 60vh;
   max-height: 60vh;
   min-height: 35vh;
@@ -40,7 +40,7 @@ const FooterBackground = styled(Row)`
     justify-self: center;
     z-index: 99;
     position: relative;
-    transform: translate(0%, 1%);
+    transform: translate(0%, 2%);
     width: 99vw;
     max-width: 99vw;
     background-color: rgba(0, 0, 145, 0.76);
@@ -210,7 +210,7 @@ export default function FooterMenu() {
                                   <div className={'flexbox-vertical-container'} style={{ marginRight: '2vw' }}>
                                     <img
                                       className={'footer-logo'}
-                                      src={newLogo}
+                                      src={ApeMotorcycleLogo}
                                       alt="logo"
                                       style={{
                                         paddingLeft: '6vw',
@@ -235,7 +235,7 @@ export default function FooterMenu() {
                                           fontWeight: 'bold',
                                         }}
                                       >
-                                        AnimeVerse
+                                        Ape Motorcycle Club
                                       </p>
                                       <p
                                         style={{
@@ -244,7 +244,7 @@ export default function FooterMenu() {
                                           fontFamily: 'montserrat, sans-serif',
                                         }}
                                       >
-                                        Bringing Anime and Crypto Together
+                                        Bringing Ape and Motorcycle Together
                                       </p>
                                     </div>
                                   </div>
