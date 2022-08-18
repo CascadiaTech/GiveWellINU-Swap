@@ -121,11 +121,11 @@
     font-weight: 600;
     color: #ffffff;
     margin-top: 15px;
-    background-color: rgba(0, 0, 145, 0.76);
-    border-color: rgba(0, 0, 0, 0.979); 
+    background-color: rgba(34, 34, 34, 0.904);
+    border-color: rgba(122, 124, 124, 0.897);
     border-radius: 15px;
     width: 16vw;
-    min-width: 16vw;
+    min-width: 100px;
     height: 8vh;
     max-height: 5vh;
     min-height: 5vh;
@@ -144,11 +144,11 @@
     font-weight: 600;
     color: #ffffff;
     margin-top: 15px;
-    background-color: rgba(0, 0, 145, 0.76);
-    border-color: rgba(255, 153, 0, 0.979); 
+    background-color: rgba(34, 34, 34, 0.904);
+    border-color: rgba(255, 255, 255, 0.897);
     border-radius: 15px;
     width: 16vw;
-    min-width: 16vw;
+    min-width: 100px;
     height: 8vh;
     max-height: 5vh;
     min-height: 5vh;
@@ -168,17 +168,16 @@
     font-weight: 600;
     color: #ffffff;
     margin-top: 15px;
-    background-color: rgba(0, 0, 145, 0.76);
-    border-color: rgba(0, 0, 0, 0.979); 
+    background-color: rgba(34, 34, 34, 0.904);
+    border-color: rgba(122, 124, 124, 0.897);
     border-radius: 15px;
     width: 16vw;
-    min-width: 16vw;
+    min-width: 100px;
     height: 8vh;
     max-height: 5vh;
-    min-height: 5vh;
+    min-height: 15px;
     padding-bottom: 40px;
     padding-top: 10px;
-    margin-right: 2.5vw;
     padding-left: 3%;
     padding-right: 3%;
     transition: 0.5s;
@@ -191,20 +190,45 @@
     font-weight: 600;
     color: #ffffff;
     margin-top: 15px;
-    background-color: rgba(0, 0, 145, 0.76);
-    border-color: rgba(255, 153, 0, 0.979); 
+    background-color: rgba(34, 34, 34, 0.904);
+    border-color: rgba(255, 255, 255, 0.897);
     border-radius: 15px;
     width: 16vw;
-    min-width: 16vw;
+    min-width: 100px;
     height: 8vh;
     max-height: 5vh;
-    min-height: 5vh;
+    min-height: 15px;
     padding-bottom: 40px;
     padding-top: 10px;
-    margin-right: 2.5vw;
     padding-left: 3%;
     padding-right: 3%;
     cursor: pointer;
+    transition: 0.5s;
+  }
+  .MintButton{
+    border-style: solid;
+    border-width: 2px;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: calc(3 * (0.2vw + 0.2vh));
+    font-family: 'OpenDyslexic3';
+    color: #ffffff;
+    border-color: rgb(126, 126, 126);
+    border-radius: 10px;
+    background-color: #000000be;
+    box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.5);
+    width: 17vw;
+    min-width: 17vw;
+    height: 4vh;
+    max-height: 4vh;
+    margin-right: 2vw;
+    margin-left: 2vw;
+    transition: 0.5s;
+  }
+  .MintButton:hover{
+    transform: scale(1.1);
+    transition: ease-in-out;
+    border-color: rgba(255, 255, 255, 0.979); 
+    color: rgba(255, 255, 255, 0.979); 
     transition: 0.5s;
   }
   .createaccount {
@@ -219,9 +243,16 @@
     border-radius: 10px;
     width: 15vw;
     min-height: 5vh;
+    margin-top: 2vh;
     height: fit-content;
     max-height: 10vh;
     transition: 1s;
+  }
+  .createaccount:hover {
+    transform: scale(1.03);
+    transition: 1s;
+    cursor: pointer;
+    border-color: rgba(255, 255, 255, 0.897);
   }
   input[type=text], select {
     width: 100%;
@@ -253,11 +284,7 @@
     border-radius: 4px;
     cursor: pointer;
   }
-  .createaccount:hover {
-    transform: scale(1.1);
-    transition: 1s;
-    cursor: pointer;
-  }
+
 
 
   .HoverText {
@@ -277,15 +304,19 @@
     align-self: 'right';
     }
 
+    .dapp-header-image{
+        width: 30vw;
+        min-width: 30vw;
+        height: auto;
+        min-height: 20vh;
+      }
+
 
       @media only screen and (max-width: 550px) {
         .header-image {
-          visibility: hidden;
           display: inline-block;
           vertical-align: top;
           align-self: top;
-          height: 0vh;
-          width: 0vw;
         }
 
        }
@@ -353,13 +384,10 @@
           box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.38);
         }
         .dapp-header-image {
-          visibility: hidden;
-          width: 'auto';
+          width: 300px;
           height: 'auto';
-          max-width: 0vw;
           max-height: 'auto';
           padding: '0%';
-          float: left;
           padding-right: '0%';
         
         }

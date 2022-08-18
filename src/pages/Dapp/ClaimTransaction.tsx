@@ -284,24 +284,13 @@ const ClaimTransaction = () => {
             <div className="flexbox-container" style={{ justifyContent: 'center' }}>
               <button
                 style={{ fontFamily: 'default', marginLeft: '3vw' }}
-                onClick={() =>
-                  window.open(
-                    'https://app.uniswap.org/#/swap?inputCurrency=0x5a8F92addfe1Cd48B51E1FA926144C0918DBAb67&chain=mainnet'
-                  )
-                }
+                onClick={() => window.open('https://app.uniswap.org/')}
                 className={'HeaderButton'}
               >
                 Buy
               </button>
 
-              <button
-                onClick={() =>
-                  window.open(
-                    'https://www.dextools.io/app/ether/pair-explorer/0xfd362c758a756bac42fce0ea7e83f5bb72730c6e'
-                  )
-                }
-                className={'HeaderButton'}
-              >
+              <button onClick={() => window.open('https://www.dextools.io/')} className={'HeaderButton'}>
                 Chart
               </button>
             </div>
