@@ -118,7 +118,7 @@
     max-width: 25vw;
     margin-left: 10vw;
     color: rgba(0, 0, 0, 0.979); 
-    background-color: rgba(240, 240, 240, 0.977); 
+    background-color: rgba(194, 194, 194, 0.912);
     border-color: rgba(0, 0, 0, 0.979); 
     border-radius: 10px;
     font-weight: 600;
@@ -349,6 +349,12 @@
     align-self: 'right';
     }
 
+    .footersocialimage{
+      padding-left: 1vw;
+      padding-right: 1vw;
+      visibility: visible;
+    }
+
     .dapp-header-image{
         width: 30vw;
         min-width: 30vw;
@@ -370,6 +376,14 @@
         background: white;
         border: 10px solid black;
       }
+      .footer-logo{
+       padding-left: 6vw;
+       margin-left: 3vw;
+       margin-right: 8vw;
+       max-height: auto;
+       width: 20vw;
+       height: auto;
+      }
 
 
       @media only screen and (max-width: 550px) {
@@ -378,6 +392,15 @@
           vertical-align: top;
           align-self: top;
         }
+        .footer-logo{
+          padding-left: 6vw;
+          margin-left: 3vw;
+          margin-right: 8vw;
+          max-height: auto;
+          width: 130px;
+          min-width: 130px;
+          height: auto;
+         }
 
        }
       
@@ -398,25 +421,6 @@
           flex-direction: row;
           visibility: hidden;
           width:0vw;
-        }
-  
-        .Form-button{
-          text-align: center;
-          width: 13vw;
-          min-width: 13vw;
-          max-width: 13vw;
-          right: 14px;
-          position: relative;
-          color: rgba(255, 153, 0, 0.979); 
-          background-color: transparent;
-          border-color: rgba(255, 153, 0, 0.979); 
-          border-radius: 8px;
-          border: 2px solid;
-          max-height: 6vh;
-          height: 6vh;
-          font-family: 'montserrat sans-serif';
-          align-items: center;
-          justify-content: center;
         }
       
       }
@@ -456,6 +460,14 @@
           display: flex;
           justify-content: center;
           align-items: center;
+        }
+      }
+
+      @media only screen and (max-width: 800px) { 
+        .footersocialimage{
+          visibility: hidden;
+          width: 0vw;
+          height: 0vh;
         }
       }
       @keyframes mymove {

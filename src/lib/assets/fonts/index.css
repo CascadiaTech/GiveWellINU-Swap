@@ -12,6 +12,10 @@
   src: local("Montserrat"), url(./fonts/montserrat/montserrat-regular.ttf) format("truetype")
 }
 @font-face {
+  font-family: "Pointedly-Mad, Sans-serif";
+  src: local("Pointedly-Mad"), url(./fonts/Pointedly-Mad/Pointedly-Mad-font.ttf) format("truetype")
+}
+@font-face {
   font-family: "Inter";
   font-style: normal;
   font-display: block;

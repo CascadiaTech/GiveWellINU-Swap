@@ -10,8 +10,14 @@ import { NavLink } from 'react-router-dom'
 //import { useDarkModeManager } from 'state/user/hooks'
 import { useNativeCurrencyBalances } from 'state/wallet/hooks'
 import styled from 'styled-components/macro'
+import discord from '../../assets/images/discord.png'
+import instagram from '../../assets/images/instagram.png'
+import tglink from '../../assets/images/tglink.png'
+import tiktok from '../../assets/images/tiktok.png'
+import twitter from '../../assets/images/twitter.png'
+import uniswap from '../../assets/images/uniswap.png'
 
-import CascadiaTech from '../../assets/images/CascadiaTech.png'
+import ApeMotorcycleLogo from 'assets/images/ApeMotorcycleLogo.png'
 //import Menu from '../Menu' - this is the menu that includes uniswaps docs etc.
 import Row from '../Row'
 import Web3Status from '../Web3Status'
@@ -29,10 +35,6 @@ const HeaderFrame = styled.div<{ showBackground: boolean }>`
   position: relative;
   z-index: 21;
   position: relative;
-  /* Background slide effect on scroll. */
-  background-image: ${({ theme }) => `linear-gradient(to bottom, transparent 50%, ${theme.bg0} 50% )}}`};
-  background-position: ${({ showBackground }) => (showBackground ? '0 -100%' : '0 0')};
-  background-size: 200% 200%;
   box-shadow: 0px 0px 0px 1px ${({ theme, showBackground }) => (showBackground ? theme.bg2 : 'transparent;')};
   transition: background-position 0.1s, box-shadow 0.1s;
   background-blend-mode: hard-light;
@@ -42,10 +44,12 @@ const HeaderFrame = styled.div<{ showBackground: boolean }>`
   ${({ theme }) => theme.mediaWidth.upToMedium`
     padding:  1rem;
     grid-template-columns: 30fr 30fr;
+    max-height: 50px;
   `};
   ${({ theme }) => theme.mediaWidth.upToSmall`
     padding:  1rem;
     grid-template-columns: 4px 1fr;
+    max-height: 50px;
   `};
 `
 
@@ -106,7 +110,6 @@ const AccountElement = styled.div<{ active: boolean }>`
   flex-direction: row;
   align-items: center;
   border: 2px solid;
-  border-color: rgba(2, 255, 183, 0.897);
   border-radius: 16px;
   text-color: #ffffff;
   color: #000000;
@@ -184,7 +187,7 @@ export default function Header() {
     <>
       <HeaderFrame showBackground={false}>
         <UniIcon>
-          <img src={CascadiaTech} alt="logo" width="70px" height="70%"></img>
+          <img src={ApeMotorcycleLogo} alt="logo" style={{ width: '80px', height: '80px', paddingTop: '5px' }}></img>
         </UniIcon>
         <HeaderLinks>
           <StyledNavLink id={'/Dashboard'} to={'/Dashboard'}>
@@ -193,6 +196,38 @@ export default function Header() {
           <StyledNavLink id={'/Swap'} to={'/Swap'}>
             <Trans>Swap </Trans>
           </StyledNavLink>
+          <div>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://twitter.com/AnimeVerseToken?t=kruSfQkxcFg6fBXgmFGx6A&s=09"
+            >
+              <img className={'footersocialimage'} src={twitter} alt="tglink"></img>
+            </a>
+            <a target="_blank" rel="noreferrer" href="https://t.me/AnimeVerse_PORTAL">
+              <img className={'footersocialimage'} src={tglink} alt="tglink"></img>
+            </a>
+            <a target="_blank" rel="noreferrer" href="https://www.instagram.com/animeversetoken/">
+              <img className={'footersocialimage'} src={instagram} alt="tglink"></img>
+            </a>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.tiktok.com/@animeversetoken?_d=secCgYIASAHKAESPgo8Dj7NAfouh8vNaqtivykJ5eox3dhn6lJ1dSrmOTdDFOMbNCm6mOyHvXHakifdPmZq6ItOAhmDChZx7%2BHYGgA%3D&_r=1&checksum=81b799b87afa6df5358b86998291cc58a71bbd902e7f6e1a9300be85c5afedee&language=en&sec_uid=MS4wLjABAAAAGGb5DhcC79rrhnKqMJB8u2QWTvYxxSh3h2XDbPalDzDxcvRrCdZU-5XEQUj-3HwD&sec_user_id=MS4wLjABAAAAvCb-T2_807apvbgqN2kQb-kjDzoVX0p_awn7Oe2MSiOcSEuxtngf1HsObCUcEZ1A&share_app_id=1233&share_author_id=7083639654771868678&share_link_id=B5367C99-9788-4280-A16C-E9C37BA54451&source=h5_m&timestamp=1655328035&tt_from=copy&u_code=dbd2e51fi4448b&ug_btm=b6880%2Cb5836&user_id=6806028567236183045&utm_campaign=client_share&utm_medium=ios&utm_source=copy"
+            >
+              <img className={'footersocialimage'} src={tiktok} alt="tglink"></img>
+            </a>
+            <a target="_blank" rel="noreferrer" href="https://discord.com/invite/scUQpfHbUj">
+              <img className={'footersocialimage'} src={discord} alt="tglink"></img>
+            </a>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://app.uniswap.org/#/swap?inputCurrency=0x5a8F92addfe1Cd48B51E1FA926144C0918DBAb67&chain=mainnet"
+            >
+              <img className={'footersocialimage'} src={uniswap} alt="tglink"></img>
+            </a>
+          </div>
         </HeaderLinks>
         <HeaderControls>
           <HeaderElement>

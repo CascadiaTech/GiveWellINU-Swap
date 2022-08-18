@@ -5,7 +5,7 @@ import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core'
 import { darken } from 'polished'
 import { useMemo } from 'react'
 import { Activity } from 'react-feather'
-import styled, { css } from 'styled-components/macro'
+import styled from 'styled-components/macro'
 import { Connector } from 'widgets-web3-react/types'
 
 import { NetworkContextName } from '../../constants/misc'
@@ -58,37 +58,24 @@ const Web3StatusError = styled(Web3StatusGeneric)`
 `
 
 const Web3StatusConnect = styled(Web3StatusGeneric)<{ faded?: boolean }>`
-  background-color: ${({ theme }) => theme.primary4};
-  border: none;
+  background-color: transparent;
+  border: 2px solid;
+  border-color: #ffffff;
 
-  color: ${({ theme }) => theme.primaryText1};
+  color: #ffffff;
   font-weight: 500;
 
   :hover,
   :focus {
-    border: 1px solid ${({ theme }) => darken(0.05, theme.primary4)};
-    color: ${({ theme }) => theme.primaryText1};
+    border: 1px solid #3a3a3a;
+    color: #ffffff;
   }
-
-  ${({ faded }) =>
-    faded &&
-    css`
-      background-color: ${({ theme }) => theme.primary5};
-      border: 1px solid ${({ theme }) => theme.primary5};
-      color: ${({ theme }) => theme.primaryText1};
-
-      :hover,
-      :focus {
-        border: 1px solid ${({ theme }) => darken(0.05, theme.primary4)};
-        color: ${({ theme }) => darken(0.05, theme.primaryText1)};
-      }
-    `}
 `
 
 const Web3StatusConnected = styled(Web3StatusGeneric)<{ pending?: boolean }>`
-  background-color: ${({ pending, theme }) => (pending ? theme.primary1 : theme.bg1)};
-  border: 1px solid ${({ pending, theme }) => (pending ? theme.primary1 : theme.bg1)};
-  color: ${({ pending, theme }) => (pending ? theme.white : theme.text1)};
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  color: #ffffff;
   font-weight: 500;
   :hover,
   :focus {
@@ -185,7 +172,7 @@ function Web3StatusInner() {
     )
   } else {
     return (
-      <Web3StatusConnect id="connect-wallet" onClick={toggleWalletModal} faded={!account}>
+      <Web3StatusConnect onClick={toggleWalletModal} faded={!account}>
         <Text>
           <Trans>Connect Wallet</Trans>
         </Text>
