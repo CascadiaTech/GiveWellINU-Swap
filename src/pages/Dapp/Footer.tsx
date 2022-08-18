@@ -43,7 +43,7 @@ const FooterBackground = styled(Row)`
     transform: translate(0%, 2%);
     width: 99vw;
     max-width: 99vw;
-    background-color: rgba(0, 0, 145, 0.76);
+    background-color: rgba(194, 194, 194, 0.912);
     box-shadow: 0px 6px 10px rgb(0 0 0 / 2%);
   `};
 `
@@ -257,16 +257,16 @@ export default function FooterMenu() {
                           className={'flexbox-container'}
                           style={{
                             paddingLeft: '1vw',
-                            paddingBottom: '1vh',
-                            paddingTop: '1vh',
+                            paddingTop: '2vh',
                             width: '100vw',
                             textAlign: 'center',
-                            justifyContent: 'space-between',
+                            justifyContent: 'center',
                           }}
                         >
                           <h1
                             style={{
                               marginLeft: '2vw',
+                              marginRight: '2vw',
                               fontSize: 'calc(3 * (0.7vw + 0.7vh))',
                               fontWeight: 600,
                               color: 'rgba(255, 153, 0, 0.979)',
@@ -275,7 +275,7 @@ export default function FooterMenu() {
                             {' '}
                             Company Links{' '}
                           </h1>
-                          <div>
+                          <div style={{ marginTop: '6vh', marginLeft: '2vw' }}>
                             <a
                               target="_blank"
                               rel="noreferrer"

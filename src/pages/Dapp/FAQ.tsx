@@ -53,9 +53,7 @@ export default function FAQPage() {
     <>
       <div className={'flexbox-container'} style={{ transition: '1s' }}>
         <div className={'flexbox-vertical-container'} style={{ width: '100vw' }}>
-          <p style={{ fontSize: 'calc(3 * (0.7vw + 0.7vh))' }} className={'Animeverseblackheadertext'}>
-            FAQ
-          </p>
+          <p style={{ fontSize: 'calc(3 * (0.8vw + 0.8vh))', color: '#ffffff' }}>FAQ</p>
           <FAQCard onClick={toggleHidden}>
             {' '}
             <div>
@@ -65,7 +63,7 @@ export default function FAQPage() {
                   fontSize: 'calc(3 * (0.5vw + 0.5vh))',
                   textAlign: 'left',
                   lineHeight: 1.3,
-                  color: '#000000',
+                  color: '#ffffff',
                 }}
               >
                 What is Anime?
@@ -80,7 +78,7 @@ export default function FAQPage() {
                   lineHeight: 1.4,
                   fontWeight: 550,
                   fontFamily: 'montserrat, sans-serif',
-                  color: '#000000',
+                  color: '#ffffff',
                 }}
               >
                 {' '}
@@ -98,7 +96,7 @@ export default function FAQPage() {
                   fontSize: 'calc(3 * (0.5vw + 0.5vh))',
                   textAlign: 'left',
                   lineHeight: 1.3,
-                  color: '#000000',
+                  color: '#ffffff',
                 }}
               >
                 Why Trust AnimeVerse?
@@ -113,7 +111,7 @@ export default function FAQPage() {
                   lineHeight: 1.4,
                   fontWeight: 550,
                   fontFamily: 'montserrat, sans-serif',
-                  color: '#000000',
+                  color: '#ffffff',
                 }}
               >
                 {' '}
@@ -132,7 +130,7 @@ export default function FAQPage() {
                   fontSize: 'calc(3 * (0.5vw + 0.5vh))',
                   textAlign: 'left',
                   lineHeight: 1.3,
-                  color: '#000000',
+                  color: '#ffffff',
                 }}
               >
                 Is Liquidity Locked?
@@ -147,7 +145,7 @@ export default function FAQPage() {
                   lineHeight: 1.4,
                   fontWeight: 550,
                   fontFamily: 'montserrat, sans-serif',
-                  color: '#000000',
+                  color: '#ffffff',
                 }}
               >
                 {' '}
@@ -164,7 +162,7 @@ export default function FAQPage() {
                   fontSize: 'calc(3 * (0.5vw + 0.5vh))',
                   textAlign: 'left',
                   lineHeight: 1.3,
-                  color: '#000000',
+                  color: '#ffffff',
                 }}
               >
                 Was there a private sale or pre-sale?
@@ -179,7 +177,7 @@ export default function FAQPage() {
                   lineHeight: 1.4,
                   fontWeight: 550,
                   fontFamily: 'montserrat, sans-serif',
-                  color: '#000000',
+                  color: '#ffffff',
                 }}
               >
                 {' '}
@@ -196,7 +194,7 @@ export default function FAQPage() {
                   fontSize: 'calc(3 * (0.5vw + 0.5vh))',
                   textAlign: 'left',
                   lineHeight: 1.3,
-                  color: '#000000',
+                  color: '#ffffff',
                 }}
               >
                 Team Token Allocation or Dev Tax?
@@ -211,7 +209,7 @@ export default function FAQPage() {
                   lineHeight: 1.4,
                   fontWeight: 550,
                   fontFamily: 'montserrat, sans-serif',
-                  color: '#000000',
+                  color: '#ffffff',
                 }}
               >
                 {' '}
@@ -228,7 +226,7 @@ export default function FAQPage() {
                   fontSize: 'calc(3 * (0.5vw + 0.5vh))',
                   textAlign: 'left',
                   lineHeight: 1.3,
-                  color: '#000000',
+                  color: '#ffffff',
                 }}
               >
                 Smart Contract Audit?
@@ -243,7 +241,7 @@ export default function FAQPage() {
                   lineHeight: 1.4,
                   fontWeight: 550,
                   fontFamily: 'montserrat, sans-serif',
-                  color: '#000000',
+                  color: '#ffffff',
                 }}
               >
                 {' '}

@@ -94,17 +94,17 @@ export const BlueCard = styled(Card)`
   border-radius: 12px;
 `
 export const FAQCard = styled(Card)`
-  background-color: 'transparent';
+  background-color: rgba(34, 34, 34, 0.904);
   border: 2px;
   border-style: solid;
-  border-color: rgba(255, 153, 0, 0.979); 
+  border-color: #ffffff 
   max-width: 60vw;
   width: 60vw;
   margin-bottom: 2vh;
   margin-left: 20vw;
   min-height: 8vh;
   margin-right: 20vw;
-  border-radius: 10px;
+  border-radius: 15px;
   text-align: center;
   transition: 1s;
   &:hover {
