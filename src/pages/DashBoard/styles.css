@@ -148,6 +148,62 @@
   transition: 1s;
   cursor: pointer;
 }
+
+.Form-button{
+  text-align: center;
+  width: 25vw;
+  min-width: 100px;
+  max-width: 25vw;
+  color: rgba(255, 153, 0, 0.979); 
+  background-color: transparent;
+  border-color: rgba(255, 153, 0, 0.979); 
+  border-radius: 8px;
+  margin-left: 10vw;
+  border: 2px solid;
+  max-height: 6vh;
+  height: 6vh;
+  font-family: 'montserrat sans-serif';
+  align-items: center;
+  justify-content: center;
+}
+.Form-button-input{
+  text-align: center;
+  width: 25vw;
+  min-width: 100px;
+  max-width: 25vw;
+  margin-left: 10vw;
+  color: rgba(255, 153, 0, 0.979);
+  background-color: transparent;
+  border-color: rgba(255, 153, 0, 0.979); 
+  border-radius: 8px;
+  border: 2px solid;
+  max-height: 6vh;
+  height: 6vh;
+  font-family: 'montserrat sans-serif';
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.Form-button-input:hover{
+  text-align: center;
+  width: 25vw;
+  min-width: 100px;
+  max-width: 25vw;
+  margin-left: 10vw;
+  color: rgba(34, 34, 34, 0.904);
+  background-color: rgba(255, 153, 0, 0.979);
+  border-color: rgba(255, 153, 0, 0.979); 
+  border-radius: 8px;
+  border: 2px solid;
+  max-height: 6vh;
+  height: 6vh;
+  font-family: 'montserrat sans-serif';
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s;
+  cursor: pointer;
+}
 .HoverCard {
 padding: 0px 0px;
 height: 20vh;

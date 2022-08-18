@@ -115,11 +115,11 @@ export const FormCard = styled(Card)`
   border: 2px;
   border-style: solid;
   border-color: rgba(255, 153, 0, 0.979);
-  transform: translate(0%, 2%);
+  transform: translate(0%, 10%);
   margin-left: 2vw;
   max-width: 96vw;
   width: 96vw;
-  min-height: 8vh;
+  min-height: 6vh;
   max-height: fit-content;
   border-radius: 10px;
   text-align: center;
