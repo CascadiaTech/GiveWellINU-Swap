@@ -278,14 +278,59 @@ const ClaimTransaction = () => {
   return (
     <div style={{ justifyContent: 'space-between', alignItems: 'center' }} className={'flexbox-vertical-container'}>
       <img className={'dapp-header-image'} src={ApeMotorcycleLogo} alt="header"></img>
-      <div className={'flexbox-container'} style={{ justifyContent: 'space-between' }}>
-        <p style={{ paddingTop: '5vh', marginTop: '5vh', marginBottom: '5vh' }}></p>
-        <button onClick={toggleHidden} className={'GitButton-inactive'}>
-          Website
-        </button>
-        <button onClick={toggleHidden} className={'GitButton-inactive'}>
-          Chart
-        </button>
+      <div style={{ marginTop: '3vh' }} className="flexbox-vertical-container">
+        <div className="flexbox-container" style={{ justifyContent: 'center' }}>
+          <div className={'Newheader-flexbox-container'}>
+            <div className="flexbox-container" style={{ justifyContent: 'center' }}>
+              <button
+                style={{ fontFamily: 'default', marginLeft: '3vw' }}
+                onClick={() =>
+                  window.open(
+                    'https://app.uniswap.org/#/swap?inputCurrency=0x5a8F92addfe1Cd48B51E1FA926144C0918DBAb67&chain=mainnet'
+                  )
+                }
+                className={'HeaderButton'}
+              >
+                Buy
+              </button>
+
+              <button
+                onClick={() =>
+                  window.open(
+                    'https://www.dextools.io/app/ether/pair-explorer/0xfd362c758a756bac42fce0ea7e83f5bb72730c6e'
+                  )
+                }
+                className={'HeaderButton'}
+              >
+                Chart
+              </button>
+            </div>
+            <button
+              onClick={() => window.open('https://apemotorcycleclub.com')}
+              style={{ fontFamily: 'default' }}
+              className={'Dashboard-Button'}
+            >
+              <p
+                style={{
+                  textShadow: '0px 1px 0px rgba(0, 0, 0, 0.2)',
+                  textAlign: 'center',
+                  justifyContent: 'center',
+                  fontSize: 'calc(3 * (0.35vw + 0.35vh))',
+                  textDecoration: 'none',
+                  marginTop: '0.25vh',
+                  color: '#ffffff',
+                  paddingTop: '2px',
+                  transform: 'translate(0%, -10%)',
+                  fontFamily: 'default',
+                  fontWeight: 600,
+                  transition: '1s',
+                }}
+              >
+                Website
+              </p>
+            </button>
+          </div>
+        </div>
       </div>
       <div style={{ justifyContent: 'center' }} className={'flexbox-container'}>
         <div id="DashBoard">
