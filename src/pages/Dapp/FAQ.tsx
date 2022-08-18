@@ -12,7 +12,7 @@ export default function FAQPage() {
   const [isHidden3, setishidden3] = useState(true)
   const [isHidden4, setishidden4] = useState(true)
   const [isHidden5, setishidden5] = useState(true)
-  const [isHidden6, setishidden6] = useState(true)
+  //const [isHidden6, setishidden6] = useState(true)
   function toggleHidden() {
     setishidden(!isHidden)
   }
@@ -28,9 +28,7 @@ export default function FAQPage() {
   function toggleHidden5() {
     setishidden5(!isHidden5)
   }
-  function toggleHidden6() {
-    setishidden6(!isHidden6)
-  }
+
   const [hidden, sethidden] = useState(true)
   const ScrollY = useScrollPosition()
 
@@ -57,8 +55,7 @@ export default function FAQPage() {
             FAQ
           </p>
           <FAQCard onClick={toggleHidden}>
-            {' '}
-            <div>
+            <div className={'flexbox-container'} style={{ justifyContent: 'space-between', alignItems: 'center' }}>
               <p
                 className={'FAQheadertext'}
                 style={{
@@ -68,8 +65,9 @@ export default function FAQPage() {
                   color: '#ffffff',
                 }}
               >
-                What is Anime?
+                What is the total NFT supply ?
               </p>
+              <div tabIndex={1} id="faqdropdown0" className={'faqdropdown'}></div>{' '}
             </div>
             {!isHidden && (
               <p
@@ -84,14 +82,13 @@ export default function FAQPage() {
                 }}
               >
                 {' '}
-                A style of animation originating in Japan that is characterized by stark colorful graphics depicting
-                vibrant characters in action-filled plots often with fantastic or futuristic themes.
+                10,000 unique NFTS with custom rarities will be available for minting!
               </p>
             )}
           </FAQCard>
           <FAQCard onClick={toggleHidden2}>
             {' '}
-            <div>
+            <div className={'flexbox-container'} style={{ justifyContent: 'space-between', alignItems: 'center' }}>
               <p
                 className={'FAQheadertext'}
                 style={{
@@ -101,8 +98,9 @@ export default function FAQPage() {
                   color: '#ffffff',
                 }}
               >
-                Why Trust AnimeVerse?
+                What is the price per NFT?
               </p>
+              <div tabIndex={1} id="faqdropdown0" className={'faqdropdown'}></div>{' '}
             </div>
             {!isHidden2 && (
               <p
@@ -117,15 +115,13 @@ export default function FAQPage() {
                 }}
               >
                 {' '}
-                We are a transparent team with a KYC in process. Additionally, we have a Multi-Sig marketing wallet that
-                requires multiple approvals for any transaction to take place. This means no team member can run a
-                transaction solely, ensuring community and project funds are %100 safe.
+                Our Starting Mint price will be 0.075 ETH per unique ApeMotorcycleClub NFT
               </p>
             )}
           </FAQCard>
           <FAQCard style={{ transition: '1s' }} onClick={toggleHidden3}>
             {' '}
-            <div>
+            <div className={'flexbox-container'} style={{ justifyContent: 'space-between', alignItems: 'center' }}>
               <p
                 className={'FAQheadertext'}
                 style={{
@@ -135,8 +131,9 @@ export default function FAQPage() {
                   color: '#ffffff',
                 }}
               >
-                Is Liquidity Locked?
+                Where Can I see information about my NFT?
               </p>
+              <div tabIndex={1} id="faqdropdown0" className={'faqdropdown'}></div>{' '}
             </div>
             {!isHidden3 && (
               <p
@@ -151,13 +148,14 @@ export default function FAQPage() {
                 }}
               >
                 {' '}
-                Liquidity is locked for 6 months and will be re-locked on expiration.
+                We have a subgraph deployed for our collection so users may easily see information regarding their NFTS
+                Click the link below to see what NFTs you hold.
               </p>
             )}
           </FAQCard>
           <FAQCard onClick={toggleHidden4}>
             {' '}
-            <div>
+            <div className={'flexbox-container'} style={{ justifyContent: 'space-between', alignItems: 'center' }}>
               <p
                 className={'FAQheadertext'}
                 style={{
@@ -167,8 +165,9 @@ export default function FAQPage() {
                   color: '#ffffff',
                 }}
               >
-                Was there a private sale or pre-sale?
+                Is their a Whitelist for the sale?
               </p>
+              <div tabIndex={1} id="faqdropdown0" className={'faqdropdown'}></div>{' '}
             </div>
             {!isHidden4 && (
               <p
@@ -183,13 +182,14 @@ export default function FAQPage() {
                 }}
               >
                 {' '}
-                No Private-sale or Pre-sale
+                There is a Whitelist, and those whitelisted wallets can mint for less at launch. Come talk to the team
+                to figure out how you can be whitelisted!
               </p>
             )}
           </FAQCard>
           <FAQCard onClick={toggleHidden5}>
             {' '}
-            <div>
+            <div className={'flexbox-container'} style={{ justifyContent: 'space-between', alignItems: 'center' }}>
               <p
                 className={'FAQheadertext'}
                 style={{
@@ -199,8 +199,9 @@ export default function FAQPage() {
                   color: '#ffffff',
                 }}
               >
-                Team Token Allocation or Dev Tax?
+                Wen metaverse?
               </p>
+              <div tabIndex={1} id="faqdropdown0" className={'faqdropdown'}></div>{' '}
             </div>
             {!isHidden5 && (
               <p
@@ -215,39 +216,7 @@ export default function FAQPage() {
                 }}
               >
                 {' '}
-                There was NO team token allocation, and we have NO dev tax in our tokenomics.
-              </p>
-            )}
-          </FAQCard>
-          <FAQCard onClick={toggleHidden6}>
-            {' '}
-            <div>
-              <p
-                className={'FAQheadertext'}
-                style={{
-                  fontSize: 'calc(3 * (0.5vw + 0.5vh))',
-                  textAlign: 'left',
-                  lineHeight: 1.3,
-                  color: '#ffffff',
-                }}
-              >
-                Smart Contract Audit?
-              </p>
-            </div>
-            {!isHidden6 && (
-              <p
-                style={{
-                  textShadow: '0px 1px 0px rgba(0, 0, 0, 0.2)',
-                  fontSize: 'calc(3 * (0.4vw + 0.4vh))',
-                  textAlign: 'center',
-                  lineHeight: 1.4,
-                  fontWeight: 550,
-                  fontFamily: 'montserrat, sans-serif',
-                  color: '#ffffff',
-                }}
-              >
-                {' '}
-                All of our Smart Contracts are be audited. Click the Audits tab on the header
+                Soon my fellow ape, soon.
               </p>
             )}
           </FAQCard>
