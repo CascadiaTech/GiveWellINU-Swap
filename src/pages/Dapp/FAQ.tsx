@@ -53,7 +53,9 @@ export default function FAQPage() {
     <>
       <div className={'flexbox-container'} style={{ transition: '1s' }}>
         <div className={'flexbox-vertical-container'} style={{ width: '100vw' }}>
-          <p style={{ fontSize: 'calc(3 * (0.8vw + 0.8vh))', color: '#ffffff' }}>FAQ</p>
+          <p className={'Pointedly-Mad'} style={{ fontSize: 'calc(3 * (0.8vw + 0.8vh))', color: '#ffffff' }}>
+            FAQ
+          </p>
           <FAQCard onClick={toggleHidden}>
             {' '}
             <div>

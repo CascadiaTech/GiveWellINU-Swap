@@ -12,7 +12,7 @@
   src: local("Montserrat"), url(./fonts/montserrat/montserrat-regular.ttf) format("truetype")
 }
 @font-face {
-  font-family: "Pointedly-Mad, Sans-serif";
+  font-family: "Pointedly-Mad, sans-serif";
   src: local("Pointedly-Mad"), url(./fonts/Pointedly-Mad/Pointedly-Mad-font.ttf) format("truetype")
 }
 @font-face {

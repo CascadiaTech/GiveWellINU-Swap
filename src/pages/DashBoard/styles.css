@@ -286,7 +286,9 @@
     cursor: pointer;
   }
 
-
+  .Pointedly-Mad{
+    font-family: 'Pointedly-Mad-font';
+  }
 
   .HoverText {
     transition: 1s;
