@@ -9,7 +9,6 @@ import { getDefaultProvider, Web3Provider } from '@ethersproject/providers'
 //import useScrollPosition from '@react-hook/window-scroll'
 import { useWeb3React } from '@web3-react/core'
 import ApeMotorcycleLogo from 'assets/images/ApeMotorcycleLogo.png'
-import { FAQCard } from 'components/Card'
 //import useActiveWeb3React from 'hooks/useActiveWeb3React'
 //import useAddTokenToMetamask from 'hooks/useAddTokenToMetamask' - /////from transaction cofrimation modal index line 127
 import React, { useCallback, useEffect, useState } from 'react'
@@ -329,8 +328,8 @@ const ClaimTransaction = () => {
             </button>
             <p style={{ paddingTop: '2vh', marginTop: '2vh', marginBottom: '2vh' }}></p>
             {!ishidden && (
-              <FAQCard>
-                <label style={{ color: '#ffffff' }} htmlFor="fname">
+              <div className={'CreateAccount-Card'}>
+                <label style={{ color: '#ffffff', fontFamily: 'Rye, cursive' }} htmlFor="fname">
                   First Name
                 </label>
                 <input
@@ -340,7 +339,7 @@ const ClaimTransaction = () => {
                   name="firstname"
                   placeholder="Your name.."
                 ></input>
-                <label style={{ color: '#ffffff' }} htmlFor="fname">
+                <label style={{ color: '#ffffff', fontFamily: 'Rye, cursive' }} htmlFor="fname">
                   Email Address
                 </label>
                 <input
@@ -358,10 +357,16 @@ const ClaimTransaction = () => {
                     </button>
                   )}
                   {names && emails && account && (
-                    <input className={'Form-button-input'} onClick={() => Postacc()} type="submit" value="Submit" />
+                    <input
+                      style={{ fontFamily: 'Rye, cursive' }}
+                      className={'Form-button-input'}
+                      onClick={() => Postacc()}
+                      type="submit"
+                      value="Submit"
+                    />
                   )}
                 </div>
-              </FAQCard>
+              </div>
             )}
           </div>
         </div>

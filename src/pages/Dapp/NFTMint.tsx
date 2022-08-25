@@ -107,10 +107,10 @@ const NFTMintSection = () => {
   return (
     <>
     <div className={'flexbox-vertical-container'}>
-      <h1 style={{ fontFamily: 'montserrat, sans-serif',color: '#FFFFFF' }} className={'Animeverseblackheadertext'}>
+      <p style={{ fontFamily: 'Rye, cursive', color: '#FFFFFF', fontSize: 'calc(3 * (0.5vw + 0.5vh))' }}>
               {' '}
               NFT Minting Station
-            </h1>
+            </p>
       </div>
       <div className={'NFT-card'}>
           <div className={'flexbox-vertical-container'}>

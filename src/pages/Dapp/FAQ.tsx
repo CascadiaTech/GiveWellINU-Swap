@@ -51,7 +51,10 @@ export default function FAQPage() {
     <>
       <div className={'flexbox-container'} style={{ transition: '1s' }}>
         <div className={'flexbox-vertical-container'} style={{ width: '100vw' }}>
-          <p className={'Pointedly-Mad'} style={{ fontSize: 'calc(3 * (0.8vw + 0.8vh))', color: '#ffffff' }}>
+          <p
+            className={'Pointedly-Mad'}
+            style={{ fontSize: 'calc(3 * (0.8vw + 0.8vh))', color: '#ffffff', fontFamily: 'Rye, cursive' }}
+          >
             FAQ
           </p>
           <FAQCard onClick={toggleHidden}>
@@ -63,6 +66,7 @@ export default function FAQPage() {
                   textAlign: 'left',
                   lineHeight: 1.3,
                   color: '#ffffff',
+                  fontFamily: 'Rye, cursive',
                 }}
               >
                 What is the total NFT supply ?
@@ -96,6 +100,7 @@ export default function FAQPage() {
                   textAlign: 'left',
                   lineHeight: 1.3,
                   color: '#ffffff',
+                  fontFamily: 'Rye, cursive',
                 }}
               >
                 What is the price per NFT?
@@ -129,6 +134,7 @@ export default function FAQPage() {
                   textAlign: 'left',
                   lineHeight: 1.3,
                   color: '#ffffff',
+                  fontFamily: 'Rye, cursive',
                 }}
               >
                 Where Can I see information about my NFT?
@@ -163,6 +169,7 @@ export default function FAQPage() {
                   textAlign: 'left',
                   lineHeight: 1.3,
                   color: '#ffffff',
+                  fontFamily: 'Rye, cursive',
                 }}
               >
                 Is their a Whitelist for the sale?
@@ -197,9 +204,10 @@ export default function FAQPage() {
                   textAlign: 'left',
                   lineHeight: 1.3,
                   color: '#ffffff',
+                  fontFamily: 'Rye, cursive',
                 }}
               >
-                Wen metaverse?
+                When is the metaverse?
               </p>
               <div tabIndex={1} id="faqdropdown0" className={'faqdropdown'}></div>{' '}
             </div>

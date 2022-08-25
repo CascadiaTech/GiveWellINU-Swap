@@ -15,8 +15,10 @@ import Swal from 'sweetalert2'
 const FooterBackground = styled(Row)`
   justify-self: center;
   background-color: rgba(194, 194, 194, 0.912);
-  height: 60vh;
-  max-height: 60vh;
+  width: 100vw;
+  max-width: 100vw;
+  height: 55vh;
+  max-height: 55vh;
   min-height: 35vh;
   padding: 1px;
   transform: translate(0%, 30%);
@@ -35,8 +37,8 @@ const FooterBackground = styled(Row)`
     z-index: 99;
     position: relative;
     transform: translate(0%, 2%);
-    width: 99vw;
-    max-width: 99vw;
+    width: 100vw;
+    max-width: 100vw;
     background-color: rgba(194, 194, 194, 0.912);
     box-shadow: 0px 6px 10px rgb(0 0 0 / 2%);
   `};
@@ -121,15 +123,15 @@ export default function FooterMenu() {
                               <FormCard>
                                 <div className={'flexbox-container'} style={{ justifyContent: 'space-between' }}>
                                   <div className={'flexbox-vertical-container'}>
-                                    <h1
+                                    <p
                                       style={{
-                                        fontFamily: 'montserrat, sans-serif',
-                                        fontSize: 'calc(3.5 * (0.35vw + 0.35vh))',
+                                        fontFamily: 'Rye, cursive',
+                                        fontSize: 'calc(3.5 * (0.4vw + 0.4vh))',
                                         color: '#ffffff',
                                       }}
                                     >
                                       Contact Us
-                                    </h1>
+                                    </p>
                                     <label
                                       style={{
                                         fontFamily: 'montserrat, sans-serif',
@@ -212,7 +214,7 @@ export default function FooterMenu() {
                                       <p
                                         style={{
                                           color: '#ffffff',
-                                          fontFamily: 'montserrat, sans-serif',
+                                          fontFamily: 'Rye, cursive',
                                           fontSize: 'calc(3 * (0.4vw + 0.4vh))',
                                           fontWeight: 'bold',
                                         }}
@@ -223,7 +225,7 @@ export default function FooterMenu() {
                                         style={{
                                           color: '#ffffff',
                                           fontSize: 'calc(3.5 * (0.25vw + 0.25vh))',
-                                          fontFamily: 'montserrat, sans-serif',
+                                          fontFamily: 'Rye, cursive',
                                         }}
                                       >
                                         Bringing Ape and Motorcycle Together

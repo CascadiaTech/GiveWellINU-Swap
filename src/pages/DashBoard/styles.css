@@ -10,6 +10,26 @@
   
   }
 
+.CreateAccount-Card{
+  background-color: rgba(34, 34, 34, 0.904);
+  border: 2px;
+  border-style: solid;
+  border-color: #ffffff; 
+  max-width: 40vw;
+  width: 40vw;
+  margin-bottom: 2vh;
+  margin-left: 30vw;
+  min-height: 10vh;
+  margin-right: 30vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  padding-bottom: 2vh;
+  padding-top: 2vh;
+  border-radius: 15px;
+  text-align: center;
+  transition: 1s;
+} 
+
 .Dapp-card{
     width: fit-content;
     min-width: 300px;
@@ -84,6 +104,7 @@
     border-color: rgba(0, 0, 0, 0.979); 
     border-radius: 10px;
     font-weight: 600;
+    font-size: 18px;
     border: 2px solid;
     max-height: 6vh;
     height: 6vh;
@@ -93,35 +114,36 @@
   }
   .Form-button-input{
     text-align: center;
-    width: 25vw;
+    width: 20vw;
     min-width: 100px;
-    max-width: 25vw;
-    margin-left: 10vw;
+    max-width: 20vw;
+    margin-left: 7.5vw;
+    margin-right: 7.5vw;
     color: rgba(240, 240, 240, 0.977); 
     background-color: transparent;
     border-color: rgba(0, 0, 0, 0.979);  
     border-radius: 10px;
-    font-weight: 600;
+    font-size: 18px;
     border: 2px solid;
     max-height: 6vh;
     height: 6vh;
-    font-family: 'montserrat sans-serif';
-    align-items: center;
     justify-content: center;
     transition: 0.5s;
     cursor: pointer;
   }
   .Form-button-input:hover{
     text-align: center;
-    width: 25vw;
+    width: 20vw;
     min-width: 100px;
-    max-width: 25vw;
-    margin-left: 10vw;
+    max-width: 20vw;
+    margin-left: 7.5vw;
+    margin-right: 7.5vw;
     color: rgba(0, 0, 0, 0.979); 
     background-color: rgba(194, 194, 194, 0.912);
     border-color: rgba(0, 0, 0, 0.979); 
     border-radius: 10px;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 18px;
     border: 2px solid;
     max-height: 6vh;
     height: 6vh;
@@ -331,7 +353,12 @@
   }
 
   .Pointedly-Mad{
-    font-family: 'Pointedly-Mad-font';
+    color: #ffffff;
+    font-family: 'Rye Regular';
+  }
+  .FAQheadertext{
+    color: #ffffff;
+    font-family: 'Rye, cursive'
   }
 
   .HoverText {
@@ -365,18 +392,20 @@
       }
 
       .faqdropdown {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         background: transparent;
-        border: 10px solid white;
+        border: 5px solid white;
         border-radius: 100px;
-        transition: 1s;
+        transition: .5s;
       }
       
       .faqdropdown:focus {
-      transition: 1s;
+        width: 40px;
+        height: 40px;
         background: white;
-        border: 10px solid black;
+        border-radius: 100px;
+        transition: .5s;
       }
       .footer-logo{
        padding-left: 6vw;
