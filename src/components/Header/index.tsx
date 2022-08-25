@@ -13,9 +13,8 @@ import styled from 'styled-components/macro'
 import discord from '../../assets/images/discord.png'
 import instagram from '../../assets/images/instagram.png'
 import tglink from '../../assets/images/tglink.png'
-import tiktok from '../../assets/images/tiktok.png'
+import facebook from '../../assets/images/facebook.png'
 import twitter from '../../assets/images/twitter.png'
-import uniswap from '../../assets/images/uniswap.png'
 
 import ApeMotorcycleLogo from 'assets/images/ApeMotorcycleLogo.png'
 //import Menu from '../Menu' - this is the menu that includes uniswaps docs etc.
@@ -190,42 +189,21 @@ export default function Header() {
           <img src={ApeMotorcycleLogo} alt="logo" style={{ width: '80px', height: '80px', paddingTop: '5px' }}></img>
         </UniIcon>
         <HeaderLinks>
-          <StyledNavLink id={'/Dashboard'} to={'/Dashboard'}>
-            <Trans> Home </Trans>
-          </StyledNavLink>
-          <StyledNavLink id={'/Swap'} to={'/Swap'}>
-            <Trans>Swap </Trans>
-          </StyledNavLink>
           <div>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://twitter.com/AnimeVerseToken?t=kruSfQkxcFg6fBXgmFGx6A&s=09"
-            >
+            <a style={{ marginLeft: '33vw' }} target="_blank" rel="noreferrer" href="https://twitter.com/ApeMotorcycle">
               <img className={'footersocialimage'} src={twitter} alt="tglink"></img>
             </a>
-            <a target="_blank" rel="noreferrer" href="https://t.me/AnimeVerse_PORTAL">
+            <a target="_blank" rel="noreferrer" href="https://">
               <img className={'footersocialimage'} src={tglink} alt="tglink"></img>
             </a>
-            <a target="_blank" rel="noreferrer" href="https://www.instagram.com/animeversetoken/">
+            <a target="_blank" rel="noreferrer" href="https://www.instagram.com/apemotorcycleclub/">
               <img className={'footersocialimage'} src={instagram} alt="tglink"></img>
             </a>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.tiktok.com/@animeversetoken?_d=secCgYIASAHKAESPgo8Dj7NAfouh8vNaqtivykJ5eox3dhn6lJ1dSrmOTdDFOMbNCm6mOyHvXHakifdPmZq6ItOAhmDChZx7%2BHYGgA%3D&_r=1&checksum=81b799b87afa6df5358b86998291cc58a71bbd902e7f6e1a9300be85c5afedee&language=en&sec_uid=MS4wLjABAAAAGGb5DhcC79rrhnKqMJB8u2QWTvYxxSh3h2XDbPalDzDxcvRrCdZU-5XEQUj-3HwD&sec_user_id=MS4wLjABAAAAvCb-T2_807apvbgqN2kQb-kjDzoVX0p_awn7Oe2MSiOcSEuxtngf1HsObCUcEZ1A&share_app_id=1233&share_author_id=7083639654771868678&share_link_id=B5367C99-9788-4280-A16C-E9C37BA54451&source=h5_m&timestamp=1655328035&tt_from=copy&u_code=dbd2e51fi4448b&ug_btm=b6880%2Cb5836&user_id=6806028567236183045&utm_campaign=client_share&utm_medium=ios&utm_source=copy"
-            >
-              <img className={'footersocialimage'} src={tiktok} alt="tglink"></img>
+            <a target="_blank" rel="noreferrer" href="https://www.facebook.com/Ape-Motorcycle-Club-104428762148239">
+              <img className={'footersocialimage'} src={facebook} alt="tglink"></img>
             </a>
-            <a target="_blank" rel="noreferrer" href="https://discord.com/invite/scUQpfHbUj">
+            <a target="_blank" rel="noreferrer" href="https://discord.com/invite/QQvgp9cgeb">
               <img className={'footersocialimage'} src={discord} alt="tglink"></img>
-            </a>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://app.uniswap.org/#/swap?inputCurrency=0x5a8F92addfe1Cd48B51E1FA926144C0918DBAb67&chain=mainnet"
-            >
-              <img className={'footersocialimage'} src={uniswap} alt="tglink"></img>
             </a>
           </div>
         </HeaderLinks>
