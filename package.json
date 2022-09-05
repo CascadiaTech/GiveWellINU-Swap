@@ -182,6 +182,7 @@
     "@mui/lab": "^5.0.0-alpha.73",
     "@mui/material": "^5.5.1",
     "@popperjs/core": "^2.4.4",
+    "@ramonak/react-progress-bar": "^5.0.2",
     "@uniswap/redux-multicall": "^1.0.0",
     "@uniswap/router-sdk": "^1.0.3",
     "@uniswap/sdk-core": "^3.0.1",

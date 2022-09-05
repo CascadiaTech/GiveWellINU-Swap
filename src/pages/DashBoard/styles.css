@@ -159,7 +159,6 @@
     border-width: 2px;
     text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
     font-size: calc(3 * (0.35vw + 0.35vh));
-    font-weight: 600;
     color: #ffffff;
     margin-top: 15px;
     background-color: rgba(34, 34, 34, 0.904);
@@ -177,6 +176,7 @@
     padding-right: 3%;
     transition: 0.5s;
   }
+
   .HeaderButton:hover {
     border-style: solid;
     border-width: 2px;
@@ -185,7 +185,8 @@
     font-weight: 600;
     color: #ffffff;
     margin-top: 15px;
-    background-color: rgba(34, 34, 34, 0.904);
+    box-shadow: #FFF 0 -1px 4px, rgb(0, 221, 255) 0 -2px 10px, #0059ff 0 -10px 20px, rgb(72, 0, 255) 0 -18px 40px,
+    inset 0px 23px 33px -8px rgba(163,25,37,0);
     border-color: rgba(255, 255, 255, 0.897);
     border-radius: 15px;
     width: 16vw;
@@ -206,7 +207,6 @@
     border-width: 2px;
     text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
     font-size: calc(3 * (0.35vw + 0.35vh));
-    font-weight: 600;
     color: #ffffff;
     margin-top: 15px;
     background-color: rgba(34, 34, 34, 0.904);
@@ -228,10 +228,10 @@
     border-width: 2px;
     text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
     font-size: calc(3 * (0.35vw + 0.35vh));
-    font-weight: 600;
     color: #ffffff;
     margin-top: 15px;
-    background-color: rgba(34, 34, 34, 0.904);
+    box-shadow: #FFF 0 -1px 4px, rgb(0, 221, 255) 0 -2px 10px, #0059ff 0 -10px 20px, rgb(72, 0, 255) 0 -15px 20px,
+    inset 0px 23px 33px -8px rgba(163,25,37,0);
     border-color: rgba(255, 255, 255, 0.897);
     border-radius: 15px;
     width: 16vw;
@@ -303,7 +303,6 @@
     border-width: 1px;
     text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
     font-size: calc(3 * (0.3vw + 0.3vh));
-    font-family: 'Montserrat, sans-serif';
     color: #ffffff;
     background-color: rgba(34, 34, 34, 0.904);
     border-color: rgba(122, 124, 124, 0.897);
@@ -316,8 +315,9 @@
     transition: 1s;
   }
   .createaccount:hover {
-    transform: scale(1.03);
     transition: 1s;
+    box-shadow: #FFF 0 -1px 4px, rgb(0, 221, 255) 0 -2px 10px, #0059ff 0 -10px 20px, rgb(72, 0, 255) 0 -15px 20px,
+    inset 0px 23px 33px -8px rgba(163,25,37,0);
     cursor: pointer;
     border-color: rgba(255, 255, 255, 0.897);
   }
@@ -508,6 +508,11 @@
         75% {transform: translateX(34vw); opacity: 1;}
         100% {transform: translateX(88vw); opacity: 0;}
       }
+      header-link-display
+
+      a.header-link-display:link {color:#ffffff;}
+      a.header-link-display:visited {color:#ffffff;}
+      a.header-link-display:hover {color: rgba(255, 255, 255, 0.675); font-size: 110%; }
       
         a.header.uni:link {color:#ffffff;}
         a.header.uni:visited {color:#ffffff;}

@@ -189,8 +189,38 @@ export default function Header() {
           <img src={ApeMotorcycleLogo} alt="logo" style={{ width: '80px', height: '80px', paddingTop: '5px' }}></img>
         </UniIcon>
         <HeaderLinks>
+          <NavLink
+            className={'header-link-display'}
+            style={{
+              paddingLeft: '1.5vw',
+              textDecoration: 'none',
+              fontFamily: 'Rye, cursive',
+              transition: '1s',
+              color: '#ffffff',
+              fontSize: 'calc(3 * (0.3vw + 0.3vh))',
+            }}
+            to="./Dapp"
+            id={'/Dapp'}
+          >
+            Home
+          </NavLink>
+          <NavLink
+            className={'header-link-display'}
+            style={{
+              paddingLeft: '1.5vw',
+              textDecoration: 'none',
+              fontFamily: 'Rye, cursive',
+              transition: '1s',
+              color: '#ffffff',
+              fontSize: 'calc(3 * (0.3vw + 0.3vh))',
+            }}
+            to="./NFTMint"
+            id={'/NFTMint'}
+          >
+            NFT Minting Station
+          </NavLink>
           <div>
-            <a style={{ marginLeft: '33vw' }} target="_blank" rel="noreferrer" href="https://twitter.com/ApeMotorcycle">
+            <a style={{ marginLeft: '20vw' }} target="_blank" rel="noreferrer" href="https://twitter.com/ApeMotorcycle">
               <img className={'footersocialimage'} src={twitter} alt="tglink"></img>
             </a>
             <a target="_blank" rel="noreferrer" href="https://">

@@ -8,6 +8,7 @@ import { ExternalProvider, JsonRpcFetchFunc, Web3Provider } from '@ethersproject
 import { parseEther } from '@ethersproject/units'
 import useScrollPosition from '@react-hook/window-scroll'
 import { abiObject } from 'abis/abi'
+import ProgressBar from 'components/ProgressBar'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import React, { useEffect,useState } from 'react'
 import Swal from 'sweetalert2'
@@ -27,6 +28,7 @@ const NFTMintSection = () => {
   const [isWhitelisted, setisWhitelisted] = useState(Boolean)
   //const { account } = useActiveWeb3React()
   const { account } = useActiveWeb3React()
+  const [percentage, setpercentage] = useState(10)
   const showConnectAWallet = Boolean(!account)
   const context = useActiveWeb3React()
   const { library } = context
@@ -102,17 +104,57 @@ const NFTMintSection = () => {
 
 }
 
-
-
   return (
     <>
+  <div className={'flexbox-container'}>
     <div className={'flexbox-vertical-container'}>
-      <p style={{ fontFamily: 'Rye, cursive', color: '#FFFFFF', fontSize: 'calc(3 * (0.5vw + 0.5vh))' }}>
+      <div className={'NFT-card'}>
+        <ProgressBar></ProgressBar>
+      </div>
+    </div>
+    <div className={'flexbox-vertical-container'}>
+          <p style={{ fontFamily: 'Rye, cursive', color: '#FFFFFF', fontSize: 'calc(3 * (0.5vw + 0.5vh))' }}>
               {' '}
               NFT Minting Station
+          </p>
+        </div>
+        <div className={'NFT-card'}>
+          <div className={'flexbox-vertical-container'} style={{ justifyContent: 'center' }}>
+            <img
+
+              style={{
+                minWidth: '300px',
+                maxWidth: '300px',
+                height: 'auto',
+                borderRadius: '10px',
+                border: 'solid',
+                marginBottom: '2vh',
+                alignSelf: 'center',
+              }}
+              src={blueape}
+              alt='blueape'
+            >
+              
+            </img>{' '}
+            <p
+              style={{
+                fontFamily: 'montserrat, sans-serif',
+              }}
+              className={'NFTmintingstationtext'}
+            >
+              {' '}
+              Price: 0.075 ETH
             </p>
-      </div>
-      <div className={'NFT-card'}>
+            <p
+              style={{
+                fontFamily: 'montserrat, sans-serif',
+              }}
+              className={'NFTmintingstationtext'}
+            >
+              {' '}
+              Supply: 120/10,000
+            </p>
+          </div>
           <div className={'flexbox-vertical-container'}>
             <div style={{ alignSelf: 'center' }} className={'flexbox-container'}>
               <button className={'MintButton-math'} onClick={() => SetNftAmount(NftAmount - 1)}>
@@ -157,7 +199,7 @@ const NFTMintSection = () => {
               </div>      
             )}
             </>) : (
-                            <div style={{ alignSelf: 'center' }} className={'flexbox-container'}>
+                <div style={{ alignSelf: 'center' }} className={'flexbox-container'}>
                 <button
                   style={{ width: '10vw', marginTop: 10, marginBottom: '2vh' }}
                   className={'MintButton'}
@@ -170,42 +212,7 @@ const NFTMintSection = () => {
             )}
 
           </div>
-          <div className={'flexbox-vertical-container'} style={{ justifyContent: 'center' }}>
-            <img
-
-              style={{
-                minWidth: '300px',
-                maxWidth: '300px',
-                height: 'auto',
-                borderRadius: '10px',
-                border: 'solid',
-                marginBottom: '2vh',
-                alignSelf: 'center',
-              }}
-              src={blueape}
-              alt='blueape'
-            >
-              
-            </img>{' '}
-            <p
-              style={{
-                fontFamily: 'montserrat, sans-serif',
-              }}
-              className={'NFTmintingstationtext'}
-            >
-              {' '}
-              Price: 0.075 ETH
-            </p>
-            <p
-              style={{
-                fontFamily: 'montserrat, sans-serif',
-              }}
-              className={'NFTmintingstationtext'}
-            >
-              {' '}
-              Supply: 120/10,000
-            </p>
-          </div>
+        </div>
       </div>
     </>
   )

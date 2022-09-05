@@ -15,8 +15,7 @@ import { useModalOpen, useToggleModal } from '../state/application/hooks'
 import { ApplicationModal } from '../state/application/reducer'
 import DarkModeQueryParamReader from '../theme/DarkModeQueryParamReader'
 import Dapp from './Dapp'
-import Swap from './Swap'
-import Treasury from './Treasury'
+import NFTMint from './Dapp/NFTMint'
 //import Landing from './Landing'
 //import Pool from './Pool'
 //import PoolV2 from './Pool/v2'
@@ -87,8 +86,7 @@ export default function App() {
                 <Route exact strict path="/Dapp">
                   <Redirect to="/Dapp" />
                 </Route>
-                <Route strict path="/Treasury" component={Treasury} />
-                <Route strict path="/Swap" component={Swap} />
+                <Route strict path="/NFTMint" component={NFTMint} />
               </Switch>
             </Suspense>
             <Marginer />

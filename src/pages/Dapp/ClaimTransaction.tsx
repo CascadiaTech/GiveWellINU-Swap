@@ -5,19 +5,19 @@ import { BigNumber } from '@ethersproject/bignumber'
 //import { LoadingOutlined } from '@ant-design/icons'
 import { Contract } from '@ethersproject/contracts'
 import { getDefaultProvider, Web3Provider } from '@ethersproject/providers'
+import ProgressBar from '@ramonak/react-progress-bar'
 // { formatEther } from '@ethersproject/units'
 //import useScrollPosition from '@react-hook/window-scroll'
 import { useWeb3React } from '@web3-react/core'
-import ApeMotorcycleLogo from 'assets/images/ApeMotorcycleLogo.png'
+//import ApeMotorcycleLogo from 'assets/images/ApeMotorcycleLogo.png'
 //import useActiveWeb3React from 'hooks/useActiveWeb3React'
 //import useAddTokenToMetamask from 'hooks/useAddTokenToMetamask' - /////from transaction cofrimation modal index line 127
 import React, { useCallback, useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 import { abiObject } from './abi'
-import FAQPage from './FAQ'
 import FooterMenu from './Footer'
 import { NFTAbiObject } from './NFTAbi'
-import NFTMintSection from './NFTMint'
 
 const ClaimTransaction = () => {
   //const scrollY = useScrollPosition()
@@ -27,8 +27,9 @@ const ClaimTransaction = () => {
   const showConnectAWallet = Boolean(!account)
   const context = useWeb3React()
   const { library } = context
-  const [names, setname] = useState(String)
-  const [emails, setemail] = useState(String)
+  const [fullName, setfullName] = useState(String)
+  const [ID, setID] = useState(String)
+  const [houseaddress, sethouseaddress] = useState(String)
   const [ishidden, setishidden] = useState(Boolean)
   const [connected, setnotconnected] = useState(Boolean)
   const [holders, setholders] = useState(Number)
@@ -212,8 +213,9 @@ const ClaimTransaction = () => {
         },
         body: JSON.stringify({
           address: account,
-          name: names,
-          email: emails,
+          name: fullName,
+          DriverID: ID,
+          house_add: houseaddress,
         }),
       })
       const data = (await response).json()
@@ -274,28 +276,33 @@ const ClaimTransaction = () => {
     }
   }, [showConnectAWallet])
 
+  //  <img className={'dapp-header-image'} src={ApeMotorcycleLogo} alt="header"></img>
   return (
     <div style={{ justifyContent: 'space-between', alignItems: 'center' }} className={'flexbox-vertical-container'}>
-      <img className={'dapp-header-image'} src={ApeMotorcycleLogo} alt="header"></img>
       <div style={{ marginTop: '3vh' }} className="flexbox-vertical-container">
         <div className="flexbox-container" style={{ justifyContent: 'center' }}>
           <div className={'Newheader-flexbox-container'}>
             <div className="flexbox-container" style={{ justifyContent: 'center' }}>
+              <NavLink
+                style={{ fontFamily: 'Rye, cursive', marginLeft: '3vw', textDecoration: 'none' }}
+                className={'HeaderButton'}
+                to="./NFTMint"
+                id={'/NFTMint'}
+              >
+                Mint
+              </NavLink>
+
               <button
-                style={{ fontFamily: 'default', marginLeft: '3vw' }}
-                onClick={() => window.open('https://app.uniswap.org/')}
+                onClick={() => window.open('https://opensea.io/')}
+                style={{ fontFamily: 'Rye, cursive' }}
                 className={'HeaderButton'}
               >
-                Buy
-              </button>
-
-              <button onClick={() => window.open('https://opensea.io/')} className={'HeaderButton'}>
                 OpeanSea
               </button>
             </div>
             <button
               onClick={() => window.open('https://apemotorcycleclub.com')}
-              style={{ fontFamily: 'default' }}
+              style={{ fontFamily: 'Rye, cursive' }}
               className={'Dashboard-Button'}
             >
               <p
@@ -309,8 +316,7 @@ const ClaimTransaction = () => {
                   color: '#ffffff',
                   paddingTop: '2px',
                   transform: 'translate(0%, -10%)',
-                  fontFamily: 'default',
-                  fontWeight: 600,
+                  fontFamily: 'Rye, cursive',
                   transition: '1s',
                 }}
               >
@@ -319,44 +325,57 @@ const ClaimTransaction = () => {
             </button>
           </div>
         </div>
+        <ProgressBar completed={20} maxCompleted={10000} />
       </div>
       <div style={{ justifyContent: 'center' }} className={'flexbox-container'}>
         <div id="DashBoard">
           <div>
-            <button onClick={toggleHidden} className={'createaccount'}>
+            <button onClick={toggleHidden} style={{ fontFamily: 'Rye, cursive' }} className={'createaccount'}>
               Create an account
             </button>
             <p style={{ paddingTop: '2vh', marginTop: '2vh', marginBottom: '2vh' }}></p>
             {!ishidden && (
               <div className={'CreateAccount-Card'}>
                 <label style={{ color: '#ffffff', fontFamily: 'Rye, cursive' }} htmlFor="fname">
-                  First Name
+                  Full Name
                 </label>
                 <input
-                  onChange={(e) => setname(e.target.value)}
+                  onChange={(e) => setfullName(e.target.value)}
                   type="text"
                   id="fname"
-                  name="firstname"
+                  name="Full name"
                   placeholder="Your name.."
                 ></input>
+
                 <label style={{ color: '#ffffff', fontFamily: 'Rye, cursive' }} htmlFor="fname">
-                  Email Address
+                  Drivers ID Number
                 </label>
                 <input
-                  onChange={(e) => setemail(e.target.value)}
+                  onChange={(e) => setID(e.target.value)}
                   type="text"
-                  id="fname"
-                  name="Email"
-                  placeholder="someone@somewhere.com"
+                  id="ID"
+                  name="Driver ID #"
+                  placeholder="7306492"
+                ></input>
+
+                <label style={{ color: '#ffffff', fontFamily: 'Rye, cursive' }} htmlFor="fname">
+                  Address
+                </label>
+                <input
+                  onChange={(e) => sethouseaddress(e.target.value)}
+                  type="text"
+                  id="address"
+                  name="Home Address"
+                  placeholder="5555 rd, Vancouver, V6V 2V2"
                 ></input>
                 <div className={'flexbox-vertical-container'} style={{ justifyContent: 'center' }}>
-                  {!names && !emails && (
+                  {!fullName && !ID && !houseaddress && !account && (
                     <button style={{ alignSelf: 'center' }} className={'Account-Form-button'}>
                       {' '}
                       Cant Submit Yet, Connect your wallet, and fill in the form fields
                     </button>
                   )}
-                  {names && emails && account && (
+                  {fullName && ID && houseaddress && account && (
                     <input
                       style={{ fontFamily: 'Rye, cursive' }}
                       className={'Form-button-input'}
@@ -371,9 +390,7 @@ const ClaimTransaction = () => {
           </div>
         </div>
       </div>
-      <p style={{ marginTop: '10%' }}></p>
-      <NFTMintSection></NFTMintSection>
-      <FAQPage></FAQPage>
+      <p style={{ marginTop: '2%' }}></p>
       <FooterMenu></FooterMenu>
     </div>
   )

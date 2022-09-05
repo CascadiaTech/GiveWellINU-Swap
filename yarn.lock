@@ -4269,6 +4269,11 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha1-p3c2C1s5oaLlEG+OhY8v0tBgxXA=
 
+"@ramonak/react-progress-bar@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@ramonak/react-progress-bar/-/react-progress-bar-5.0.2.tgz#743a3f325b85822a9f51d1f3849d85b4b95e3b8f"
+  integrity sha512-0NBYTe8x3L8svLTUeK7DBE4xzG/XRZ72uJmOMnWfzdSag32F1JE92IARFZyunEmFjc06U00tGfB+CekelrrYHw==
+
 "@reach/dialog@^0.10.3":
   version "0.10.5"
   resolved "https://registry.npmjs.org/@reach/dialog/-/dialog-0.10.5.tgz"
