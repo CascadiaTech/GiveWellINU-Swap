@@ -15,7 +15,7 @@ import { useWeb3React } from '@web3-react/core'
 import React, { useCallback, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { abiObject } from './abi'
+import { abiObject } from './Apeabi'
 import FooterMenu from './Footer'
 import { NFTAbiObject } from './NFTAbi'
 
@@ -130,7 +130,7 @@ const ClaimTransaction = () => {
         //setLoading(true)
         const provider = getDefaultProvider()
         const abi = NFTAbiObject
-        const contractaddress = '0xC4deaEbD15E3B6956cc7EF48d2AB934CA3CaB4D2'
+        const contractaddress = '0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6'
         const contract = new Contract(contractaddress, abi, provider)
         const UserTokenBalance = await contract.balanceOf(account)
         const FinalResult = await UserTokenBalance.toString()
