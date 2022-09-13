@@ -20,7 +20,7 @@ import blueape from '../../assets/images/blueape.png'
 import { NFTAbiObject } from './NFTAbi'
 
 
-
+///https://gateway.pinata.cloud/ipfs/QmVeMWpbq3UzbfPZnQrwSWAC9qrSPhqzWmV8ZmKyxPqH5H
 const NFTMintSection = () => {
   const scrollY = useScrollPosition()
   const [loading, setLoading] = useState(false)
@@ -63,7 +63,7 @@ const NFTMintSection = () => {
         const abi = data
         console.log(data)
         const provider = new Web3Provider(library?.provider as ExternalProvider | JsonRpcFetchFunc)
-        const contractaddress = '0xa2607d28F7a899E38Abe99C67ccb37127875Be7E' // "clienttokenaddress"
+        const contractaddress = '0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6' // "clienttokenaddress"
         const contract = new Contract(contractaddress, abi, provider)
         const whitelistMint = await contract.isWhitelisted(account) //.claim()
         const Claimtxid = await whitelistMint
@@ -110,16 +110,16 @@ const NFTMintSection = () => {
       const data = NFTAbiObject
       const abi = data
       console.log(data)
-      const contractaddress = '0xC4deaEbD15E3B6956cc7EF48d2AB934CA3CaB4D2' // "clienttokenaddress"
+      const contractaddress = '0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6' // "clienttokenaddress"
 
         const provider = new Web3Provider(library?.provider as ExternalProvider | JsonRpcFetchFunc)
         //const provider = getDefaultProvider()
         const signer = provider.getSigner()
         console.log(signer)
         const contract = new Contract(contractaddress, abi, signer)
-        const ethervalue = NftAmount * 0.075
+        const ethervalue = NftAmount * 0.25
         const etherstringvalue = JSON.stringify(ethervalue)
-        const MintNFT = await contract.mint(NftAmount, { value: parseEther(etherstringvalue) }) //.claim()
+        const MintNFT = await contract.publicMint(NftAmount, { value: parseEther(etherstringvalue) }) //.claim()
         const Claimtxid = await MintNFT
         return Claimtxid
       
@@ -129,6 +129,36 @@ const NFTMintSection = () => {
     } finally {
       setLoading(false)
     }
+
+}
+
+
+async function handleWLMint() {
+
+  try {
+    //setLoading(true)
+    const data = NFTAbiObject
+    const abi = data
+    console.log(data)
+    const contractaddress = '0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6' // "clienttokenaddress"
+
+      const provider = new Web3Provider(library?.provider as ExternalProvider | JsonRpcFetchFunc)
+      //const provider = getDefaultProvider()
+      const signer = provider.getSigner()
+      console.log(signer)
+      const contract = new Contract(contractaddress, abi, signer)
+      const ethervalue = NftAmount * 0.125
+      const etherstringvalue = JSON.stringify(ethervalue)
+      const MintNFT = await contract.whitelistMint(NftAmount, { value: parseEther(etherstringvalue) }) //.claim()
+      const Claimtxid = await MintNFT
+      return Claimtxid
+    
+  } catch (error) {
+    console.log(error)
+    setLoading(false)
+  } finally {
+    setLoading(false)
+  }
 
 
 }
@@ -206,6 +236,21 @@ const NFTMintSection = () => {
             </div>
             {Externalacc ? (    
               <>  
+                {isWhitelisted ? (<>  <button
+                  style={{ width: '10vw', marginTop: 10, marginBottom: '2vh' }}
+                  className={'MintButton'}
+                  onClick={() => handleWLMint()}
+                >
+                  {' '}
+                  Whitelist Mint
+                </button></>) : (<>                <button
+                  style={{ width: '10vw', marginTop: 10, marginBottom: '2vh' }}
+                  className={'MintButton'}
+                  onClick={() => Swal.fire('You are not Whitlisted', ' You must wait to mint until presale ends')}
+                >
+                  {' '}
+                  Not Whitelisted
+                </button></>)}
               {NftAmount > 0 && NftAmount <= 3 ? (
               <div style={{ alignSelf: 'center' }} className={'flexbox-container'}>
                 <button
