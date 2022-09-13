@@ -3,12 +3,12 @@ import '../DashBoard/styles.css'
 
 import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons'
 import { Contract } from '@ethersproject/contracts'
-import { ExternalProvider, JsonRpcFetchFunc, Web3Provider } from '@ethersproject/providers'
-//import { getDefaultProvider, Web3Provider } from '@ethersproject/providers'
+import { ExternalProvider, getDefaultProvider, JsonRpcFetchFunc, Web3Provider } from '@ethersproject/providers'
 import { parseEther } from '@ethersproject/units'
+//import { getDefaultProvider, Web3Provider } from '@ethersproject/providers'
+import ProgressBar from '@ramonak/react-progress-bar'
 import useScrollPosition from '@react-hook/window-scroll'
 import { abiObject } from 'abis/abi'
-import ProgressBar from 'components/ProgressBar'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import React, { useEffect,useState } from 'react'
 import Swal from 'sweetalert2'
@@ -16,6 +16,7 @@ import Swal from 'sweetalert2'
 //import WalletConnectProvider from "@web3-react/walletconnect-connector";
 //import LinePic from 'assets/LinePic.png'
 import blueape from '../../assets/images/blueape.png'
+//import CountdownTimer from './CountdownTimer'
 import { NFTAbiObject } from './NFTAbi'
 
 
@@ -23,6 +24,7 @@ import { NFTAbiObject } from './NFTAbi'
 const NFTMintSection = () => {
   const scrollY = useScrollPosition()
   const [loading, setLoading] = useState(false)
+  const [totalSupply, settotalySupply] = useState(Number)
   const [NftAmount, SetNftAmount] = useState(1)
   const [Externalacc, setExternalacc] = useState(Boolean)
   const [isWhitelisted, setisWhitelisted] = useState(Boolean)
@@ -32,6 +34,12 @@ const NFTMintSection = () => {
   const showConnectAWallet = Boolean(!account)
   const context = useActiveWeb3React()
   const { library } = context
+
+  const THREE_DAYS_IN_MS = 3 * 24 * 60 * 60 * 1000
+  const NOW_IN_MS = new Date().getTime()
+
+  const dateTimeAfterThreeDays = NOW_IN_MS + THREE_DAYS_IN_MS
+
   useEffect(() => {
     async function FetchExternalacc() {
       try {
@@ -67,6 +75,26 @@ const NFTMintSection = () => {
       }
     }
 
+    async function FetchtotalSupply() {
+      try {
+        //setLoading(true)
+        const provider = getDefaultProvider()
+        const NFTabi = abiObject
+        const contractaddress = '0xC4deaEbD15E3B6956cc7EF48d2AB934CA3CaB4D2'
+        const contract = new Contract(contractaddress, NFTabi, provider)
+        const Totalminted = await contract.totalSupply()
+        const FinalResult = Number(Totalminted)
+        const minted = FinalResult
+        settotalySupply(minted)
+        console.log(FinalResult)
+        return minted
+      } catch (error) {
+        console.log(error)
+      } finally {
+      }
+    }
+
+    FetchtotalSupply()
     FetchExternalacc()
       .then((result) => JSON.stringify(result))
       .then((result) => JSON.parse(result))
@@ -102,14 +130,18 @@ const NFTMintSection = () => {
       setLoading(false)
     }
 
+
 }
 
   return (
     <>
-  <div className={'flexbox-container'}>
+  <div className={'flexbox-container-hidden'}>
     <div className={'flexbox-vertical-container'}>
       <div className={'NFT-card'}>
-        <ProgressBar></ProgressBar>
+        <p style={{ fontFamily: 'Rye, cursive', color: '#FFFFFF', fontSize: 'calc(3 * (0.5vw + 0.5vh))' }}>
+          {' '}
+          Artwork (here)
+        </p>
       </div>
     </div>
     <div className={'flexbox-vertical-container'}>
@@ -123,8 +155,8 @@ const NFTMintSection = () => {
             <img
 
               style={{
-                minWidth: '300px',
-                maxWidth: '300px',
+                minWidth: '250px',
+                maxWidth: '250px',
                 height: 'auto',
                 borderRadius: '10px',
                 border: 'solid',
@@ -154,11 +186,13 @@ const NFTMintSection = () => {
               {' '}
               Supply: 120/10,000
             </p>
+            <ProgressBar completed={totalSupply} maxCompleted={150} />
           </div>
+          <p style={{ marginBottom: '2vh', marginTop: '2vh' }}></p>
           <div className={'flexbox-vertical-container'}>
             <div style={{ alignSelf: 'center' }} className={'flexbox-container'}>
               <button className={'MintButton-math'} onClick={() => SetNftAmount(NftAmount - 1)}>
-                <MinusCircleOutlined style={{ fontSize: '20px' }} />
+                <MinusCircleOutlined style={{ fontSize: '25px' }} />
               </button>
               {NftAmount >= 0 ? (
                 <h1 style={{ color: '#FFFFFF', fontSize: '24px', fontFamily: 'OpenDyslexic3' }}>{NftAmount}</h1>
@@ -167,7 +201,7 @@ const NFTMintSection = () => {
               )}
               <button className={'MintButton-math'} onClick={() => SetNftAmount(NftAmount + 1)}>
                 {' '}
-                <PlusCircleOutlined style={{ fontSize: '20px' }} />
+                <PlusCircleOutlined style={{ fontSize: '25px' }} />
               </button>
             </div>
             {Externalacc ? (    

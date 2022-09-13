@@ -16,7 +16,6 @@ import tglink from '../../assets/images/tglink.png'
 import facebook from '../../assets/images/facebook.png'
 import twitter from '../../assets/images/twitter.png'
 
-import ApeMotorcycleLogo from 'assets/images/ApeMotorcycleLogo.png'
 //import Menu from '../Menu' - this is the menu that includes uniswaps docs etc.
 import Row from '../Row'
 import Web3Status from '../Web3Status'
@@ -185,9 +184,7 @@ export default function Header() {
   return (
     <>
       <HeaderFrame showBackground={false}>
-        <UniIcon>
-          <img src={ApeMotorcycleLogo} alt="logo" style={{ width: '80px', height: '80px', paddingTop: '5px' }}></img>
-        </UniIcon>
+        <UniIcon></UniIcon>
         <HeaderLinks>
           <NavLink
             className={'header-link-display'}
@@ -220,20 +217,20 @@ export default function Header() {
             NFT Minting Station
           </NavLink>
           <div>
-            <a style={{ marginLeft: '20vw' }} target="_blank" rel="noreferrer" href="https://twitter.com/ApeMotorcycle">
-              <img className={'footersocialimage'} src={twitter} alt="tglink"></img>
+            <a style={{ marginLeft: '10vw' }} target="_blank" rel="noreferrer" href="https://twitter.com/ApeMotorcycle">
+              <img className={'headersocialimage'} src={twitter} alt="tglink"></img>
             </a>
             <a target="_blank" rel="noreferrer" href="https://">
-              <img className={'footersocialimage'} src={tglink} alt="tglink"></img>
+              <img className={'headersocialimage'} src={tglink} alt="tglink"></img>
             </a>
             <a target="_blank" rel="noreferrer" href="https://www.instagram.com/apemotorcycleclub/">
-              <img className={'footersocialimage'} src={instagram} alt="tglink"></img>
+              <img className={'headersocialimage'} src={instagram} alt="tglink"></img>
             </a>
             <a target="_blank" rel="noreferrer" href="https://www.facebook.com/Ape-Motorcycle-Club-104428762148239">
-              <img className={'footersocialimage'} src={facebook} alt="tglink"></img>
+              <img className={'headersocialimage'} src={facebook} alt="tglink"></img>
             </a>
             <a target="_blank" rel="noreferrer" href="https://discord.com/invite/QQvgp9cgeb">
-              <img className={'footersocialimage'} src={discord} alt="tglink"></img>
+              <img className={'headersocialimage'} src={discord} alt="tglink"></img>
             </a>
           </div>
         </HeaderLinks>

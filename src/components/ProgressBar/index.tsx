@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 let progressInterval: any = null
 
-function App() {
+function ProgressBar() {
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
@@ -29,4 +29,4 @@ function App() {
   )
 }
 
-export default App
+export default ProgressBar

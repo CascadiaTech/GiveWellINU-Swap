@@ -12,6 +12,12 @@ import { animated, useTransition } from 'react-spring'
 import styled from 'styled-components/macro'
 import Swal from 'sweetalert2'
 
+import discord from '../../assets/images/discord.png'
+import facebook from '../../assets/images/facebook.png'
+import instagram from '../../assets/images/instagram.png'
+import tglink from '../../assets/images/tglink.png'
+import twitter from '../../assets/images/twitter.png'
+
 const FooterBackground = styled(Row)`
   justify-self: center;
   background-color: rgba(194, 194, 194, 0.912);
@@ -118,6 +124,37 @@ export default function FooterMenu() {
                             width: 'fit-content',
                           }}
                         >
+                          <div>
+                            <a
+                              style={{ marginLeft: '10vw' }}
+                              target="_blank"
+                              rel="noreferrer"
+                              href="https://twitter.com/ApeMotorcycle"
+                            >
+                              <img className={'footersocialimage'} src={twitter} alt="tglink"></img>
+                            </a>
+                            <a target="_blank" rel="noreferrer" href="https://">
+                              <img className={'footersocialimage'} src={tglink} alt="tglink"></img>
+                            </a>
+                            <a target="_blank" rel="noreferrer" href="https://www.instagram.com/apemotorcycleclub/">
+                              <img className={'footersocialimage'} src={instagram} alt="tglink"></img>
+                            </a>
+                            <a
+                              target="_blank"
+                              rel="noreferrer"
+                              href="https://www.facebook.com/Ape-Motorcycle-Club-104428762148239"
+                            >
+                              <img className={'footersocialimage'} src={facebook} alt="tglink"></img>
+                            </a>
+                            <a target="_blank" rel="noreferrer" href="https://discord.com/invite/QQvgp9cgeb">
+                              <img
+                                className={'footersocialimage'}
+                                style={{ marginRight: '7vw' }}
+                                src={discord}
+                                alt="tglink"
+                              ></img>
+                            </a>
+                          </div>
                           <div>
                             <form ref={form} onSubmit={sendEmail}>
                               <FormCard>

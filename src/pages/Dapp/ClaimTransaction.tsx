@@ -5,11 +5,10 @@ import { BigNumber } from '@ethersproject/bignumber'
 //import { LoadingOutlined } from '@ant-design/icons'
 import { Contract } from '@ethersproject/contracts'
 import { getDefaultProvider, Web3Provider } from '@ethersproject/providers'
-import ProgressBar from '@ramonak/react-progress-bar'
 // { formatEther } from '@ethersproject/units'
 //import useScrollPosition from '@react-hook/window-scroll'
 import { useWeb3React } from '@web3-react/core'
-//import ApeMotorcycleLogo from 'assets/images/ApeMotorcycleLogo.png'
+import ApeMotorcycleLogo from 'assets/images/ApeMotorcycleLogo.png'
 //import useActiveWeb3React from 'hooks/useActiveWeb3React'
 //import useAddTokenToMetamask from 'hooks/useAddTokenToMetamask' - /////from transaction cofrimation modal index line 127
 import React, { useCallback, useEffect, useState } from 'react'
@@ -31,6 +30,7 @@ const ClaimTransaction = () => {
   const [ID, setID] = useState(String)
   const [houseaddress, sethouseaddress] = useState(String)
   const [ishidden, setishidden] = useState(Boolean)
+  const [totalSupply, settotalySupply] = useState(Number)
   const [connected, setnotconnected] = useState(Boolean)
   const [holders, setholders] = useState(Number)
   const [price, setprice] = useState(String)
@@ -39,6 +39,8 @@ const ClaimTransaction = () => {
   const [userbalance, setuserbalance] = useState(Number)
   const [marketcap, setmarketcap] = useState(String)
   const [liq, setliq] = useState(String)
+
+  const time = new Date().getTime()
   function toggleHidden() {
     setishidden(!ishidden)
   }
@@ -192,7 +194,27 @@ const ClaimTransaction = () => {
       }
     }
 
+    async function FetchtotalSupply() {
+      try {
+        //setLoading(true)
+        const provider = getDefaultProvider()
+        const NFTabi = abiObject
+        const contractaddress = '0xC4deaEbD15E3B6956cc7EF48d2AB934CA3CaB4D2'
+        const contract = new Contract(contractaddress, NFTabi, provider)
+        const Totalminted = await contract.totalSupply()
+        const FinalResult = Number(Totalminted)
+        const minted = FinalResult
+        settotalySupply(minted)
+        console.log(FinalResult)
+        return minted
+      } catch (error) {
+        console.log(error)
+      } finally {
+      }
+    }
+
     FetchBalance()
+    FetchtotalSupply()
     FetchNFT().then((result) => setnft(result))
     FetchUnpaidBalance()
       //.then((result) => formatEther(result))
@@ -206,7 +228,7 @@ const ClaimTransaction = () => {
       return
     }
     try {
-      const response = fetch('https://goc0xambi2.execute-api.us-east-2.amazonaws.com/postuserinfo', {
+      const response = fetch('https://5dy6wazeq6.execute-api.us-east-2.amazonaws.com/test', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -224,7 +246,7 @@ const ClaimTransaction = () => {
     } catch (error) {
       console.log(error)
     } finally {
-      console.log('success')
+      console.log('success, you have created an account!')
     }
   }
 
@@ -276,9 +298,10 @@ const ClaimTransaction = () => {
     }
   }, [showConnectAWallet])
 
-  //  <img className={'dapp-header-image'} src={ApeMotorcycleLogo} alt="header"></img>
+  //<ProgressBar completed={totalSupply} maxCompleted={150} />
   return (
     <div style={{ justifyContent: 'space-between', alignItems: 'center' }} className={'flexbox-vertical-container'}>
+      <img className={'dapp-header-image'} src={ApeMotorcycleLogo} alt="header"></img>
       <div style={{ marginTop: '3vh' }} className="flexbox-vertical-container">
         <div className="flexbox-container" style={{ justifyContent: 'center' }}>
           <div className={'Newheader-flexbox-container'}>
@@ -325,7 +348,6 @@ const ClaimTransaction = () => {
             </button>
           </div>
         </div>
-        <ProgressBar completed={20} maxCompleted={10000} />
       </div>
       <div style={{ justifyContent: 'center' }} className={'flexbox-container'}>
         <div id="DashBoard">
@@ -364,7 +386,7 @@ const ClaimTransaction = () => {
                 <input
                   onChange={(e) => sethouseaddress(e.target.value)}
                   type="text"
-                  id="address"
+                  id="houseaddress"
                   name="Home Address"
                   placeholder="5555 rd, Vancouver, V6V 2V2"
                 ></input>
@@ -372,7 +394,7 @@ const ClaimTransaction = () => {
                   {!fullName && !ID && !houseaddress && !account && (
                     <button style={{ alignSelf: 'center' }} className={'Account-Form-button'}>
                       {' '}
-                      Cant Submit Yet, Connect your wallet, and fill in the form fields
+                      Please fill in the form fields to submit
                     </button>
                   )}
                   {fullName && ID && houseaddress && account && (
