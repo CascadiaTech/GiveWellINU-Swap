@@ -128,7 +128,8 @@ const NFTMintSection = () => {
       //.then((result) => result.some((result: { [x: string]: string }) => result['address'] === account))
       //.then((result) => setExternalacc(result))
     FetchisWhitelisted().then((result) => setisWhitelisted(result))
-  }, [MintPrice, account, library?.provider])
+  }, [MintPrice, account, library?.provider, totalSupply]
+    )
 
  async function handleMint() {
 
@@ -154,7 +155,7 @@ const NFTMintSection = () => {
       console.log(error)
       setLoading(false)
     } finally {
-      setLoading(false)
+      Swal.fire('Congratulations! You have minted an ApeMotorcycleClub NFT')
     }
 
 }
@@ -184,14 +185,14 @@ async function handleWLMint() {
     console.log(error)
     setLoading(false)
   } finally {
-    setLoading(false)
+    Swal.fire('Congratulations! You have minted an ApeMotorcycleClub NFT')
   }
 
 
 }
 
-const mintpricemath = MintPrice * 0.0000000000000000001
-mintpricemath.toFixed(4)
+const mintpricemath = 0.024999999999999998
+const Finalmintprice = mintpricemath.toFixed(3)
 
   return (
     <>
@@ -230,7 +231,7 @@ mintpricemath.toFixed(4)
               className={'NFTmintingstationtext'}
             >
               {' '}
-              Price: {mintpricemath}
+              Price: {Finalmintprice}
             </p>
             <p
               style={{
@@ -239,9 +240,9 @@ mintpricemath.toFixed(4)
               className={'NFTmintingstationtext'}
             >
               {' '}
-              Supply: {settotalySupply}/10,000
+              Supply: {totalSupply}/10,000
             </p>
-            <ProgressBar completed={totalSupply} maxCompleted={150} />
+            <ProgressBar completed={totalSupply} maxCompleted={10000} />
           </div>
           <p style={{ marginBottom: '2vh', marginTop: '2vh' }}></p>
           <div className={'flexbox-vertical-container'}>
