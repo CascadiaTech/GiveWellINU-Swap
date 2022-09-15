@@ -1,7 +1,6 @@
 import './styles.css'
 import 'animate.css'
 
-import { getNftMetadata, getNftsForOwner, initializeAlchemy, Network } from '@alch/alchemy-sdk'
 import { Contract } from '@ethersproject/contracts'
 import { Web3Provider } from '@ethersproject/providers'
 import { parseEther } from '@ethersproject/units'
@@ -227,55 +226,12 @@ export default function DashBoardComponent() {
         console.log('success')
       }
     }
-    async function FetchNFT() {
-      try {
-        const settings = {
-          apiKey: '3JTCnITteGZR7Uu4QbBFzraeVCVlVokg', // Replace with your Alchemy API Key.
-          network: Network.ETH_RINKEBY, // Replace with your network.
-          maxRetries: 10,
-        }
 
-        const alchemy = initializeAlchemy(settings)
-
-        // Print owner's wallet address:
-        const ownerAddr = account
-        console.log('fetching NFTs for address:', ownerAddr)
-        console.log('...')
-
-        // Print total NFT count returned in the response:
-        const nftsForOwner = await getNftsForOwner(alchemy, account || 'string')
-        console.log('number of NFTs found:', nftsForOwner.totalCount)
-        console.log('...')
-        for (const nft of nftsForOwner.ownedNfts) {
-          console.log('===')
-          console.log('contract address:', nft.contract.address)
-          console.log('token ID:', nft.tokenId)
-        }
-
-        //const Getfunapes = nftsForOwner.ownedNfts(alchemy, '0xa2607d28f7a899e38abe99c67ccb37127875be7e')
-        //console.log(Getfunapes)
-
-        // Fetch metadata for a particular NFT:
-        console.log('fetching metadata for a Fun ape NFT...')
-        const response = await getNftMetadata(alchemy, '0xa2607d28f7a899e38abe99c67ccb37127875be7e', '1')
-        const metadatas = await JSON.stringify(response)
-        const test1 = JSON.parse(metadatas)
-        const test2 = test1.rawMetadata.image
-        const test3 = JSON.stringify(test2)
-        return test3
-      } catch (error) {
-        console.log(error)
-      } finally {
-        console.log('success')
-      }
-    }
     FetchExternalacc()
       .then((result) => JSON.stringify(result))
       .then((result) => JSON.parse(result))
       .then((result) => result.some((result: { [x: string]: string }) => result['address'] === account))
       .then((result) => setExternalacc(result))
-
-    FetchNFT().then((result) => setmetadata(result))
     FetchisWhitelisted().then((result) => setisWhitelisted(result))
   }, [account])
   if (!Externalacc) {
