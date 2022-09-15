@@ -3,7 +3,7 @@ import '../DashBoard/styles.css'
 
 import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons'
 import { Contract } from '@ethersproject/contracts'
-import { ExternalProvider, getDefaultProvider, JsonRpcFetchFunc, Web3Provider } from '@ethersproject/providers'
+import { ExternalProvider, JsonRpcFetchFunc, Web3Provider } from '@ethersproject/providers'
 import { parseEther } from '@ethersproject/units'
 //import { getDefaultProvider, Web3Provider } from '@ethersproject/providers'
 import ProgressBar from '@ramonak/react-progress-bar'
@@ -24,6 +24,7 @@ const NFTMintSection = () => {
   const scrollY = useScrollPosition()
   const [loading, setLoading] = useState(false)
   const [totalSupply, settotalySupply] = useState(Number)
+  const [MintPrice, setpubmintprice] = useState(Number)
   const [NftAmount, SetNftAmount] = useState(1)
   const [Externalacc, setExternalacc] = useState(true)
   const [isWhitelisted, setisWhitelisted] = useState(Boolean)
@@ -81,9 +82,9 @@ const NFTMintSection = () => {
     async function FetchtotalSupply() {
       try {
         //setLoading(true)
-        const provider = getDefaultProvider()
+        const provider = new Web3Provider(library?.provider as ExternalProvider | JsonRpcFetchFunc)
         const NFTabi = abiObject
-        const contractaddress = '0xC4deaEbD15E3B6956cc7EF48d2AB934CA3CaB4D2'
+        const contractaddress = '0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6'
         const contract = new Contract(contractaddress, NFTabi, provider)
         const Totalminted = await contract.totalSupply()
         const FinalResult = Number(Totalminted)
@@ -97,14 +98,37 @@ const NFTMintSection = () => {
       }
     }
 
+    
+    async function FetchPublicMintPrice() {
+      try {
+        //setLoading(true)
+        const provider = new Web3Provider(library?.provider as ExternalProvider | JsonRpcFetchFunc)
+        const NFTabi = abiObject
+        const contractaddress = '0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6'
+        const contract = new Contract(contractaddress, NFTabi, provider)
+        console.log(contract)
+        const Mintprice = await contract.PUB_MINT_PRICE()
+        console.log(MintPrice)
+        const FinalResult = Number(Mintprice)
+        const PublicMintPrice = FinalResult
+        setpubmintprice(PublicMintPrice)
+        console.log(FinalResult)
+        return PublicMintPrice
+      } catch (error) {
+        console.log(error)
+      } finally {
+      }
+    }
+
+    FetchPublicMintPrice()
     FetchtotalSupply()
-    FetchExternalacc()
-      .then((result) => JSON.stringify(result))
-      .then((result) => JSON.parse(result))
-      .then((result) => result.some((result: { [x: string]: string }) => result['address'] === account))
-      .then((result) => setExternalacc(true))
+    //FetchExternalacc()
+      //.then((result) => JSON.stringify(result))
+      //.then((result) => JSON.parse(result))
+      //.then((result) => result.some((result: { [x: string]: string }) => result['address'] === account))
+      //.then((result) => setExternalacc(result))
     FetchisWhitelisted().then((result) => setisWhitelisted(result))
-  }, [account])
+  }, [MintPrice, account, library?.provider])
 
  async function handleMint() {
 
@@ -166,6 +190,9 @@ async function handleWLMint() {
 
 }
 
+const mintpricemath = MintPrice * 0.0000000000000000001
+mintpricemath.toFixed(4)
+
   return (
     <>
   <div className={'flexbox-container-hidden'}>
@@ -203,7 +230,7 @@ async function handleWLMint() {
               className={'NFTmintingstationtext'}
             >
               {' '}
-              Price: 0.075 ETH
+              Price: {mintpricemath}
             </p>
             <p
               style={{
@@ -212,7 +239,7 @@ async function handleWLMint() {
               className={'NFTmintingstationtext'}
             >
               {' '}
-              Supply: 120/10,000
+              Supply: {settotalySupply}/10,000
             </p>
             <ProgressBar completed={totalSupply} maxCompleted={150} />
           </div>
@@ -233,14 +260,19 @@ async function handleWLMint() {
               </button>
             </div>
             { Externalacc ? (
-          <>{isWhitelisted ? (<><button
-              style={{ width: '10vw', marginTop: 10, marginBottom: '2vh' }}
-              className={'MintButton'}
-              onClick={() => handleWLMint()}
-            >
-              {' '}
-              Whitelist Mintpub
-            </button></>) : (
+          <>{isWhitelisted ? (
+           <>
+             <div style={{ alignSelf: 'center' }} className={'flexbox-container'}>
+                <button
+                style={{ width: '10vw', marginTop: 10, marginBottom: '2vh' }}
+                className={'MintButton'}
+                onClick={() => handleWLMint()}
+                >
+                {' '}
+                Whitelist Mint
+                </button>
+             </div>
+           </>) : (
             <> {pubmintactive ? (<>
             <div style={{ alignSelf: 'center' }} className={'flexbox-container'}>
                 <button
@@ -249,7 +281,7 @@ async function handleWLMint() {
                   onClick={() => handleMint()}
                 >
                   {' '}
-                  Mintpub
+                  Mint
                 </button>
             </div>
             </>) 
@@ -272,7 +304,7 @@ async function handleWLMint() {
                   onClick={() => Swal.fire('You do not have an account yet', ' go make an account to mint an NFT')}
                 >
                   {' '}
-                  Make acc
+                  Make an account
                 </button>
               </div>)}
             </div>
