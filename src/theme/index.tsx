@@ -7,7 +7,6 @@ import styled, {
   ThemeProvider as StyledComponentsThemeProvider,
 } from 'styled-components/macro'
 
-import ApeMotorcycleClubBackground from '../assets/images/ApeMotorcycleClubBackground.png'
 import { useIsDarkMode } from '../state/user/hooks'
 import { Colors } from './styled'
 
@@ -211,7 +210,7 @@ export const ThemedText = {
 export const ThemedGlobalStyle = createGlobalStyle`
 html {
   color: ${({ theme }) => theme.text1};
-  background-image: ${`url(${ApeMotorcycleClubBackground})`};
+  background-color: #080808;
 }
 a {
  color: ${({ theme }) => theme.blue1}; 
