@@ -13,6 +13,7 @@ import ApeMotorcycleLogo from 'assets/images/ApeMotorcycleLogo.png'
 //import useAddTokenToMetamask from 'hooks/useAddTokenToMetamask' - /////from transaction cofrimation modal index line 127
 import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 import { abiObject } from './Apeabi'
 import FooterMenu from './Footer'
@@ -25,6 +26,7 @@ const ClaimTransaction = () => {
   const showConnectAWallet = Boolean(!account)
   const context = useWeb3React()
   const { library } = context
+  //const [Externalacc, setExternalacc] = useState(Boolean)
   const [fullName, setfullName] = useState(String)
   const [ID, setID] = useState(String)
   const [houseaddress, sethouseaddress] = useState(String)
@@ -33,6 +35,7 @@ const ClaimTransaction = () => {
   const [connected, setnotconnected] = useState(Boolean)
   const [holders, setholders] = useState(Number)
   const [userinfo, setuserinfo] = useState(String)
+  const [Externalacc, setExternalacc] = useState(Boolean)
   const [price, setprice] = useState(String)
   const [nft, setnft] = useState(String)
   const [unpaidearnings, setunpaidearnings] = useState(String)
@@ -139,17 +142,26 @@ const ClaimTransaction = () => {
 
     async function fetchacc() {
       try {
-        const response = fetch('http://localhost:5500/', {
+        const response = fetch('https://apeuserdetails.herokuapp.com/ ', {
           method: 'GET',
+          mode: 'cors',
           headers: {
             'Content-Type': 'text/html',
-            'Access-Control-Allow-Origin': '*',
+            accept: 'text/html',
           },
         })
-        const data = await response
+        const data = (await response).json()
         console.log(data)
-        const testing = JSON.stringify(data)
-        return testing
+        const awaitarray = await data
+        console.log(awaitarray)
+        //const stringarray = JSON.stringify(awaitarray)
+        const isFound = awaitarray.some((element: any) => {
+          if (element.account === account) {
+            return true
+          }
+          return false
+        })
+        return isFound
       } catch (error) {
         console.log(error)
       } finally {
@@ -158,39 +170,47 @@ const ClaimTransaction = () => {
     }
 
     FetchBalance()
-    fetchacc().then((result) => setuserinfo(result as string))
     FetchtotalSupply()
     FetchNFT().then((result) => setnft(result))
-    FetchUnpaidBalance()
     //Fetchaccnts().then((result) => console.log(result))
-    //.then((result) => result.some((result: { [x: string]: string }) => result['address'] === account))
+    fetchacc().then((result) => setExternalacc(result))
   }, [account, showConnectAWallet])
 
   async function Postacc() {
-    if (showConnectAWallet) {
-      console.log({ message: 'Hold On there Partner, there seems to be an Account err!' })
-      return
+    if (!account) {
+      Swal.fire({
+        icon: 'error',
+        title: 'please connect your wallet before submitting',
+      })
     }
     try {
-      const response = fetch('https://goc0xambi2.execute-api.us-east-2.amazonaws.com/postuserinfo', {
+      const options = {
         method: 'POST',
+        json: true, // if truthy, parse *response* as JSON
         headers: {
-          'Content-Type': 'application/json',
+          'Content-type': 'application/json',
+          'Access-Control-Allow-Methods': 'POST',
+          'Access-Control-Allow-Headers': 'Content-Type/json',
+          'Access-Control-Allow-Origin': '*',
         },
         body: JSON.stringify({
-          address: account,
+          // have to manually stringify object in
+          address: houseaddress,
+          ID,
           name: fullName,
-          DriverID: ID,
-          house_add: houseaddress,
+          account,
         }),
-      })
-      const data = (await response).json()
-      //const data = rawdata
+      }
+      const response = await fetch('https://apeuserdetails.herokuapp.com/ ', options)
+      const data = response.json()
       return data
     } catch (error) {
       console.log(error)
     } finally {
-      console.log('success, you have created an account!')
+      Swal.fire({
+        icon: 'success',
+        title: 'Your account has been created',
+      })
     }
   }
 
@@ -259,65 +279,69 @@ const ClaimTransaction = () => {
       </div>
       <div style={{ justifyContent: 'center' }} className={'flexbox-container'}>
         <div id="DashBoard">
-          <div>
-            <button onClick={toggleHidden} style={{ fontFamily: 'Rye, cursive' }} className={'createaccount'}>
-              Create an account
-            </button>
-            <p style={{ paddingTop: '2vh', marginTop: '2vh', marginBottom: '2vh' }}></p>
-            {!ishidden && (
-              <div className={'CreateAccount-Card'}>
-                <label style={{ color: '#ffffff', fontFamily: 'Rye, cursive' }} htmlFor="fname">
-                  Full Name
-                </label>
-                <input
-                  onChange={(e) => setfullName(e.target.value)}
-                  type="text"
-                  id="fname"
-                  name="Full name"
-                  placeholder="Your name.."
-                ></input>
+          {Externalacc ? (
+            <></>
+          ) : (
+            <div>
+              <button onClick={toggleHidden} style={{ fontFamily: 'Rye, cursive' }} className={'createaccount'}>
+                Create an account
+              </button>
+              <p style={{ paddingTop: '2vh', marginTop: '2vh', marginBottom: '2vh' }}></p>
+              {!ishidden && (
+                <div className={'CreateAccount-Card'}>
+                  <label style={{ color: '#ffffff', fontFamily: 'Rye, cursive' }} htmlFor="fname">
+                    Full Name
+                  </label>
+                  <input
+                    onChange={(e) => setfullName(e.target.value)}
+                    type="text"
+                    id="fname"
+                    name="Full name"
+                    placeholder="Your name.."
+                  ></input>
 
-                <label style={{ color: '#ffffff', fontFamily: 'Rye, cursive' }} htmlFor="fname">
-                  Drivers ID Number
-                </label>
-                <input
-                  onChange={(e) => setID(e.target.value)}
-                  type="text"
-                  id="ID"
-                  name="Driver ID #"
-                  placeholder="7306492"
-                ></input>
+                  <label style={{ color: '#ffffff', fontFamily: 'Rye, cursive' }} htmlFor="fname">
+                    Drivers ID Number
+                  </label>
+                  <input
+                    onChange={(e) => setID(e.target.value)}
+                    type="text"
+                    id="ID"
+                    name="Driver ID #"
+                    placeholder="7306492"
+                  ></input>
 
-                <label style={{ color: '#ffffff', fontFamily: 'Rye, cursive' }} htmlFor="fname">
-                  Address
-                </label>
-                <input
-                  onChange={(e) => sethouseaddress(e.target.value)}
-                  type="text"
-                  id="houseaddress"
-                  name="Home Address"
-                  placeholder="5555 rd, Vancouver, V6V 2V2"
-                ></input>
-                <div className={'flexbox-vertical-container'} style={{ justifyContent: 'center' }}>
-                  {!fullName && !ID && !houseaddress && !account && (
-                    <button style={{ alignSelf: 'center' }} className={'Account-Form-button'}>
-                      {' '}
-                      Please fill in the form fields to submit
-                    </button>
-                  )}
-                  {fullName && ID && houseaddress && account && (
-                    <input
-                      style={{ fontFamily: 'Rye, cursive' }}
-                      className={'Form-button-input'}
-                      onClick={() => Postacc()}
-                      type="submit"
-                      value="Submit"
-                    />
-                  )}
+                  <label style={{ color: '#ffffff', fontFamily: 'Rye, cursive' }} htmlFor="fname">
+                    Address
+                  </label>
+                  <input
+                    onChange={(e) => sethouseaddress(e.target.value)}
+                    type="text"
+                    id="houseaddress"
+                    name="Home Address"
+                    placeholder="5555 rd, Vancouver, V6V 2V2"
+                  ></input>
+                  <div className={'flexbox-vertical-container'} style={{ justifyContent: 'center' }}>
+                    {!fullName && !ID && !houseaddress && !account && (
+                      <button style={{ alignSelf: 'center' }} className={'Account-Form-button'}>
+                        {' '}
+                        Please fill in the form fields to submit and connect your wallet.
+                      </button>
+                    )}
+                    {fullName && ID && houseaddress && account && (
+                      <input
+                        style={{ fontFamily: 'Rye, cursive' }}
+                        className={'Form-button-input'}
+                        onClick={() => Postacc()}
+                        type="submit"
+                        value="Submit"
+                      />
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
       <p style={{ marginTop: '2%' }}></p>
