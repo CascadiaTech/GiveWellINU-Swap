@@ -4,20 +4,19 @@ import { BigNumber } from '@ethersproject/bignumber'
 //import { checkNftOwnership, getNftsForOwner, initializeAlchemy, Network } from '@alch/alchemy-sdk'
 //import { LoadingOutlined } from '@ant-design/icons'
 import { Contract } from '@ethersproject/contracts'
-import { getDefaultProvider, Web3Provider } from '@ethersproject/providers'
+import { getDefaultProvider } from '@ethersproject/providers'
 // { formatEther } from '@ethersproject/units'
 //import useScrollPosition from '@react-hook/window-scroll'
 import { useWeb3React } from '@web3-react/core'
 import ApeMotorcycleLogo from 'assets/images/ApeMotorcycleLogo.png'
 //import useActiveWeb3React from 'hooks/useActiveWeb3React'
 //import useAddTokenToMetamask from 'hooks/useAddTokenToMetamask' - /////from transaction cofrimation modal index line 127
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { abiObject } from './Apeabi'
 import FooterMenu from './Footer'
 import { NFTAbiObject } from './NFTAbi'
-
 const ClaimTransaction = () => {
   //const scrollY = useScrollPosition()
   const [loading, setLoading] = useState(false)
@@ -33,6 +32,7 @@ const ClaimTransaction = () => {
   const [totalSupply, settotalySupply] = useState(Number)
   const [connected, setnotconnected] = useState(Boolean)
   const [holders, setholders] = useState(Number)
+  const [userinfo, setuserinfo] = useState(String)
   const [price, setprice] = useState(String)
   const [nft, setnft] = useState(String)
   const [unpaidearnings, setunpaidearnings] = useState(String)
@@ -44,82 +44,6 @@ const ClaimTransaction = () => {
   function toggleHidden() {
     setishidden(!ishidden)
   }
-  useEffect(() => {
-    async function FetchHolders() {
-      try {
-        setLoading(true)
-        const response = await fetch(
-          'https://api.ethplorer.io/getTokenInfo/0x5a8F92addfe1Cd48B51E1FA926144C0918DBAb67?apiKey=EK-pHhzD-K23vfE9-d9bYq'
-        ) // Api Key also the pair contract
-
-        const data = await response.json()
-        const holders = data.holdersCount
-        return holders
-      } catch (error) {
-        console.log(error)
-        setLoading(false)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    async function FetchDexGuruPrice() {
-      try {
-        setLoading(true)
-        const response = await fetch(
-          'https://api.dev.dex.guru/v1/chain/1/tokens/0x5a8F92addfe1Cd48B51E1FA926144C0918DBAb67/market/?api-key=0VQUJ1cmVs0-n0pj_OhrzjCPO1NDKDGzpAuh7OTQZuI'
-        )
-        const data = await response.json()
-        const returnprice = await data.price_usd
-        const stringprice = JSON.stringify(returnprice)
-        return stringprice
-      } catch (error) {
-        console.log(error)
-        setLoading(false)
-      } finally {
-        setLoading(false)
-      }
-    }
-    async function FetchDexGuruLiq() {
-      try {
-        setLoading(true)
-        const response = await fetch(
-          'https://api.dev.dex.guru/v1/chain/1/tokens/0x5a8F92addfe1Cd48B51E1FA926144C0918DBAb67/market/?api-key=0VQUJ1cmVs0-n0pj_OhrzjCPO1NDKDGzpAuh7OTQZuI'
-        )
-        const data = await response.json()
-        const returnliq = await data.liquidity_usd
-        return returnliq
-      } catch (error) {
-        console.log(error)
-        setLoading(false)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    async function Marketcap() {
-      try {
-        setLoading(true)
-        const AnimeMarketcap = (await Number(price)) * 1000000000000
-        const displaymarketcap = JSON.stringify(AnimeMarketcap)
-        return setmarketcap(displaymarketcap)
-      } catch (error) {
-        console.log(error)
-        setLoading(false)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    //FetchDexGuruPrice()
-    //.then((result) => Number(result).toFixed(12))
-    // .then((result) => setprice(result))
-    //FetchDexGuruLiq()
-    // .then((result) => Number(result).toFixed(2))
-    // .then((result) => setliq(result))
-    //Marketcap()
-    //FetchHolders().then((result) => setholders(result))
-  }, [price, holders])
 
   useEffect(() => {
     async function FetchNFT() {
@@ -213,13 +137,33 @@ const ClaimTransaction = () => {
       }
     }
 
+    async function fetchacc() {
+      try {
+        const response = fetch('http://localhost:5500/', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'text/html',
+            'Access-Control-Allow-Origin': '*',
+          },
+        })
+        const data = await response
+        console.log(data)
+        const testing = JSON.stringify(data)
+        return testing
+      } catch (error) {
+        console.log(error)
+      } finally {
+        console.log('success, you have created an account!')
+      }
+    }
+
     FetchBalance()
+    fetchacc().then((result) => setuserinfo(result as string))
     FetchtotalSupply()
     FetchNFT().then((result) => setnft(result))
     FetchUnpaidBalance()
-      //.then((result) => formatEther(result))
-      .then((result) => setunpaidearnings(result as string))
-      .then((result) => console.log(result))
+    //Fetchaccnts().then((result) => console.log(result))
+    //.then((result) => result.some((result: { [x: string]: string }) => result['address'] === account))
   }, [account, showConnectAWallet])
 
   async function Postacc() {
@@ -228,7 +172,7 @@ const ClaimTransaction = () => {
       return
     }
     try {
-      const response = fetch('https://5dy6wazeq6.execute-api.us-east-2.amazonaws.com/test', {
+      const response = fetch('https://goc0xambi2.execute-api.us-east-2.amazonaws.com/postuserinfo', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -260,45 +204,9 @@ const ClaimTransaction = () => {
   function insertDecimal(num: any) {
     return Number((num / 1000000000).toFixed(2))
   }
-  console.log(insertDecimal(userbalance))
+
   const test2 = insertDecimal(userbalance)
-  const test3 = numberWithCommas(test2)
-  console.log(test3)
 
-  //function formateth(str: string) {
-  //  return formatEther(userunpaidearnings)
-  //}
-  //const n = numberWithCommas(Totalliquidity)
-  const handleClaim = useCallback(async () => {
-    if (showConnectAWallet) {
-      console.log({ message: 'Hold On there Partner, there seems to be an Account err!' })
-      return
-    }
-
-    try {
-      setLoading(true)
-      const abi = abiObject
-      const provider = getDefaultProvider()
-      //const signingprovider2 = new InfuraProvider('mainnet', '7724cb4383a249dfb4a847c90954b901')
-      //const test = new WallectConnectProvider({})
-      const signingprovider = new Web3Provider(library.provider)
-      const signer = signingprovider.getSigner()
-      const contractaddress = '0x5a8F92addfe1Cd48B51E1FA926144C0918DBAb67' // "clienttokenaddress"
-      const contract = new Contract(contractaddress, abi, signer)
-      const ClaimBalance = await contract.giveMeWelfarePlease() //.claim(account,amount)
-      const Claimtxid = await ClaimBalance
-
-      return Claimtxid
-      /////
-    } catch (error) {
-      console.log(error)
-      setLoading(false)
-    } finally {
-      setLoading(false)
-    }
-  }, [showConnectAWallet])
-
-  //<ProgressBar completed={totalSupply} maxCompleted={150} />
   return (
     <div style={{ justifyContent: 'space-between', alignItems: 'center' }} className={'flexbox-vertical-container'}>
       <img className={'dapp-header-image'} src={ApeMotorcycleLogo} alt="header"></img>
