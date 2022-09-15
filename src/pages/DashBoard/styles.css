@@ -385,6 +385,8 @@
 
     .headersocialimage{
       padding-left: 1vw;
+      width: 85px;
+      height: 50px;
       padding-right: 1vw;
       visibility: visible;
     }
@@ -574,7 +576,7 @@
         }
       }
 
-      @media only screen and (max-width: 800px) { 
+      @media only screen and (max-width: 1500px) {
         .headersocialimage{
           visibility: hidden;
           width: 0vw;
