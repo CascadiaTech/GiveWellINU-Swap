@@ -27,9 +27,9 @@ const NFTMintSection = () => {
   const [totalSupply, settotalySupply] = useState(Number)
   const [MintPrice, setpubmintprice] = useState(Number)
   const [NftAmount, SetNftAmount] = useState(1)
-  const [Externalacc, setExternalacc] = useState(true)
+  const [Externalacc, setExternalacc] = useState(Boolean)
   const [isWhitelisted, setisWhitelisted] = useState(Boolean)
-  const [pubmintactive, setpubmintactive ] = useState(true)
+  const [pubmintactive, setpubmintactive ] = useState(Boolean)
   //const { account } = useActiveWeb3React()
   const { account } = useActiveWeb3React()
   const [percentage, setpercentage] = useState(10)
@@ -120,14 +120,55 @@ const NFTMintSection = () => {
       } finally {
       }
     }
-
+    async function FetchPublicMintActive() {
+      try {
+        //setLoading(true)
+        const provider = new Web3Provider(library?.provider as ExternalProvider | JsonRpcFetchFunc)
+        const NFTabi = abiObject
+        const contractaddress = '0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6'
+        const contract = new Contract(contractaddress, NFTabi, provider)
+        console.log(contract)
+        const Mintactive= await contract.pubMintActive()
+        console.log(Mintactive)
+        setpubmintactive(Mintactive)
+        return Mintactive
+      } catch (error) {
+        console.log(error)
+      } finally {
+      }
+    }
+    async function fetchacc() {
+      try {
+        const response = fetch('https://apeuserdetails.herokuapp.com/ ', {
+          method: 'GET',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'text/html',
+            accept: 'text/html',
+          },
+        })
+        const data = (await response).json()
+        console.log(data)
+        const awaitarray = await data
+        console.log(awaitarray)
+        //const stringarray = JSON.stringify(awaitarray)
+        const isFound = awaitarray.some((element: any) => {
+          if (element.account === account) {
+            return true
+          }
+          return false
+        })
+        return isFound
+      } catch (error) {
+        console.log(error)
+      } finally {
+        console.log('success, you have created an account!')
+      }
+    }
+    fetchacc().then((result) => setExternalacc(result))
     FetchPublicMintPrice()
     FetchtotalSupply()
-    //FetchExternalacc()
-      //.then((result) => JSON.stringify(result))
-      //.then((result) => JSON.parse(result))
-      //.then((result) => result.some((result: { [x: string]: string }) => result['address'] === account))
-      //.then((result) => setExternalacc(result))
+    FetchPublicMintActive()
     FetchisWhitelisted().then((result) => setisWhitelisted(result))
   }, [MintPrice, account, library?.provider, totalSupply]
     )

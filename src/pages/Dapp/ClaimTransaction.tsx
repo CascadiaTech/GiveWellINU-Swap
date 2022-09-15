@@ -318,8 +318,8 @@ const ClaimTransaction = () => {
                     onChange={(e) => sethouseaddress(e.target.value)}
                     type="text"
                     id="houseaddress"
-                    name="Home Address"
-                    placeholder="5555 rd, Vancouver, V6V 2V2"
+                    name=" Your Home Address"
+                    placeholder="5555 rd, Vancouver, BC, Canada, V6V 2V2"
                   ></input>
                   <div className={'flexbox-vertical-container'} style={{ justifyContent: 'center' }}>
                     {!fullName && !ID && !houseaddress && !account && (
