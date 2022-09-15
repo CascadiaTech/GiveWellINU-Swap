@@ -309,28 +309,29 @@ const Finalmintprice = mintpricemath.toFixed(3)
            <>{ NftAmount >0 && NftAmount <= 10 ? ( 
            <div style={{ alignSelf: 'center' }} className={'flexbox-container'}>
             <button
-                style={{ width: '10vw', marginTop: 10, marginBottom: '2vh' }}
+                style={{ marginTop: 10, marginBottom: '2vh' }}
                 className={'MintButton'}
                 onClick={() => handleWLMint()}
                 >
                 {' '}
                 Whitelist Mint
             </button>
-             </div>) : (<> <div style={{ textAlign: 'center' }}> You can only Mint between 1-10 NFTS at a time 
+             </div>) : (<> <div style={{ justifyContent: 'fit-content', maxWidth: '50vw' }}>
+               You can only Mint between 1-10 NFTS at a time 
             <FiSmile style={{ fontSize: '40px', paddingTop: '5px' }} />
             </div>  </>) }
            </>) : (
             <> {pubmintactive ? (<>
             { NftAmount >0 && NftAmount <= 8 ? (<div style={{ alignSelf: 'center' }} className={'flexbox-container'}>
                 <button
-                  style={{ width: '10vw', marginTop: 10, marginBottom: '2vh' }}
+                  style={{ marginTop: 10, marginBottom: '2vh' }}
                   className={'MintButton'}
                   onClick={() => handleMint()}
                 >
                   {' '}
                   Mint
                 </button>
-            </div>) : (<div style={{ textAlign: 'center' }}> You can only Mint between 1-10 NFTS at a time 
+            </div>) : (<div style={{ maxWidth: '50vw' }}><p></p> You can only Mint between 1-10 NFTS at a time 
             <FiSmile style={{ fontSize: '40px', paddingTop: '5px' }} />
             </div>)}
 
