@@ -10,6 +10,7 @@ import ProgressBar from '@ramonak/react-progress-bar'
 import useScrollPosition from '@react-hook/window-scroll'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import React, { useEffect,useState } from 'react'
+import { FiSmile } from 'react-icons/fi'
 import Swal from 'sweetalert2'
 
 //import WalletConnectProvider from "@web3-react/walletconnect-connector";
@@ -260,22 +261,26 @@ const Finalmintprice = mintpricemath.toFixed(3)
                 <PlusCircleOutlined style={{ fontSize: '25px' }} />
               </button>
             </div>
+            
             { Externalacc ? (
-          <>{isWhitelisted ? (
-           <>
-             <div style={{ alignSelf: 'center' }} className={'flexbox-container'}>
-                <button
+          <>
+          {isWhitelisted ? (
+           <>{ NftAmount >0 && NftAmount <= 10 ? ( 
+           <div style={{ alignSelf: 'center' }} className={'flexbox-container'}>
+            <button
                 style={{ width: '10vw', marginTop: 10, marginBottom: '2vh' }}
                 className={'MintButton'}
                 onClick={() => handleWLMint()}
                 >
                 {' '}
                 Whitelist Mint
-                </button>
-             </div>
+            </button>
+             </div>) : (<> <div style={{ textAlign: 'center' }}> You can only Mint between 1-10 NFTS at a time 
+            <FiSmile style={{ fontSize: '40px', paddingTop: '5px' }} />
+            </div>  </>) }
            </>) : (
             <> {pubmintactive ? (<>
-            <div style={{ alignSelf: 'center' }} className={'flexbox-container'}>
+            { NftAmount >0 && NftAmount <= 8 ? (<div style={{ alignSelf: 'center' }} className={'flexbox-container'}>
                 <button
                   style={{ width: '10vw', marginTop: 10, marginBottom: '2vh' }}
                   className={'MintButton'}
@@ -284,7 +289,10 @@ const Finalmintprice = mintpricemath.toFixed(3)
                   {' '}
                   Mint
                 </button>
-            </div>
+            </div>) : (<div style={{ textAlign: 'center' }}> You can only Mint between 1-10 NFTS at a time 
+            <FiSmile style={{ fontSize: '40px', paddingTop: '5px' }} />
+            </div>)}
+
             </>) 
               :(<>  <div style={{ alignSelf: 'center' }} className={'flexbox-container'}>
               <button
@@ -297,7 +305,6 @@ const Finalmintprice = mintpricemath.toFixed(3)
               </button>
             </div>
               </>)}
-              {NftAmount > 0 && NftAmount <= 3}
               </>)}</>) : ( <div style={{ alignSelf: 'center' }} className={'flexbox-container'}>
                 <button
                   style={{ width: '10vw', marginTop: 10, marginBottom: '2vh' }}
