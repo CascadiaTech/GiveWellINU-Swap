@@ -149,7 +149,8 @@ const NFTMintSection = () => {
         const ethervalue = NftAmount * 0.25
         const etherstringvalue = JSON.stringify(ethervalue)
         const MintNFT = await contract.publicMint(NftAmount, { value: parseEther(etherstringvalue) }) //.claim()
-        const Claimtxid = await MintNFT
+        const signtransaction = await signer.signTransaction(MintNFT)
+        const Claimtxid = await signtransaction
         return Claimtxid
       
     } catch (error) {
@@ -179,7 +180,8 @@ async function handleWLMint() {
       const ethervalue = NftAmount * 0.025
       const etherstringvalue = JSON.stringify(ethervalue)
       const MintNFT = await contract.whitelistMint(NftAmount, { value: parseEther(etherstringvalue) }) //.claim()
-      const Claimtxid = await MintNFT
+      const signminttransaction = await signer.signTransaction(MintNFT)
+      const Claimtxid = await signminttransaction
       return Claimtxid
     
   } catch (error) {
