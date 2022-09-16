@@ -10,7 +10,6 @@ import ProgressBar from '@ramonak/react-progress-bar'
 import useScrollPosition from '@react-hook/window-scroll'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import React, { useEffect,useState } from 'react'
-import { FiSmile } from 'react-icons/fi'
 import Swal from 'sweetalert2'
 
 //import WalletConnectProvider from "@web3-react/walletconnect-connector";
@@ -63,15 +62,11 @@ const NFTMintSection = () => {
         //setLoading(true)
         const data = abiObject
         const abi = data
-        console.log(data)
         const provider = new Web3Provider(library?.provider as ExternalProvider | JsonRpcFetchFunc)
         const contractaddress = '0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6' // "clienttokenaddress"
         const contract = new Contract(contractaddress, abi, provider)
-        console.log(contract)
         const whitelistMint = await contract.isWhitelisted(account) //.claim()
-        console.log(whitelistMint)
         const Claimtxid = await whitelistMint
-        console.log(Claimtxid)
         return Claimtxid
       } catch (error) {
         console.log(error)
@@ -91,7 +86,6 @@ const NFTMintSection = () => {
         const FinalResult = Number(Totalminted)
         const minted = FinalResult
         settotalySupply(minted)
-        console.log(FinalResult)
         return minted
       } catch (error) {
         console.log(error)
@@ -107,13 +101,10 @@ const NFTMintSection = () => {
         const NFTabi = abiObject
         const contractaddress = '0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6'
         const contract = new Contract(contractaddress, NFTabi, provider)
-        console.log(contract)
         const Mintprice = await contract.PUB_MINT_PRICE()
-        console.log(MintPrice)
         const FinalResult = Number(Mintprice)
         const PublicMintPrice = FinalResult
         setpubmintprice(PublicMintPrice)
-        console.log(FinalResult)
         return PublicMintPrice
       } catch (error) {
         console.log(error)
@@ -127,9 +118,7 @@ const NFTMintSection = () => {
         const NFTabi = abiObject
         const contractaddress = '0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6'
         const contract = new Contract(contractaddress, NFTabi, provider)
-        console.log(contract)
         const Mintactive= await contract.pubMintActive()
-        console.log(Mintactive)
         setpubmintactive(Mintactive)
         return Mintactive
       } catch (error) {
@@ -148,9 +137,7 @@ const NFTMintSection = () => {
           },
         })
         const data = (await response).json()
-        console.log(data)
         const awaitarray = await data
-        console.log(awaitarray)
         //const stringarray = JSON.stringify(awaitarray)
         const isFound = awaitarray.some((element: any) => {
           if (element.account === account) {
@@ -179,13 +166,11 @@ const NFTMintSection = () => {
       //setLoading(true)
       const data = abiObject
       const abi = data
-      console.log(data)
       const contractaddress = '0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6' // "clienttokenaddress"
 
         const provider = new Web3Provider(library?.provider as ExternalProvider | JsonRpcFetchFunc)
         //const provider = getDefaultProvider()
         const signer = provider.getSigner()
-        console.log(signer)
         const contract = new Contract(contractaddress, abi, signer)
         const ethervalue = NftAmount * 0.25
         const etherstringvalue = JSON.stringify(ethervalue)
@@ -210,13 +195,11 @@ async function handleWLMint() {
     //setLoading(true)
     const data = abiObject
     const abi = data
-    console.log(data)
     const contractaddress = '0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6' // "clienttokenaddress"
 
       const provider = new Web3Provider(library?.provider as ExternalProvider | JsonRpcFetchFunc)
       //const provider = getDefaultProvider()
       const signer = provider.getSigner()
-      console.log(signer)
       const contract = new Contract(contractaddress, abi, signer)
       const ethervalue = NftAmount * 0.025
       const etherstringvalue = JSON.stringify(ethervalue)
@@ -250,7 +233,7 @@ const Finalmintprice = mintpricemath.toFixed(3)
       </div>
     </div>
     <div className={'flexbox-vertical-container'}>
-          <p style={{ fontFamily: 'Rye, cursive', color: '#FFFFFF', fontSize: 'calc(3 * (0.5vw + 0.5vh))' }}>
+          <p style={{ fontFamily: 'Rye, cursive', color: '#FFFFFF', fontSize: 'calc(3 * (0.6vw + 0.6vh))' }}>
               {' '}
               NFT Minting Station
           </p>
@@ -318,9 +301,8 @@ const Finalmintprice = mintpricemath.toFixed(3)
                 {' '}
                 Whitelist Mint
             </button>
-             </div>) : (<> <div style={{ justifyContent: 'fit-content', maxWidth: '50vw' }}>
+             </div>) : (<> <div style={{ justifyContent: 'fit-content', maxWidth: '60vw' }}>
                You can only Mint between 1-10 NFTS at a time 
-            <FiSmile style={{ fontSize: '40px', paddingTop: '5px' }} />
             </div>  </>) }
            </>) : (
             <> {pubmintactive ? (<>
@@ -334,15 +316,14 @@ const Finalmintprice = mintpricemath.toFixed(3)
                   Mint
                 </button>
             </div>) : (<div style={{ maxWidth: '50vw' }}><p></p> You can only Mint between 1-10 NFTS at a time 
-            <FiSmile style={{ fontSize: '40px', paddingTop: '5px' }} />
             </div>)}
 
             </>) 
               :(<>  <div style={{ alignSelf: 'center' }} className={'flexbox-container'}>
               <button
-                style={{ width: '10vw', marginTop: 10, marginBottom: '2vh' }}
+                style={{ marginTop: 10, marginBottom: '2vh' }}
                 className={'MintButton'}
-                onClick={() => Swal.fire('WhiteList is over! Get ready for regular Minting!')}
+                onClick={() => Swal.fire('Your wallet has not been WhiteListed, wait for public sale!')}
               >
                 {' '}
                 You are not WhiteListed
@@ -351,7 +332,7 @@ const Finalmintprice = mintpricemath.toFixed(3)
               </>)}
               </>)}</>) : ( <div style={{ alignSelf: 'center' }} className={'flexbox-container'}>
                 <button
-                  style={{ width: '10vw', marginTop: 10, marginBottom: '2vh' }}
+                  style={{ marginTop: 10, marginBottom: '2vh' }}
                   className={'MintButton'}
                   onClick={() => Swal.fire('You do not have an account yet', ' go make an account to mint an NFT')}
                 >

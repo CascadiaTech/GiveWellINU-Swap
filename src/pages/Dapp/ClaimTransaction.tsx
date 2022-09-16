@@ -21,12 +21,10 @@ import { NFTAbiObject } from './NFTAbi'
 const ClaimTransaction = () => {
   //const scrollY = useScrollPosition()
   const [loading, setLoading] = useState(false)
-  //const { account } = useActiveWeb3React()
   const { account } = useWeb3React()
   const showConnectAWallet = Boolean(!account)
   const context = useWeb3React()
   const { library } = context
-  //const [Externalacc, setExternalacc] = useState(Boolean)
   const [fullName, setfullName] = useState(String)
   const [ID, setID] = useState(String)
   const [houseaddress, sethouseaddress] = useState(String)
@@ -44,6 +42,7 @@ const ClaimTransaction = () => {
   const [liq, setliq] = useState(String)
 
   const time = new Date().getTime()
+
   function toggleHidden() {
     setishidden(!ishidden)
   }
@@ -86,12 +85,12 @@ const ClaimTransaction = () => {
           return console.log('noaccountforBalancecall')
         } else {
           const UserTokenBalance = await contract.balanceOf(account)
-          const test = await UserTokenBalance
-          const test0 = test.toString()
-          const the = BigNumber.from(test)
-          const fucke = Number(the)
-          setuserbalance(fucke)
-          return test
+          const Balance = await UserTokenBalance
+          const test = Balance.toString()
+          const UserBalance = BigNumber.from(Balance)
+          const amount = Number(UserBalance)
+          setuserbalance(amount)
+          return Balance
         }
       } catch (error) {
         console.log(error)
@@ -112,9 +111,8 @@ const ClaimTransaction = () => {
         const contract = new Contract(contractaddress, abi, provider)
         const UserUnpaidBalance = await contract.getUserUnpaidEarnings(account)
         const FinalResult = await Number(UserUnpaidBalance)
-        const fuck = FinalResult.toString()
-        console.log(FinalResult)
-        return fuck
+        const UnpaidBalance = FinalResult.toString()
+        return UnpaidBalance
       } catch (error) {
         console.log(error)
       } finally {
@@ -132,7 +130,6 @@ const ClaimTransaction = () => {
         const FinalResult = Number(Totalminted)
         const minted = FinalResult
         settotalySupply(minted)
-        console.log(FinalResult)
         return minted
       } catch (error) {
         console.log(error)
@@ -151,9 +148,7 @@ const ClaimTransaction = () => {
           },
         })
         const data = (await response).json()
-        console.log(data)
         const awaitarray = await data
-        console.log(awaitarray)
         //const stringarray = JSON.stringify(awaitarray)
         const isFound = awaitarray.some((element: any) => {
           if (element.account === account) {

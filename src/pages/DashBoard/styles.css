@@ -265,8 +265,8 @@
     box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.5);
     width: fit-content;
     min-width: fit-content;
-    height: 5vh;
-    max-height: 5vh;
+    height: fit-content;
+    max-height: fit-content;
     margin-right: 2vw;
     margin-left: 2vw;
     transition: 0.5s;
