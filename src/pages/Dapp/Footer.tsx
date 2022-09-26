@@ -23,8 +23,8 @@ const FooterBackground = styled(Row)`
   background-color: rgba(194, 194, 194, 0.912);
   width: 100vw;
   max-width: 100vw;
-  height: 55vh;
-  max-height: 55vh;
+  height: 58vh;
+  max-height: 58vh;
   min-height: 35vh;
   padding: 1px;
   transform: translate(0%, 30%);
