@@ -45,7 +45,7 @@ const FooterBackground = styled(Row)`
     transform: translate(0%, 2%);
     width: 100vw;
     max-width: 100vw;
-    background-color: rgba(194, 194, 194, 0.912);
+    background-color: transparent;
     box-shadow: 0px 6px 10px rgb(0 0 0 / 2%);
   `};
 `
