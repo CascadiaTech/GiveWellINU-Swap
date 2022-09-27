@@ -20,7 +20,7 @@ import twitter from '../../assets/images/twitter.png'
 
 const FooterBackground = styled(Row)`
   justify-self: center;
-  background-color: rgba(194, 194, 194, 0.912);
+  background-color: transparent;
   width: 100vw;
   max-width: 100vw;
   height: 58vh;

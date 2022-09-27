@@ -216,6 +216,7 @@
     "react-redux": "^7.2.2",
     "react-scale-image": "^0.0.1",
     "react-scroll": "^1.8.6",
+    "react-slideshow-image": "^4.0.5",
     "react-timeline-animation": "^1.1.10",
     "react-vertical-timeline-component": "^3.5.2",
     "react-virtualized-auto-sizer": "^1.0.2",

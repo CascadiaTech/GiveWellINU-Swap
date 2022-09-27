@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import '../DashBoard/styles.css'
+import './Carousel.css'
 
 import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons'
 import { Contract } from '@ethersproject/contracts'
@@ -8,15 +9,20 @@ import { parseEther } from '@ethersproject/units'
 //import { getDefaultProvider, Web3Provider } from '@ethersproject/providers'
 import ProgressBar from '@ramonak/react-progress-bar'
 import useScrollPosition from '@react-hook/window-scroll'
+import blue from 'assets/images/blue.png'
+import green from 'assets/images/green.png'
+import MotorcycleVanPhoto from 'assets/images/MotorcycleVanPhoto.png'
+import oranje from 'assets/images/oranje.png'
+import red from 'assets/images/red.png'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import React, { useEffect,useState } from 'react'
 import Swal from 'sweetalert2'
 
 //import WalletConnectProvider from "@web3-react/walletconnect-connector";
 //import LinePic from 'assets/LinePic.png'
-import blueape from '../../assets/images/blueape.png'
 //import CountdownTimer from './CountdownTimer'
 import { abiObject } from './Apeabi'
+import Carousel from './Carousel'
 
 
 ///https://gateway.pinata.cloud/ipfs/QmVeMWpbq3UzbfPZnQrwSWAC9qrSPhqzWmV8ZmKyxPqH5H
@@ -226,33 +232,35 @@ const Finalmintprice = mintpricemath.toFixed(3)
   <div className={'flexbox-container-hidden'}>
     <div className={'flexbox-vertical-container'}>
       <div className={'NFT-card'}>
-        <p style={{ fontFamily: 'Rye, cursive', color: '#FFFFFF', fontSize: 'calc(3 * (0.5vw + 0.5vh))' }}>
-          {' '}
-          Artwork (here)
-        </p>
+        <img src={MotorcycleVanPhoto} style={{ height: '22vw', minHeight: '200px', width: '22vw',
+         minWidth: '200px' }} alt={'Motorcycle'}></img>
       </div>
     </div>
     <div className={'flexbox-vertical-container'}>
-          <p style={{ fontFamily: 'Rye, cursive', color: '#FFFFFF', fontSize: 'calc(3 * (0.6vw + 0.6vh))' }}>
+          <p style={{ fontFamily: 'Rye, cursive', color: '#FFFFFF', fontSize: 'calc(3 * (0.6vw + 0.6vh))', paddingLeft: '3vw' }}>
               {' '}
               NFT Minting Station
           </p>
         </div>
-        <div className={'NFT-card'}>
+        <div className={'NFT-mint-card'}>
           <div className={'flexbox-vertical-container'} style={{ justifyContent: 'center' }}>
-            <img
-              style={{
-                minWidth: '250px',
-                maxWidth: '250px',
-                height: 'auto',
-                borderRadius: '10px',
-                border: 'solid',
-                marginBottom: '2vh',
-                alignSelf: 'center',
-              }}
-              src={blueape}
-              alt='blueape'
-            ></img>{' '}
+              <Carousel show={1} infiniteLoop={true} withIndicator={false}>
+                <div style={{ color: '#ffffff' }} data-testid="carousel-item-1">
+                  <img src={blue} style={{ height: '200px', width: '200px' }} alt="blueApe"></img>
+                </div>
+
+                <div style={{ color: '#ffffff' }} data-testid="carousel-item-2">
+                  <img src={red} style={{ height: '200px', width: '200px' }} alt="redApe"></img>
+                </div>
+
+                <div style={{ color: '#ffffff' }} data-testid="carousel-item-3">
+                  <img src={oranje} style={{ height: '200px', width: '200px' }} alt="orangeApe"></img>
+                </div>
+
+                <div style={{ color: '#ffffff' }} data-testid="carousel-item-4">
+                  <img src={green} style={{ height: '200px', width: '200px' }} alt="greenApe"></img>
+                </div>
+              </Carousel>{' '}
             <p
               style={{ fontFamily: 'montserrat, sans-serif' }}
               className={'NFTmintingstationtext'}
