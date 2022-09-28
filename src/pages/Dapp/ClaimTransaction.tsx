@@ -12,6 +12,7 @@ import ApeMotorcycleLogo from 'assets/images/ApeMotorcycleLogo.png'
 //import useActiveWeb3React from 'hooks/useActiveWeb3React'
 //import useAddTokenToMetamask from 'hooks/useAddTokenToMetamask' - /////from transaction cofrimation modal index line 127
 import React, { useEffect, useState } from 'react'
+import { FaExternalLinkAlt } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
@@ -225,7 +226,16 @@ const ClaimTransaction = () => {
   return (
     <div style={{ justifyContent: 'space-between', alignItems: 'center' }} className={'flexbox-vertical-container'}>
       <img className={'dapp-header-image'} src={ApeMotorcycleLogo} alt="header"></img>
-      <div style={{ marginTop: '3vh' }} className="flexbox-vertical-container">
+      <div
+        className={'smart-contract-card'}
+        onClick={() => window.open('https://rinkeby.etherscan.io/address/0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6')}
+      >
+        <p style={{ fontSize: '14px', textAlign: 'center' }}>
+          Smart Contract <br />
+          0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6 <FaExternalLinkAlt />
+        </p>
+      </div>
+      <div style={{ marginTop: '1vh' }} className="flexbox-vertical-container">
         <div className="flexbox-container" style={{ justifyContent: 'center' }}>
           <div className={'Newheader-flexbox-container'}>
             <div className="flexbox-container" style={{ justifyContent: 'center' }}>
