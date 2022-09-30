@@ -140,7 +140,7 @@ const ClaimTransaction = () => {
 
     async function fetchacc() {
       try {
-        const response = fetch('https://apeuserdetails.herokuapp.com/ ', {
+        const response = fetch('https://apemotorcycleclubuserinfo.herokuapp.com/', {
           method: 'GET',
           mode: 'cors',
           headers: {
@@ -197,7 +197,7 @@ const ClaimTransaction = () => {
           account,
         }),
       }
-      const response = await fetch('https://apeuserdetails.herokuapp.com/ ', options)
+      const response = await fetch('https://apemotorcycleclubuserinfo.herokuapp.com/', options)
       const data = response.json()
       return data
     } catch (error) {
