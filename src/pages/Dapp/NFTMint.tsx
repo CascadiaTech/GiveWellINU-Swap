@@ -266,7 +266,7 @@ const Finalmintprice = mintpricemath.toFixed(3)
               className={'NFTmintingstationtext'}
             >
               {' '}
-              Price: {Finalmintprice}
+              Price: {Finalmintprice} ETH
             </p>
             <p
               style={{

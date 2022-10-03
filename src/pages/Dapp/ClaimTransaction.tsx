@@ -21,7 +21,6 @@ import FooterMenu from './Footer'
 import { NFTAbiObject } from './NFTAbi'
 const ClaimTransaction = () => {
   //const scrollY = useScrollPosition()
-  const [loading, setLoading] = useState(false)
   const { account } = useWeb3React()
   const showConnectAWallet = Boolean(!account)
   const context = useWeb3React()
@@ -32,15 +31,9 @@ const ClaimTransaction = () => {
   const [ishidden, setishidden] = useState(Boolean)
   const [totalSupply, settotalySupply] = useState(Number)
   const [connected, setnotconnected] = useState(Boolean)
-  const [holders, setholders] = useState(Number)
-  const [userinfo, setuserinfo] = useState(String)
   const [Externalacc, setExternalacc] = useState(Boolean)
-  const [price, setprice] = useState(String)
   const [nft, setnft] = useState(String)
-  const [unpaidearnings, setunpaidearnings] = useState(String)
   const [userbalance, setuserbalance] = useState(Number)
-  const [marketcap, setmarketcap] = useState(String)
-  const [liq, setliq] = useState(String)
 
   const time = new Date().getTime()
 
