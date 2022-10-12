@@ -216,7 +216,7 @@ export default function Header() {
           >
             NFT Minting Station
           </NavLink>
-          <div>
+          <div className={'flexbox-container'}>
             <a style={{ marginLeft: '10vw' }} target="_blank" rel="noreferrer" href="https://twitter.com/ApeMotorcycle">
               <img className={'headersocialimage'} src={twitter} alt="tglink"></img>
             </a>

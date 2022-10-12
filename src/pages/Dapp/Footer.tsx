@@ -29,7 +29,7 @@ const FooterBackground = styled(Row)`
   padding: 1px;
   transform: translate(0%, 30%);
   z-index: -11;
-  overflow: hidden;
+  overflow: visible;
   align-items: center;
   ${({ theme }) => theme.mediaWidth.upToLarge`
     justify-self: start;  

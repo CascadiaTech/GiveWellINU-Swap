@@ -2,6 +2,7 @@ import '@reach/dialog/styles.css'
 import 'inter-ui'
 import 'polyfills'
 import 'components/analytics'
+import './index.css'
 
 import { createWeb3ReactRoot, Web3ReactProvider } from '@web3-react/core'
 import { BlockUpdater } from 'lib/hooks/useBlockNumber'
