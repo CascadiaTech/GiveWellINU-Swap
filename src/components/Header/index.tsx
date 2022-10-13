@@ -23,6 +23,7 @@ import NetworkSelector from './NetworkSelector'
 
 const HeaderFrame = styled.div<{ showBackground: boolean }>`
   display: grid;
+  background-color: rgba(34, 34, 34, 0.904);
   grid-template-columns: 1px 1fr 1px;
   align-items: center;
   justify-content: space-between;
