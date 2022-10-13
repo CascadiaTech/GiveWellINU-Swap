@@ -225,7 +225,11 @@ const ClaimTransaction = () => {
       >
         <p style={{ fontSize: '14px', textAlign: 'center' }}>
           Smart Contract <br />
-          0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6 <FaExternalLinkAlt />
+          0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6
+          <div style={{ justifyContent: 'right' }}>
+            {' '}
+            <FaExternalLinkAlt />
+          </div>
         </p>
       </div>
       <div style={{ marginTop: '1vh' }} className="flexbox-vertical-container">

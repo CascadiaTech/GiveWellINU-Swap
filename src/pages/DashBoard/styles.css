@@ -106,7 +106,7 @@
   }
 
   .NFT-mint-card{
-    width: 'fit-content';
+    width: 30vw;
     min-width: 300px;
     height: fit-content;
     padding: 7%;
@@ -435,6 +435,7 @@
     .footersocialimage{
       visibility: hidden;
       width: 0vw;
+      margin-bottom: 2vh;
       height: 0vh;
     }
 
@@ -471,7 +472,6 @@
       }
       .slideshow {
         margin: 0 auto;
-        overflow: hidden;
         max-width: 500px;
       }
       

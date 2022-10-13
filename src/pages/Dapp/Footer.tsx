@@ -124,36 +124,38 @@ export default function FooterMenu() {
                             width: 'fit-content',
                           }}
                         >
-                          <div>
-                            <a
-                              style={{ marginLeft: '10vw' }}
-                              target="_blank"
-                              rel="noreferrer"
-                              href="https://twitter.com/ApeMotorcycle"
-                            >
-                              <img className={'footersocialimage'} src={twitter} alt="tglink"></img>
-                            </a>
-                            <a target="_blank" rel="noreferrer" href="https://">
-                              <img className={'footersocialimage'} src={tglink} alt="tglink"></img>
-                            </a>
-                            <a target="_blank" rel="noreferrer" href="https://www.instagram.com/apemotorcycleclub/">
-                              <img className={'footersocialimage'} src={instagram} alt="tglink"></img>
-                            </a>
-                            <a
-                              target="_blank"
-                              rel="noreferrer"
-                              href="https://www.facebook.com/Ape-Motorcycle-Club-104428762148239"
-                            >
-                              <img className={'footersocialimage'} src={facebook} alt="tglink"></img>
-                            </a>
-                            <a target="_blank" rel="noreferrer" href="https://discord.com/invite/QQvgp9cgeb">
-                              <img
-                                className={'footersocialimage'}
-                                style={{ marginRight: '7vw' }}
-                                src={discord}
-                                alt="tglink"
-                              ></img>
-                            </a>
+                          <div className={'flexbox-vertical-container'}>
+                            <div className={'flexbox-container'}>
+                              <a
+                                style={{ marginLeft: '20vw' }}
+                                target="_blank"
+                                rel="noreferrer"
+                                href="https://twitter.com/ApeMotorcycle"
+                              >
+                                <img className={'footersocialimage'} src={twitter} alt="tglink"></img>
+                              </a>
+                              <a target="_blank" rel="noreferrer" href="https://">
+                                <img className={'footersocialimage'} src={tglink} alt="tglink"></img>
+                              </a>
+                              <a target="_blank" rel="noreferrer" href="https://www.instagram.com/apemotorcycleclub/">
+                                <img className={'footersocialimage'} src={instagram} alt="tglink"></img>
+                              </a>
+                              <a
+                                target="_blank"
+                                rel="noreferrer"
+                                href="https://www.facebook.com/Ape-Motorcycle-Club-104428762148239"
+                              >
+                                <img className={'footersocialimage'} src={facebook} alt="tglink"></img>
+                              </a>
+                              <a target="_blank" rel="noreferrer" href="https://discord.com/invite/QQvgp9cgeb">
+                                <img
+                                  className={'footersocialimage'}
+                                  style={{ marginRight: '15vw' }}
+                                  src={discord}
+                                  alt="tglink"
+                                ></img>
+                              </a>
+                            </div>
                           </div>
                           <div>
                             <form ref={form} onSubmit={sendEmail}>
