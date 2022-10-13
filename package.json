@@ -231,6 +231,7 @@
     "solc": "^0.8.11",
     "styled-components": "^5.3.0",
     "sweetalert2": "^11.4.28",
+    "tailwindcss-elevation": "^1.0.1",
     "tiny-invariant": "^1.2.0",
     "tw-elements": "^1.0.0-alpha12",
     "typescript-string-operations": "^1.4.1",

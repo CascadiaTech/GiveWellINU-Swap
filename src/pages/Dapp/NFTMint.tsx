@@ -222,7 +222,7 @@ const Finalmintprice = mintpricemath.toFixed(3)
 
   return (
     <>
-    <div className={'flexbox-container'}>
+    <div style={{ marginBottom: '2vh' }} className={'flexbox-container'}>
        <p style={{ fontFamily: 'Rye, cursive', 
        color: '#FFFFFF', fontSize: 'calc(3 * (0.6vw + 0.6vh))', paddingLeft: '3vw' }}>
        NFT Minting Station
@@ -231,7 +231,7 @@ const Finalmintprice = mintpricemath.toFixed(3)
   <div className={'flexbox-container-hidden'}>
     <div className={'flexbox-vertical-container'}>
       <div className={'NFT-card'}>
-        <img src={MotorcycleVanPhoto} style={{ height: '22vw', minHeight: '200px', width: '22vw',
+        <img src={MotorcycleVanPhoto} style={{ height: '22vw', minHeight: '200px', width: '30vw',
          minWidth: '200px' }} alt={'Motorcycle'}></img>
       </div>
     </div>
@@ -239,7 +239,9 @@ const Finalmintprice = mintpricemath.toFixed(3)
         </div>
         <div className={'NFT-mint-card'}>
           <div className={'flexbox-vertical-container'} style={{ justifyContent: 'center' }}>
+            <div className={'slideshow'}>
           <SlideShowComponent></SlideShowComponent>
+          </div>
             <p
               style={{ fontFamily: 'montserrat, sans-serif' }}
               className={'NFTmintingstationtext'}

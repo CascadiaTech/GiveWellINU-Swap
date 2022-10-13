@@ -96,6 +96,7 @@
     min-height: 200px;
     color: #ffffff;
     margin-right: 2vw;
+    margin-bottom: 2vh;
     border-color: rgba(228, 228, 228, 0.942);
     border: 2px solid;
     border-radius: 10px;
@@ -105,13 +106,15 @@
   }
 
   .NFT-mint-card{
-    width: 25vw;
+    width: 'fit-content';
     min-width: 300px;
     height: fit-content;
     padding: 7%;
+    align-items: 'center';
     min-height: 200px;
     color: #ffffff;
     margin-left: 2vw;
+    margin-bottom: 2vh;
     border-color: rgba(228, 228, 228, 0.942);
     border: 2px solid;
     border-radius: 10px;
