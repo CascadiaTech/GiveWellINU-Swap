@@ -62,7 +62,7 @@ const NFTMintSection = () => {
         const data = abiObject
         const abi = data
         const provider = new Web3Provider(library?.provider as ExternalProvider | JsonRpcFetchFunc)
-        const contractaddress = '0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6' // "clienttokenaddress"
+        const contractaddress = '0x26937cBe389C7524798DD4577d1d14AFc3948e9c' // "clienttokenaddress"
         const contract = new Contract(contractaddress, abi, provider)
         const whitelistMint = await contract.isWhitelisted(account) //.claim()
         const Claimtxid = await whitelistMint
@@ -79,7 +79,7 @@ const NFTMintSection = () => {
         //setLoading(true)
         const provider = new Web3Provider(library?.provider as ExternalProvider | JsonRpcFetchFunc)
         const NFTabi = abiObject
-        const contractaddress = '0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6'
+        const contractaddress = '0x26937cBe389C7524798DD4577d1d14AFc3948e9c'
         const contract = new Contract(contractaddress, NFTabi, provider)
         const Totalminted = await contract.totalSupply()
         const FinalResult = Number(Totalminted)
@@ -98,7 +98,7 @@ const NFTMintSection = () => {
         //setLoading(true)
         const provider = new Web3Provider(library?.provider as ExternalProvider | JsonRpcFetchFunc)
         const NFTabi = abiObject
-        const contractaddress = '0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6'
+        const contractaddress = '0x26937cBe389C7524798DD4577d1d14AFc3948e9c'
         const contract = new Contract(contractaddress, NFTabi, provider)
         const Mintprice = await contract.PUB_MINT_PRICE()
         const FinalResult = Number(Mintprice)
@@ -115,7 +115,7 @@ const NFTMintSection = () => {
         //setLoading(true)
         const provider = new Web3Provider(library?.provider as ExternalProvider | JsonRpcFetchFunc)
         const NFTabi = abiObject
-        const contractaddress = '0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6'
+        const contractaddress = '0x26937cBe389C7524798DD4577d1d14AFc3948e9c'
         const contract = new Contract(contractaddress, NFTabi, provider)
         const Mintactive= await contract.pubMintActive()
         setpubmintactive(Mintactive)
@@ -165,7 +165,7 @@ const NFTMintSection = () => {
       //setLoading(true)
       const data = abiObject
       const abi = data
-      const contractaddress = '0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6' // "clienttokenaddress"
+      const contractaddress = '0x26937cBe389C7524798DD4577d1d14AFc3948e9c' // "clienttokenaddress"
 
         const provider = new Web3Provider(library?.provider as ExternalProvider | JsonRpcFetchFunc)
         //const provider = getDefaultProvider()
@@ -194,7 +194,7 @@ async function handleWLMint() {
     //setLoading(true)
     const data = abiObject
     const abi = data
-    const contractaddress = '0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6' // "clienttokenaddress"
+    const contractaddress = '0x26937cBe389C7524798DD4577d1d14AFc3948e9c' // "clienttokenaddress"
 
       const provider = new Web3Provider(library?.provider as ExternalProvider | JsonRpcFetchFunc)
       //const provider = getDefaultProvider()
