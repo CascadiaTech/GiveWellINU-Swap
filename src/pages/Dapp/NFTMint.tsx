@@ -171,7 +171,7 @@ const NFTMintSection = () => {
         //const provider = getDefaultProvider()
         const signer = provider.getSigner()
         const contract = new Contract(contractaddress, abi, signer)
-        const ethervalue = NftAmount * MintPrice
+        const ethervalue = NftAmount * MintPrice * 1e9
         const etherstringvalue = JSON.stringify(ethervalue)
         const MintNFT = await contract.publicMint(NftAmount, { value: parseEther(etherstringvalue) }) //.claim()
         const signtransaction = await signer.signTransaction(MintNFT)
@@ -200,7 +200,7 @@ async function handleWLMint() {
       //const provider = getDefaultProvider()
       const signer = provider.getSigner()
       const contract = new Contract(contractaddress, abi, signer)
-      const ethervalue = NftAmount * MintPrice
+      const ethervalue = NftAmount * MintPrice * 1e9
       const etherstringvalue = JSON.stringify(ethervalue)
       const MintNFT = await contract.whitelistMint(NftAmount, { value: parseEther(etherstringvalue) }) //.claim()
       const signminttransaction = await signer.signTransaction(MintNFT)
@@ -217,7 +217,7 @@ async function handleWLMint() {
 
 }
 
-const mintpricemath = MintPrice
+const mintpricemath = MintPrice * 1e9
 const Finalmintprice = mintpricemath.toFixed(3)
 
   return (
