@@ -10,7 +10,7 @@ export enum SupportedChainId {
 
   ARBITRUM_ONE = 42161,
   ARBITRUM_RINKEBY = 421611,
-
+  SEPOLIA = 11155111,
   OPTIMISM = 10,
   OPTIMISTIC_KOVAN = 69,
 
@@ -23,6 +23,7 @@ export const CHAIN_IDS_TO_NAMES = {
   [SupportedChainId.ROPSTEN]: 'ropsten',
   [SupportedChainId.RINKEBY]: 'rinkeby',
   [SupportedChainId.GOERLI]: 'goerli',
+  [SupportedChainId.SEPOLIA]: 'sepolia',
   [SupportedChainId.KOVAN]: 'kovan',
   [SupportedChainId.POLYGON]: 'polygon',
   [SupportedChainId.POLYGON_MUMBAI]: 'polygon_mumbai',
@@ -50,6 +51,7 @@ export const L1_CHAIN_IDS = [
   SupportedChainId.RINKEBY,
   SupportedChainId.GOERLI,
   SupportedChainId.KOVAN,
+  SupportedChainId.SEPOLIA,
   SupportedChainId.POLYGON,
   SupportedChainId.POLYGON_MUMBAI,
 ] as const
