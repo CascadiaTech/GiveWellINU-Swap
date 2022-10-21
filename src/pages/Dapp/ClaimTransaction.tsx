@@ -221,11 +221,11 @@ const ClaimTransaction = () => {
       <img className={'dapp-header-image'} src={ApeMotorcycleLogo} alt="header"></img>
       <div
         className={'smart-contract-card'}
-        onClick={() => window.open('https://rinkeby.etherscan.io/address/0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6')}
+        onClick={() => window.open('https://sepolia.etherscan.io/address/0x26937cbe389c7524798dd4577d1d14afc3948e9c')}
       >
         <p style={{ fontSize: '14px', textAlign: 'center' }}>
           Smart Contract <br />
-          0x5AA774d57C9415fD865bE32F4cDCEC7CAe1c69d6
+          0x26937cbe389c7524798dd4577d1d14afc3948e9c
           <div style={{ justifyContent: 'right' }}>
             {' '}
             <FaExternalLinkAlt />
@@ -281,7 +281,7 @@ const ClaimTransaction = () => {
       </div>
       <div style={{ justifyContent: 'center' }} className={'flexbox-container'}>
         <div id="DashBoard">
-          {Externalacc ? (
+          {Externalacc && account ? (
             <></>
           ) : (
             <div>
