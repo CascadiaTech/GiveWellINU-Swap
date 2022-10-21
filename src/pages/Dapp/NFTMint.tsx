@@ -315,7 +315,7 @@ const Finalmintprice = mintpricemath.toFixed(3)
                 onClick={() => Swal.fire('Your wallet has not been WhiteListed, wait for public sale!')}
               >
                 {' '}
-                You are not WhiteListed
+                You are not Whitelisted
               </button>
             </div>
               </>)}

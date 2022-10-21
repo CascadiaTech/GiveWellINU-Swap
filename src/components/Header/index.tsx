@@ -77,10 +77,10 @@ const HeaderLinks = styled(Row)`
   width: 100vw;
   max-width: 100vw;
   padding: 15px;
-  padding-left: 85px;
+  padding-left: 65px;
   display: grid;
   grid-auto-flow: column;
-  grid-gap: 100px;
+  grid-gap: 90px;
   z-index: -11;
   overflow: auto;
   align-items: center;
@@ -152,7 +152,7 @@ const StyledNavLink = styled(NavLink).attrs({
   color: #ffffff;
   font-size: calc(3.5 * (0.2vw + 0.2vh));
   font-weight: 500;
-  padding: 8px 12px;
+  padding: 6px 10px;
   word-break: break-word;
   overflow: hidden;
   white-space: nowrap;
