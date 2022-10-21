@@ -295,6 +295,7 @@ const ClaimTransaction = () => {
                     Full Name
                   </label>
                   <input
+                    style={{ color: '#000000' }}
                     onChange={(e) => setfullName(e.target.value)}
                     type="text"
                     id="fname"
@@ -306,6 +307,7 @@ const ClaimTransaction = () => {
                     Drivers ID Number
                   </label>
                   <input
+                    style={{ color: '#000000' }}
                     onChange={(e) => setID(e.target.value)}
                     type="text"
                     id="ID"
@@ -317,6 +319,7 @@ const ClaimTransaction = () => {
                     Address
                   </label>
                   <input
+                    style={{ color: '#000000' }}
                     onChange={(e) => sethouseaddress(e.target.value)}
                     type="text"
                     id="houseaddress"
