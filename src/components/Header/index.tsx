@@ -77,10 +77,10 @@ const HeaderLinks = styled(Row)`
   width: 100vw;
   max-width: 100vw;
   padding: 15px;
-  padding-left: 65px;
+  padding-left: 95px;
   display: grid;
   grid-auto-flow: column;
-  grid-gap: 90px;
+  grid-gap: 100px;
   z-index: -11;
   overflow: auto;
   align-items: center;
@@ -218,7 +218,7 @@ export default function Header() {
             NFT Minting Station
           </NavLink>
           <div className={'flexbox-container'} style={{ marginRight: '5vw' }}>
-            <a style={{ marginLeft: '10vw' }} target="_blank" rel="noreferrer" href="https://twitter.com/ApeMotorcycle">
+            <a target="_blank" rel="noreferrer" href="https://twitter.com/ApeMotorcycle">
               <img className={'headersocialimage'} src={twitter} alt="tglink"></img>
             </a>
             <a target="_blank" rel="noreferrer" href="https://">
