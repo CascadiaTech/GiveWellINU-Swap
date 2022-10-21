@@ -127,7 +127,7 @@ const NFTMintSection = () => {
     }
     async function fetchacc() {
       try {
-        const response = fetch('https://apeuserdetails.herokuapp.com/ ', {
+        const response = fetch('https://apemotorcycleclubuserinfo.herokuapp.com/', {
           method: 'GET',
           mode: 'cors',
           headers: {
