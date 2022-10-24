@@ -204,7 +204,7 @@ const NFTMintSection = () => {
       console.log(error)
       setLoading(false)
     } finally {
-      Swal.fire('Congratulations! You have minted an ApeMotorcycleClub NFT')
+      Swal.fire('Congratulations! You have minted an ApeMotorcycleClub NFT', 'success')
     }
 
 }
