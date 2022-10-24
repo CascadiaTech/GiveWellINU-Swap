@@ -153,7 +153,7 @@
     font-size: 18px;
     border: 2px solid;
     max-height: 7vh;
-    height: 7vh;
+    height: fit-content;
     min-width: fit-content;
     font-family: 'montserrat sans-serif';
     align-items: center;
