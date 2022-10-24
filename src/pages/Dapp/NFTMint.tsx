@@ -5,7 +5,7 @@ import './Carousel.css'
 import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons'
 import { Contract } from '@ethersproject/contracts'
 import { ExternalProvider, JsonRpcFetchFunc, Web3Provider } from '@ethersproject/providers'
-import { parseEther } from '@ethersproject/units'
+import { formatEther, parseEther } from '@ethersproject/units'
 //import { getDefaultProvider, Web3Provider } from '@ethersproject/providers'
 import ProgressBar from '@ramonak/react-progress-bar'
 import useScrollPosition from '@react-hook/window-scroll'
@@ -24,6 +24,7 @@ const NFTMintSection = () => {
   const [loading, setLoading] = useState(false)
   const [totalSupply, settotalySupply] = useState(Number)
   const [MintPrice, setpubmintprice] = useState(Number)
+  const [wlmintprice, setwlmintprice] = useState(Number)
   const [NftAmount, SetNftAmount] = useState(1)
   const [Externalacc, setExternalacc] = useState(Boolean)
   const [isWhitelisted, setisWhitelisted] = useState(Boolean)
@@ -101,10 +102,30 @@ const NFTMintSection = () => {
         const contractaddress = '0x26937cBe389C7524798DD4577d1d14AFc3948e9c'
         const contract = new Contract(contractaddress, NFTabi, provider)
         const Mintprice = await contract.PUB_MINT_PRICE()
-        const FinalResult = Number(Mintprice)
+        const MintPriceformatted = formatEther(Mintprice)
+        const FinalResult = Number(MintPriceformatted)
         const PublicMintPrice = FinalResult
         setpubmintprice(PublicMintPrice)
         return PublicMintPrice
+      } catch (error) {
+        console.log(error)
+      } finally {
+      }
+    }
+
+    async function FetchWLMintPrice() {
+      try {
+        //setLoading(true)
+        const provider = new Web3Provider(library?.provider as ExternalProvider | JsonRpcFetchFunc)
+        const NFTabi = abiObject
+        const contractaddress = '0x26937cBe389C7524798DD4577d1d14AFc3948e9c'
+        const contract = new Contract(contractaddress, NFTabi, provider)
+        const Mintprice = await contract.WL_MINT_PRICE()
+        const MintPriceformatted = formatEther(Mintprice)
+        const FinalResult = Number(MintPriceformatted)
+        const Wlmintprice = FinalResult
+        setwlmintprice(Wlmintprice)
+        return Wlmintprice
       } catch (error) {
         console.log(error)
       } finally {
@@ -153,6 +174,7 @@ const NFTMintSection = () => {
     }
     fetchacc().then((result) => setExternalacc(result))
     FetchPublicMintPrice()
+    FetchWLMintPrice()
     FetchtotalSupply()
     FetchPublicMintActive()
     FetchisWhitelisted().then((result) => setisWhitelisted(result))
@@ -171,7 +193,7 @@ const NFTMintSection = () => {
         //const provider = getDefaultProvider()
         const signer = provider.getSigner()
         const contract = new Contract(contractaddress, abi, signer)
-        const ethervalue = NftAmount * MintPrice * 1e9
+        const ethervalue = NftAmount * MintPrice
         const etherstringvalue = JSON.stringify(ethervalue)
         const MintNFT = await contract.publicMint(NftAmount, { value: parseEther(etherstringvalue) }) //.claim()
         const signtransaction = await signer.signTransaction(MintNFT)
@@ -200,7 +222,7 @@ async function handleWLMint() {
       //const provider = getDefaultProvider()
       const signer = provider.getSigner()
       const contract = new Contract(contractaddress, abi, signer)
-      const ethervalue = NftAmount * MintPrice * 1e9
+      const ethervalue = NftAmount * wlmintprice
       const etherstringvalue = JSON.stringify(ethervalue)
       const MintNFT = await contract.whitelistMint(NftAmount, { value: parseEther(etherstringvalue) }) //.claim()
       const signminttransaction = await signer.signTransaction(MintNFT)
@@ -217,8 +239,8 @@ async function handleWLMint() {
 
 }
 
-const mintpricemath = MintPrice * 1e9
-const Finalmintprice = mintpricemath.toFixed(3)
+const mintpricemath = MintPrice
+//const Finalmintprice = mintpricemath.toFixed(3)
 
   return (
     <>
@@ -247,7 +269,7 @@ const Finalmintprice = mintpricemath.toFixed(3)
               className={'NFTmintingstationtext'}
             >
               {' '}
-              Price: {Finalmintprice} ETH
+              Price: {MintPrice} ETH
             </p>
             <p
               style={{
@@ -312,7 +334,7 @@ const Finalmintprice = mintpricemath.toFixed(3)
               <button
                 style={{ marginTop: 10, marginBottom: '2vh' }}
                 className={'MintButton'}
-                onClick={() => Swal.fire('Your wallet has not been WhiteListed, wait for public sale!')}
+                onClick={() => Swal.fire('error, Your wallet has not been WhiteListed, wait for public sale!')}
               >
                 {' '}
                 You are not Whitelisted
@@ -323,7 +345,7 @@ const Finalmintprice = mintpricemath.toFixed(3)
                 <button
                   style={{ marginTop: 10, marginBottom: '2vh' }}
                   className={'MintButton'}
-                  onClick={() => Swal.fire('You do not have an account yet', ' go make an account to mint an NFT')}
+                  onClick={() => Swal.fire('You do not have an account yet', ' Go make an account on the homepage to mint an NFT', 'error')}
                 >
                   {' '}
                   Make an account
