@@ -211,24 +211,9 @@ export default function Header() {
             className={'header-link-display'}
             style={{
               paddingLeft: '1.5vw',
-              textDecoration: 'none',
-              //fontFamily: 'Rye, cursive',
-              transition: '1s',
-              marginTop: '10px',
-              color: '#ffffff',
-              fontSize: 'calc(3 * (0.3vw + 0.3vh))',
-            }}
-            to="./Dapp"
-            id={'/Dapp'}
-          >
-            Home
-          </NavLink>
-          <NavLink
-            className={'header-link-display'}
-            style={{
-              paddingLeft: '1.5vw',
               marginTop: '10px',
               textDecoration: 'none',
+              fontFamily: 'Aquire',
               transition: '1s',
               color: '#ffffff',
               fontSize: 'calc(3 * (0.3vw + 0.3vh))',
@@ -242,10 +227,11 @@ export default function Header() {
             className={'header-link-display'}
             style={{
               paddingLeft: '1.5vw',
+              marginTop: '10px',
               textDecoration: 'none',
+              fontFamily: 'Aquire',
               transition: '1s',
               color: '#ffffff',
-              marginTop: '10px',
               fontSize: 'calc(3 * (0.3vw + 0.3vh))',
             }}
             to="./Pool"

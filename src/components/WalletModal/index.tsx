@@ -378,9 +378,9 @@ export default function WalletModal({
           </HeaderRow>
         ) : (
           <HeaderRow>
-            <HoverText>
-              <Trans>Connect a wallet</Trans>
-            </HoverText>
+            <p style={{ fontFamily: 'Aquire' }} className={'text-gray-100 flex text-center cursor-pointer'}>
+              Connect Wallet
+            </p>
           </HeaderRow>
         )}
 

@@ -19,7 +19,8 @@ import { Text } from 'rebass'
 import { TradeState } from 'state/routing/types'
 import styled, { ThemeContext } from 'styled-components/macro'
 
-//import JpegBackground2 from '../../assets/videos/JpegBackground2.mp4'
+import ginuBanner from '../../assets/ginuAssets/GINU-Twitter-Banner.png'
+import ginuPic from '../../assets/ginuAssets/ginuLogo2.png'
 import AddressInputPanel from '../../components/AddressInputPanel'
 import { ButtonConfirmed, ButtonError, ButtonLight, ButtonPrimary } from '../../components/Button'
 import { GreyCard } from '../../components/Card'
@@ -74,6 +75,21 @@ export default function Swap({ history }: RouteComponentProps) {
   const showConnectAWallet = Boolean(!account)
   //const propernetwork = Boolean(!chainId)
   const isNotOnMainnet = Boolean(chainId && chainId !== SupportedChainId.MAINNET)
+  // const [isended, setisended] = useState(false)
+  // const videoRef: any = useRef(Boolean)
+  // function attemptPlay() {
+  //   videoRef &&
+  //     videoRef.current &&
+  //     videoRef.current.load() &&
+  //     videoRef.current.play().catch((error: any) => {
+  //       console.log('error attempting to play', error)
+  //     })
+  // }
+  //
+  // useEffect(() => {
+  //   videoRef.current.defaultMuted = true
+  //   attemptPlay()
+  // })
 
   // token warning stuff
   const [loadedInputCurrency, loadedOutputCurrency] = [
@@ -407,26 +423,65 @@ export default function Swap({ history }: RouteComponentProps) {
   } else {
     if (showConnectAWallet) {
       return (
-        <PurpleCard
-          style={{
-            fontSize: '20px',
-            fontWeight: 'bold',
-            textAlign: 'center',
-            maxWidth: '800px',
-          }}
-        >
-          {' '}
-          <div className={'whitetext'}>
-            <StyledText style={{ justifyContent: 'center', marginTop: '20px' }}>
-              {' '}
-              Connect a wallet to continue{' '}
-            </StyledText>{' '}
-          </div>
-        </PurpleCard>
+        <>
+          <img
+            className="w-screen mx-5 justify-center align-center z-0 absolute md:w-auto"
+            alt=""
+            height={450}
+            width={450}
+            src={ginuPic}
+          ></img>
+          <PurpleCard
+            style={{
+              textAlign: 'center',
+              maxWidth: '800px',
+            }}
+          >
+            {' '}
+            <h5
+              style={{ fontFamily: 'Aquire' }}
+              className="text-4xl sm:text-4xl text-4xl text-gray-200 text-center font-bold z-10 relative"
+            >
+              Connect wallet to continue
+            </h5>
+          </PurpleCard>
+        </>
       )
     } else {
       return (
         <>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+            }}
+            className={'mx-auto self-center content-center items-center justify-center mt-10'}
+          >
+            <h5
+              style={{ fontFamily: 'Aquire' }}
+              className="text-4xl mt-44 sm:text-4xl text-4xl text-gray-200 text-center font-bold md:text-5xl
+            z-10 relative lg:text-6xl"
+            >
+              Give Well INU
+            </h5>
+            <h5
+              style={{ fontFamily: 'Aquire' }}
+              className="mt-2 text-4xl sm:text-4xl text-4xl text-gray-200 text-center font-bold md:text-4xl
+            z-10 relative lg:text-5xl"
+            >
+              Swap
+            </h5>
+            <img
+              className="w-screen mx-5 justify-center align-center z-0 absolute md:w-auto"
+              alt=""
+              height={750}
+              width={750}
+              src={ginuBanner}
+            ></img>
+          </div>
+          <p className={'my-2'}></p>
+
           <TokenWarningModal
             isOpen={importTokensNotInDefault.length > 0 && !dismissTokenWarning}
             tokens={importTokensNotInDefault}
