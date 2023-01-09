@@ -10,11 +10,11 @@ import { NavLink } from 'react-router-dom'
 //import { useDarkModeManager } from 'state/user/hooks'
 import { useNativeCurrencyBalances } from 'state/wallet/hooks'
 import styled from 'styled-components/macro'
-import discord from '../../assets/images/discord.png'
-import instagram from '../../assets/images/instagram.png'
-import tglink from '../../assets/images/tglink.png'
-import facebook from '../../assets/images/facebook.png'
-import twitter from '../../assets/images/twitter.png'
+//import discord from '../../assets/images/discord.png'
+//import instagram from '../../assets/images/instagram.png'
+////import tglink from '../../assets/images/tglink.png'
+//import facebook from '../../assets/images/facebook.png'
+//import twitter from '../../assets/images/twitter.png'
 
 //import Menu from '../Menu' - this is the menu that includes uniswaps docs etc.
 import Row from '../Row'
@@ -172,6 +172,26 @@ const StyledNavLink = styled(NavLink).attrs({
   }
 `
 
+/* line 237
+          <div className={'flexbox-container'} style={{ marginRight: '5vw' }}>
+            <a target="_blank" rel="noreferrer" href="https://twitter.com/ApeMotorcycle">
+              <img className={'headersocialimage'} src={twitter} alt="tglink"></img>
+            </a>
+            <a target="_blank" rel="noreferrer" href="https://">
+              <img className={'headersocialimage'} src={tglink} alt="tglink"></img>
+            </a>
+            <a target="_blank" rel="noreferrer" href="https://www.instagram.com/apemotorcycleclub/">
+              <img className={'headersocialimage'} src={instagram} alt="tglink"></img>
+            </a>
+            <a target="_blank" rel="noreferrer" href="https://www.facebook.com/Ape-Motorcycle-Club-104428762148239">
+              <img className={'headersocialimage'} src={facebook} alt="tglink"></img>
+            </a>
+            <a target="_blank" rel="noreferrer" href="https://discord.com/invite/QQvgp9cgeb">
+              <img className={'headersocialimage'} src={discord} alt="tglink"></img>
+            </a>
+          </div>
+*/
+
 export default function Header() {
   const { account, chainId } = useActiveWeb3React()
   const userEthBalance = useNativeCurrencyBalances(account ? [account] : [])?.[account ?? '']
@@ -192,8 +212,9 @@ export default function Header() {
             style={{
               paddingLeft: '1.5vw',
               textDecoration: 'none',
-              fontFamily: 'Rye, cursive',
+              //fontFamily: 'Rye, cursive',
               transition: '1s',
+              marginTop: '10px',
               color: '#ffffff',
               fontSize: 'calc(3 * (0.3vw + 0.3vh))',
             }}
@@ -206,34 +227,32 @@ export default function Header() {
             className={'header-link-display'}
             style={{
               paddingLeft: '1.5vw',
+              marginTop: '10px',
               textDecoration: 'none',
-              fontFamily: 'Rye, cursive',
               transition: '1s',
               color: '#ffffff',
               fontSize: 'calc(3 * (0.3vw + 0.3vh))',
             }}
-            to="./NFTMint"
-            id={'/NFTMint'}
+            to="./Swap"
+            id={'/Swap'}
           >
-            NFT Minting Station
+            Swap
           </NavLink>
-          <div className={'flexbox-container'} style={{ marginRight: '5vw' }}>
-            <a target="_blank" rel="noreferrer" href="https://twitter.com/ApeMotorcycle">
-              <img className={'headersocialimage'} src={twitter} alt="tglink"></img>
-            </a>
-            <a target="_blank" rel="noreferrer" href="https://">
-              <img className={'headersocialimage'} src={tglink} alt="tglink"></img>
-            </a>
-            <a target="_blank" rel="noreferrer" href="https://www.instagram.com/apemotorcycleclub/">
-              <img className={'headersocialimage'} src={instagram} alt="tglink"></img>
-            </a>
-            <a target="_blank" rel="noreferrer" href="https://www.facebook.com/Ape-Motorcycle-Club-104428762148239">
-              <img className={'headersocialimage'} src={facebook} alt="tglink"></img>
-            </a>
-            <a target="_blank" rel="noreferrer" href="https://discord.com/invite/QQvgp9cgeb">
-              <img className={'headersocialimage'} src={discord} alt="tglink"></img>
-            </a>
-          </div>
+          <NavLink
+            className={'header-link-display'}
+            style={{
+              paddingLeft: '1.5vw',
+              textDecoration: 'none',
+              transition: '1s',
+              color: '#ffffff',
+              marginTop: '10px',
+              fontSize: 'calc(3 * (0.3vw + 0.3vh))',
+            }}
+            to="./Pool"
+            id={'/Pool'}
+          >
+            Pool
+          </NavLink>
         </HeaderLinks>
         <HeaderControls>
           <HeaderElement>

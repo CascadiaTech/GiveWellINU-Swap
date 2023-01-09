@@ -19,7 +19,7 @@ import { Text } from 'rebass'
 import { TradeState } from 'state/routing/types'
 import styled, { ThemeContext } from 'styled-components/macro'
 
-import JpegBackground2 from '../../assets/videos/JpegBackground2.mp4'
+//import JpegBackground2 from '../../assets/videos/JpegBackground2.mp4'
 import AddressInputPanel from '../../components/AddressInputPanel'
 import { ButtonConfirmed, ButtonError, ButtonLight, ButtonPrimary } from '../../components/Button'
 import { GreyCard } from '../../components/Card'
@@ -434,9 +434,6 @@ export default function Swap({ history }: RouteComponentProps) {
             onDismiss={handleDismissTokenWarning}
           />
           <AppBody>
-            <video autoPlay loop muted className="video">
-              <source src={JpegBackground2} type="video/mp4" />
-            </video>{' '}
             <SwapHeader allowedSlippage={allowedSlippage} />
             <Wrapper id="swap-page">
               <ConfirmSwapModal

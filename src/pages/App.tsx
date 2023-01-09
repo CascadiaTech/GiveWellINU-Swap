@@ -15,11 +15,13 @@ import { useModalOpen, useToggleModal } from '../state/application/hooks'
 import { ApplicationModal } from '../state/application/reducer'
 import DarkModeQueryParamReader from '../theme/DarkModeQueryParamReader'
 import Dapp from './Dapp'
-import NFTMint from './Dapp/NFTMint'
+//import NFTMint from './Dapp/NFTMint'
+import Pool from './Pool'
 //import Landing from './Landing'
 //import Pool from './Pool'
-//import PoolV2 from './Pool/v2'
-//import PoolFinder from './PoolFinder'
+import PoolV2 from './Pool/v2'
+import PoolFinder from './PoolFinder'
+import Swap from './Swap'
 
 //const Vote = lazy(() => import('./Vote'))
 
@@ -86,7 +88,16 @@ export default function App() {
                 <Route exact strict path="/Dapp">
                   <Redirect to="/Dapp" />
                 </Route>
-                <Route strict path="/NFTMint" component={NFTMint} />
+                <Route strict path="/Swap" component={Swap} />
+                <Route exact strict path="/Swap">
+                  <Redirect to="/Swap" />
+                </Route>
+                <Route strict path="/Pool" component={Pool} />
+                <Route exact strict path="/Pool">
+                  <Redirect to="/Pool" />
+                </Route>
+                <Route strict path="/PoolV2" component={PoolV2} />
+                <Route strict path="/PoolFinder" component={PoolFinder} />
               </Switch>
             </Suspense>
             <Marginer />

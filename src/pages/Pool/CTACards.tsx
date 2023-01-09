@@ -97,23 +97,23 @@ export default function CTACards() {
   const { infoLink } = CHAIN_INFO[chainId ? chainId : SupportedChainId.MAINNET]
   return (
     <CTASection>
-      <CTA1 href={'https://help.uniswap.org/en/articles/5391541-providing-liquidity-on-uniswap-v3'}>
+      <CTA1 href={'https://give-well-inu.vercel.app'}>
         <ResponsiveColumn>
           <HeaderText>
-            <Trans>Learn about providing liquidity</Trans> ↗
+            <Trans>Did you know we have GINU NFCTs available? You can buy them through our minting page</Trans> ↗
           </HeaderText>
           <ThemedText.Body fontWeight={400} style={{ alignItems: 'center', display: 'flex' }}>
-            <Trans>Check out our v3 LP walkthrough and migration guides.</Trans>
+            <Trans>Click here to go to the minting page!.</Trans>
           </ThemedText.Body>
         </ResponsiveColumn>
       </CTA1>
-      <CTA2 href={infoLink + 'pools'}>
+      <CTA2 href={'https://givewellinu.com'}>
         <ResponsiveColumn>
           <HeaderText style={{ alignSelf: 'flex-start' }}>
-            <Trans>Top pools</Trans> ↗
+            <Trans>Want more info on our team? go to our website! </Trans> ↗
           </HeaderText>
           <ThemedText.Body fontWeight={400} style={{ alignSelf: 'flex-start' }}>
-            <Trans>Explore Uniswap Analytics.</Trans>
+            <Trans>Click the title above to see more information about us .</Trans>
           </ThemedText.Body>
         </ResponsiveColumn>
       </CTA2>
